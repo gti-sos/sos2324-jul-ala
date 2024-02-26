@@ -62,7 +62,7 @@ function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumer
 //antonio
 function calcularMediaAttemptsSpain(antonio_data) {
     // Filtrar los datos para obtener solo las líneas en las que España aparece como equipo o como oponente
-    const datosEspaña = data.filter(l => l.Team === 'Spain' || l.Opponent === 'Spain');
+    const datosEspaña = antonio_data.filter(l => l.Team === 'Spain' || l.Opponent === 'Spain');
 
     // Verificar si se encontraron datos para España
     if (datosEspaña.length === 0) {
