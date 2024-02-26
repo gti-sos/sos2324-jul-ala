@@ -14,14 +14,21 @@ app.get("/cool", (req, res)=>{
 });
 
 app.get("/samples/ALA", (req, res)=>{
-    const resultado = calcularMedia(data, "country", "España", "trimestral_pib")
+    const resultado = calcularMedia(adrian_data, "country", "España", "trimestral_pib")
     res.send(`<html><body><h1>${resultado}</h1></body></html>`);
 
 
 });
 
 app.get("/samples/ARM", (req, res)=>{
-    const resultado = calcularMediaAttemptsSpain(data)
+    const resultado = calcularMediaAttemptsSpain(ahmed_data)
+    res.send(`<html><body><h1>${resultado}</h1></body></html>`);
+
+
+});
+
+app.get("/samples/AAF", (req, res)=>{
+    const resultado = calcularMediaAttemptsSpain(antonio_data)
     res.send(`<html><body><h1>${resultado}</h1></body></html>`);
 
 
@@ -35,7 +42,7 @@ app.listen(PORT, ()=>{
 //Adrian
 function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumerico) {
     // Filtrar los datos para obtener solo los que coinciden con el valor geográfico proporcionado
-    const datosFiltrados = datos.filter(item => item.country === valorGeografico);
+    const datosFiltrados = adrian_data.filter(item => item.country === valorGeografico);
 
     // Verificar si se encontraron datos para el valor geográfico proporcionado
     if (datosFiltrados.length === 0) {
