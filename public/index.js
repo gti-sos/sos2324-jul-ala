@@ -21,14 +21,14 @@ app.get("/samples/ALA", (req, res)=>{
 });
 
 app.get("/samples/ARM", (req, res)=>{
-    const resultado = calcularMediaAttemptsSpain(ahmed_data)
+    const resultado = calcularMediaAttemptsSpain(antonio_data, "Spain")
     res.send(`<html><body><h1>${resultado}</h1></body></html>`);
 
 
 });
 
 app.get("/samples/AAF", (req, res)=>{
-    const resultado = calcularMediaAttemptsSpain(antonio_data)
+    const resultado = calcularMediaAttemptsSpain(ahmed_data)
     res.send(`<html><body><h1>${resultado}</h1></body></html>`);
 
 
@@ -60,24 +60,23 @@ function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumer
 }
 
 //antonio
-function calcularMediaAttemptsSpain(antonio_data) {
-    // Filtrar los datos para obtener solo las líneas en las que España aparece como equipo o como oponente
-    const datosEspaña = antonio_data.filter(l => l.Team === 'Spain' || l.Opponent === 'Spain');
+function calcularMediaAttemptsSpain(antonio_datapais) {
+    // Filtrar los datos para obtener solo las líneas en las que el pais aparece como equipo o como oponente
+    const datosPais = data.filter(l => l.Team === pais || l.Opponent === pais);
 
-    // Verificar si se encontraron datos para España
-    if (datosEspaña.length === 0) {
-        return `No se encontraron datos para España como equipo u oponente.`;
+    // Verificar si se encontraron datos para el pais
+    if (datosPais.length === 0) {
+        return `No se encontraron datos para `, pais ,` como equipo u oponente.`;
     }
 
     // Calcular la suma total de intentos
-    const sumaAttempts = datosEspaña.reduce((total, l) => total + parseInt(l.Attempts), 0);
+    const sumaAttempts = datosPais.reduce((total, l) => total + parseInt(l.Attempts), 0);
 
     // Calcular la media de intentos
-    const mediaAttempts = sumaAttempts / datosEspaña.length;
+    const mediaAttempts = sumaAttempts / datosPais.length;
 
     return mediaAttempts;
 }
-
 //ahmed
 
 const countryName = "United States";

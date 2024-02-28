@@ -64,25 +64,25 @@ let data =
 
 console.log(data);
 
-function calcularMediaAttemptsSpain(data) {
-    // Filtrar los datos para obtener solo las líneas en las que España aparece como equipo o como oponente
-    const datosEspaña = data.filter(l => l.Team === 'Spain' || l.Opponent === 'Spain');
+function calcularMediaAttemptsSpain(data, pais) {
+    // Filtrar los datos para obtener solo las líneas en las que el pais aparece como equipo o como oponente
+    const datosPais = data.filter(l => l.Team === pais || l.Opponent === pais);
 
-    // Verificar si se encontraron datos para España
-    if (datosEspaña.length === 0) {
-        return `No se encontraron datos para España como equipo u oponente.`;
+    // Verificar si se encontraron datos para el pais
+    if (datosPais.length === 0) {
+        return `No se encontraron datos para `, pais ,` como equipo u oponente.`;
     }
 
     // Calcular la suma total de intentos
-    const sumaAttempts = datosEspaña.reduce((total, l) => total + parseInt(l.Attempts), 0);
+    const sumaAttempts = datosPais.reduce((total, l) => total + parseInt(l.Attempts), 0);
 
     // Calcular la media de intentos
-    const mediaAttempts = sumaAttempts / datosEspaña.length;
+    const mediaAttempts = sumaAttempts / datosPais.length;
 
     return mediaAttempts;
 }
 
 
-const mediaAttemptsSpain = calcularMediaAttemptsSpain(data);
+const mediaAttemptsSpain = calcularMediaAttemptsSpain(data,"Spain");
 console.log("Media de Attempts cuando España aparece como equipo u oponente:", mediaAttemptsSpain);
 
