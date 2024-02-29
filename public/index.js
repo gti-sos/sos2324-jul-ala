@@ -60,9 +60,9 @@ function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumer
 }
 
 //antonio
-function calcularMediaAttemptsSpain(antonio_datapais) {
+function calcularMediaAttemptsSpain(antonio_data, pais) {
     // Filtrar los datos para obtener solo las líneas en las que el pais aparece como equipo o como oponente
-    const datosPais = data.filter(l => l.Team === pais || l.Opponent === pais);
+    const datosPais = antonio_data.filter(l => l.Team === pais || l.Opponent === pais);
 
     // Verificar si se encontraron datos para el pais
     if (datosPais.length === 0) {
