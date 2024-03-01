@@ -1,17 +1,35 @@
 let cool = require("cool-ascii-faces");
 let express = require("express");
+let bodyParser = require("body-parser");
+let API_ALA = require("./api/api-ALA")
+
 const adrian_data = require('./index-ALA.js')
 const antonio_data = require('./index-ARM.js')
 const ahmed_data = require('./index-AAF.js')
 
 let app = express();
+app.use(bodyParser.json());
+
 const PORT = (process.env.PORT || 20000);
 
+//api
+API_ALA(app);
+
+app.listen(PORT, ()=>{
+    console.log(`Server listening on port ${PORT}`)
+});
+
+//static
+
 app.use("/", express.static("./public"));
+
+//cool
 
 app.get("/cool", (req, res)=>{
     res.send(`<html><body><h1>${cool()}</h1></body></html>`);
 });
+
+//samples
 
 app.get("/samples/ALA", (req, res)=>{
     const resultado = calcularMedia(adrian_data, "country", "España", "trimestral_pib")
@@ -35,9 +53,7 @@ app.get("/samples/AAF", (req, res)=>{
 });
 
 
-app.listen(PORT, ()=>{
-    console.log(`Server listening on port ${PORT}`)
-});
+
 
 //Adrian
 function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumerico) {
