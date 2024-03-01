@@ -46,7 +46,7 @@ app.get("/samples/ARM", (req, res)=>{
 });
 
 app.get("/samples/AAF", (req, res)=>{
-    const resultado = calcularMediaAttemptsSpain(ahmed_data)
+    const resultado = calcularMediaPorLetra(ahmed_data,"S")
     res.send(`<html><body><h1>${resultado}</h1></body></html>`);
 
 
@@ -95,16 +95,21 @@ function calcularMediaAttemptsSpain(antonio_data, pais) {
 }
 //ahmed
 
-const countryName = "United States";
+function calcularMediaPorLetra(data, letra) {
+    // Filtrar los datos para obtener solo los países que empiecen por la letra especificada
+    const paisesConLetra = data.filter(dato => dato.country.charAt(0).toLowerCase() === letra.toLowerCase());
 
-const filteredData = ahmed_data.filter(row => row.country === countryName);
+    // Verificar si hay países que comiencen con la letra especificada
+    if (paisesConLetra.length === 0) {
+        return "No hay países que empiecen con la letra " + letra;
+    }
 
-if (filteredData.length === 0) {
-    console.log(`No hay datos disponibles para ${countryName}`);
-  } else {
-    const totalOverallScore = filteredData.reduce((acc, row) => acc + row.overallScore, 0);
-  
-    const averageOverallScore = totalOverallScore / filteredData.length;
-  
-    console.log(`La media de los puntajes generales para ${countryName} es: ${averageOverallScore.toFixed(2)}`);
-  }
+    // Obtener los valores de overallScore de los países seleccionados
+    const overallScores = paisesConLetra.map(dato => dato.overallScore);
+
+    // Calcular la media de overallScore
+    const media = overallScores.reduce((acumulador, valor) => acumulador + valor, 0) / overallScores.length;
+
+    return media;
+}
+

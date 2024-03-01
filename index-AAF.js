@@ -44,18 +44,30 @@ const data = [
     { country: "Belgium", year: 2017, overallScore: 7.65, sizeOfGovernment: 4.73, legalSystemsAndPropertyRight: 7.60, soundMoney: 9.21, freedomToTradeInternationally: 8.77, regulation: 7.92 },
     { country: "Jamaica", year: 2017, overallScore: 7.53, sizeOfGovernment: 8.11, legalSystemsAndPropertyRight: 5.50, soundMoney: 9.21, freedomToTradeInternationally: 7.23, regulation: 7.62 }]
 
-const countryName = "United States";
+    
+    console.log(data);
 
-const filteredData = data.filter(row => row.country === countryName);
-
-if (filteredData.length === 0) {
-  console.log(`No hay datos disponibles para ${countryName}`);
-} else {
-  const totalOverallScore = filteredData.reduce((acc, row) => acc + row.overallScore, 0);
-
-  const averageOverallScore = totalOverallScore / filteredData.length;
-
-  console.log(`La media de los puntajes generales para ${countryName} es: ${averageOverallScore.toFixed(2)}`);
-}
+    function calcularMediaPorLetra(data, letra) {
+      // Filtrar los datos para obtener solo los países que empiecen por la letra especificada
+      const paisesConLetra = data.filter(dato => dato.country.charAt(0).toLowerCase() === letra.toLowerCase());
+  
+      // Verificar si hay países que comiencen con la letra especificada
+      if (paisesConLetra.length === 0) {
+          return "No hay países que empiecen con la letra " + letra;
+      }
+  
+      // Obtener los valores de overallScore de los países seleccionados
+      const overallScores = paisesConLetra.map(dato => dato.overallScore);
+  
+      // Calcular la media de overallScore
+      const media = overallScores.reduce((acumulador, valor) => acumulador + valor, 0) / overallScores.length;
+  
+      return media;
+  }
+  
+  
+  // Calcular la media de overallScore para los países que empiecen con la letra "S"
+  const mediaOverallScoreS = calcularMediaPorLetra(data, 'S');
+  console.log("Media de overallScore para países que empiezan por 'S':", mediaOverallScoreS);
 
 module.exports= data;
