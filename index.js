@@ -2,6 +2,8 @@ let cool = require("cool-ascii-faces");
 let express = require("express");
 let bodyParser = require("body-parser");
 let API_ALA = require("./api/api-ALA")
+let API_AAF = require("./api/api-AAF")
+
 
 const adrian_data = require('./index-ALA.js')
 const antonio_data = require('./index-ARM.js')
@@ -14,6 +16,9 @@ const PORT = (process.env.PORT || 20000);
 
 //api
 API_ALA(app);
+
+API_AAF(app);
+
 
 app.listen(PORT, ()=>{
     console.log(`Server listening on port ${PORT}`)
