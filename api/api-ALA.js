@@ -68,10 +68,9 @@ module.exports = (app) => {
 
     // POST => Crea un nuevo airbnb
 
-    app.post(API_BASE_ALA + "/", (req,res) => {
+    /*app.post(API_BASE_ALA + "/", (req,res) => {
         let newdata = req.body;
-        const equal = data.some(old => old.country === newdata.country && old.trimestral_pib === newdata.trimestral_pib 
-            && old.trimestral_variable_pib === newdata.trimestral_variable_pib && old.annual_variable_pib === newdata.annual_variable_pib);
+        const equal = data.some(old => old.name === newdata.name && old.latitude === newdata.latitude && old.longitude === newdata.longitude);
         if(equal){
             // POST not allowed due to resource already existing
             res.sendStatus(409, "CONFLICT");
@@ -83,7 +82,7 @@ module.exports = (app) => {
             data.push(newdata);
             res.sendStatus(201, "CREATED");
         }
-    }),
+    }),*/
 
     // PUT => Can't update root directory
     app.put(API_BASE_ALA + "/", (req,res)=> {
