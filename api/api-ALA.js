@@ -68,9 +68,10 @@ module.exports = (app) => {
 
     // POST => Crea un nuevo airbnb
 
-    /*app.post(API_BASE_ALA + "/", (req,res) => {
+    app.post(API_BASE_ALA + "/", (req,res) => {
         let newdata = req.body;
-        const equal = data.some(old => old.name === newdata.name && old.latitude === newdata.latitude && old.longitude === newdata.longitude);
+        const equal = data.some(old => old.country === newdata.country && old.date === newdata.date && old.trimestral_pib === newdata.trimestral_pib 
+            && old.trimestral_variable_pib === newdata.trimestral_variable_pib && old.annual_variable_pib === newdata.annual_variable_pib);
         if(equal){
             // POST not allowed due to resource already existing
             res.sendStatus(409, "CONFLICT");
@@ -82,6 +83,53 @@ module.exports = (app) => {
             data.push(newdata);
             res.sendStatus(201, "CREATED");
         }
+    })
+    
+    /*app.post(API_BASE_ALA + "/", (request, response) => {
+        const country = request.body.country;
+        const date = request.body.date;
+        const trimestral_pib = request.body.trimestral_pib;
+        const trimestral_variable_pib = request.body.trimestral_variable_pib;
+        const annual_variable_pib = request.body.annual_variable_pib;
+      
+        db.find({},function(err,filteredList){
+      
+            if(err){
+                response.sendStatus(500);
+            }
+      
+            // Validar que se envíen todos los campos necesarios
+            const requiredFields = ['country', 'date', 'trimestral_pib', 'trimestral_variable_pib', 'annual_variable_pib'];
+            for (const field of requiredFields) {
+                if (!request.body.hasOwnProperty(field)) {
+                return response.status(400).json(`Missing required field: ${field}`);
+                }
+            }
+            // Verificar que la solicitud se hizo en la ruta correcta
+            if (request.originalUrl != API_BASE_ALA+"/") {
+                response.status(405).json('Url no permitida');
+            }else{ 
+      
+                // Verificar si el recurso ya existe
+                //const existingObject = evolution_stats.find(obj => obj.territory === territory && obj.period === period);
+                filteredList = filteredList.filter((obj)=>
+                                {
+                                    return(country == obj.country && date == obj.date && trimestral_pib == obj.trimestral_pib &&
+                                        trimestral_variable_pib == obj.trimestral_variable_pib && annual_variable_pib == obj.annual_variable_pib)
+                                });
+                //const existingObject = db.find({territory : NewEvolution.territory, period : NewEvolution.period});
+                if (filteredList.length !=0) {
+                    // Si el recurso ya existe, devolver un código de respuesta 409
+                    response.status(409).json(`El recurso ya existe.`);
+                } else {
+                    // Si el recurso no existe, agregarlo a la lista y devolver un código de respuesta 201
+                    db.insert(request.body);
+                    //evolution_stats.push(request.body);
+                    response.sendStatus(201);
+                    console.log("Se ha insertado un nuevo dato");
+                }
+            }
+        });
     }),*/
 
     // PUT => Can't update root directory
@@ -91,23 +139,32 @@ module.exports = (app) => {
     }),
 
     //PUT => Update resource by listing_id
-    app.put(API_BASE_ALA + "/:trimestral_pib", (req,res) =>{
-        const trimestral_pib = parseInt(req.params.trimestral_pib);
+
+    app.put(API_BASE_ALA + "/:country", (req,res) =>{
+        const country = req.params.country;
         let newdata = req.body;
 
-        // Encuentra el índice del elemento con el ID dado en la lista de datos
-        const index = data.findIndex(p => p.trimestral_pib === trimestral_pib);
+        const index = data.findIndex(p => p.country === country);
 
         if(index === -1){
-            // El elemento con el ID dado no existe, devolver un error 404 NOT FOUND
             res.sendStatus(404, "NOT FOUND");
-        } else if (!newdata || Object.keys(newdata).length === 0 || newdata.trimestral_pib !== trimestral_pib){
-            // Los datos proporcionados son inválidos o el ID no coincide, devolver un error 400 BAD REQUEST
+        } else if (!newdata || Object.keys(newdata).length === 0 || newdata.country !== country){
             res.sendStatus(400, "BAD REQUEST");
         } else {
-            // Reemplazar el dato existente con los nuevos datos
             data[index] = newdata;
             res.sendStatus(200, "OK");
+        }
+    }),
+
+    // DELETE => Delete specific data
+    app.delete(API_BASE_ALA + "/:country", (req, res) => {
+        const country = req.params.country;
+        const initialLength = data.length;
+        data = data.filter(data => data.country !== country);
+        if (data.length < initialLength) {
+            res.status(200).send("DELETED");
+        } else {
+            res.sendStatus(404, "COUNTRY NOT FOUND");
         }
     }),
 
