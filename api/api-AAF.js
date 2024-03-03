@@ -88,15 +88,15 @@ module.exports = (app) => {
 
 
     //PUT => Update resource by parameter
-    app.put(API_BASE_AAF + "/:overallScore", (req,res) =>{
-        const overallScore = parseFloat(req.params.overallScore);
+    app.put(API_BASE_AAF + "/:country", (req,res) =>{
+        const country = req.params.country;
         let newdata = req.body;
 
-        const index = data.findIndex(p => p.overallScore === overallScore);
+        const index = data.findIndex(p => p.country === country);
 
         if(index === -1){
             res.sendStatus(404, "NOT FOUND");
-        } else if (!newdata || Object.keys(newdata).length === 0 || newdata.overallScore !== overallScore){
+        } else if (!newdata || Object.keys(newdata).length === 0 || newdata.country !== country){
             res.sendStatus(400, "BAD REQUEST");
         } else {
             data[index] = newdata;
@@ -113,18 +113,17 @@ module.exports = (app) => {
 
 
     // DELETE => Delete specific data
-    app.delete(API_BASE_AAF + "/:overallScore", (req,res) => {
-        const overallScore = parseFloat(req.params.overallScore);
-        const nuevosDatos = data.filter(entry => entry.listing_overallScore !== overallScore);
-
-        if(nuevosDatos.length < data.length){
-            data = nuevosDatos;
-            res.sendStatus(200, "OK");
+    app.delete(API_BASE_AAF + "/:country", (req, res) => {
+        const countryName = req.params.country;
+        const initialLength = data.length;
+        data = data.filter(data => data.country !== countryName);
+        if (data.length < initialLength) {
+            res.status(200).send("DELETED");
         } else {
-            res.sendStatus(404, "NOT FOUND");
+            res.sendStatus(404, "COUNTRY NOT FOUND");
         }
     }),
-
+    
 
     // POST => Try to use not allowed method
     app.post(API_BASE_AAF + "/:country", (req,res) =>{
