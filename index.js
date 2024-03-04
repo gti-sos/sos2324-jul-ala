@@ -3,6 +3,7 @@ let express = require("express");
 let bodyParser = require("body-parser");
 let API_ALA = require("./api/api-ALA")
 let API_AAF = require("./api/api-AAF")
+let API_ARM = require("./api/api-ARM")
 
 
 const adrian_data = require('./index-ALA.js')
@@ -16,7 +17,7 @@ const PORT = (process.env.PORT || 20000);
 
 //api
 API_ALA(app);
-
+API_ARM(app);
 API_AAF(app);
 
 

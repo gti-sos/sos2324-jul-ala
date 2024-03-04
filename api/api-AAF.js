@@ -116,7 +116,7 @@ module.exports = (app) => {
     app.delete(API_BASE_AAF + "/:country", (req, res) => {
         const countryName = req.params.country;
         const initialLength = data.length;
-        data = data.filter(data => data.country !== countryName);
+        data = data.filter(data => data.Team !== countryName);
         if (data.length < initialLength) {
             res.status(200).send("DELETED");
         } else {
