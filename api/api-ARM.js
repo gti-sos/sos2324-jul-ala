@@ -1,4 +1,69 @@
 const API_BASE_ARM = "/api/v1/manofthematch";
+
+function validarDatos(req, res, next) {
+    const jsonRecibido = req.body;
+    const esquemaEsperado = {
+        "Date": "string",
+        "Team": "string",
+        "Opponent": "string",
+        "GoalScored": "string",
+        "BallPossession": "string",
+        "Attempts": "string",
+        "OnTarget": "string",
+        "OffTarget": "string",
+        "Blocked": "string",
+        "Corners": "string",
+        "Offsides": "string",
+        "FreeKicks": "string",
+        "Saves": "string",
+        "PassAccuracy": "string",
+        "Passes": "string",
+        "DistanceCovered": "string",
+        "FoulsCommitted": "string",
+        "YellowCard": "string",
+        "Yellow_Red": "string",
+        "Red": "string",
+        "ManoftheMatch": "string",
+        "stGoal": "string",
+        "Round": "string",
+        "PSO": "string",
+        "GoalsinPSO": "string",
+        "Owngoals": "string",
+        "OwngoalTime": "string"
+        };
+        const keysRecibidas = Object.keys(jsonRecibido);
+        const keysEsperadas = Object.keys(esquemaEsperado);
+        const keysFaltantes = keysEsperadas.filter(key => !keysRecibidas.includes(key));
+        
+        //comprueba q no haya claves de mas
+        const clavesExtra = keysRecibidas.filter(key => !keysEsperadas.includes(key));
+        if (clavesExtra.length > 0) {
+            console.error(`Se encontraron claves adicionales en el JSON: ${clavesExtra.join(', ')}`);
+            return res.sendStatus(400, "Bad request");
+        }
+    
+        //comprueba q no haya claves de menos
+        if (keysFaltantes.length > 0) {
+            console.error(`Faltan las siguientes claves en el JSON: ${keysFaltantes.join(', ')}` );
+            return res.sendStatus(400, "Bad request");
+        }
+    
+        //comprueba q sean los tipos q son
+        const erroresTipo = [];
+        keysEsperadas.forEach(key => {
+            const tipoEsperado = esquemaEsperado[key];
+            const valor = jsonRecibido[key];
+            if (typeof valor !== tipoEsperado) {
+                erroresTipo.push(`El valor de '${key}' debe ser de tipo '${tipoEsperado}'`);
+            }
+        });
+        if (erroresTipo.length > 0) {
+            console.error(`Errores de tipo: ${erroresTipo.join(', ')}`);
+            return res.sendStatus(400, "Bad request");
+        }
+    
+        next();
+    }
 var data = [];
 
 module.exports = (app) => {
@@ -86,7 +151,7 @@ module.exports = (app) => {
 
     // GET => Get data by host_location
 
-    app.get(API_BASE_ARM + "/:Team",(req,res)=>{
+    app.get(API_BASE_ARM + "/:team",(req,res)=>{
         const PAIS = req.params.Team;
         const countryDatos = data.filter(p => p.Team === PAIS || p.Opponent === PAIS);
 
@@ -96,7 +161,7 @@ module.exports = (app) => {
             res.sendStatus(404, "NOT FOUND");
         }
     }),
-    app.post(API_BASE_ARM + "/", (req,res) => {
+    app.post(API_BASE_ARM + "/", validarDatos,  (req,res) => {
         let newdata = req.body;
         const equal = data.some(old => old.Team === newdata.Team && old.Opponent === newdata.Opponent && old.Date === newdata.Date);
         if(equal){
@@ -117,17 +182,17 @@ module.exports = (app) => {
         res.sendStatus(405,"METHOD NOW ALLOWED");
     }),
  //PUT => Update resource
-    app.put(API_BASE_ARM + "/:manofthematch", (req,res) =>{
-        const manofthematch = req.params.manofthematch;
+    app.put(API_BASE_ARM + "/:team", (req,res) =>{
+        const team = req.params.Team;
         let newdata = req.body;
 
     // Encuentra el índice del elemento con el ID dado en la lista de datos
-    const index = data.findIndex(p => p.manofthematch === manofthematch);
+    const index = data.findIndex(p => p.team === team);
 
     if(index === -1){
         // El elemento con el ID dado no existe, devolver un error 404 NOT FOUND
         res.sendStatus(404, "NOT FOUND");
-    } else if (!newdata || Object.keys(newdata).length === 0 || newdata.manofthematch !== manofthematch){
+    } else if (!newdata || Object.keys(newdata).length === 0 || newdata.team !== team){
         // Los datos proporcionados son inválidos o el ID no coincide, devolver un error 400 BAD REQUEST
         res.sendStatus(400, "BAD REQUEST");
     } else {
@@ -144,14 +209,14 @@ module.exports = (app) => {
 }),
 
     // DELETE => Delete specific data
-    app.delete(API_BASE_ARM + "/:manofthematch", (req,res) => {
-        const manofthematch = req.params.manofthematch;
+    app.delete(API_BASE_ARM + "/:team", (req,res) => {
+        const team = req.params.Team;
         const initialLength = data.length;
-        data = data.filter(data => data.Team !== manofthematch);
+        data = data.filter(data => data.Team !== team);
         if (data.length < initialLength) {
             res.status(200).send("DELETED");
         } else {
-            res.sendStatus(404, "COUNTRY NOT FOUND");
+            res.sendStatus(404, "TEAM NOT FOUND");
         }
     }),
     //Post
@@ -177,8 +242,8 @@ module.exports = (app) => {
 
     }});
     // POST => Try to use not allowed method
-    app.post(API_BASE_ARM + "/:manofthematch", (req,res) =>{
-        const PAIS = req.params.manofthematch;
+    app.post(API_BASE_ARM + "/:team", (req,res) =>{
+        const team = req.params.Team;
         let newdata = req.body;
         res.sendStatus(405, "METHOD NOT ALLOWED");
     });
