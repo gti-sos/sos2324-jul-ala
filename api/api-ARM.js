@@ -182,17 +182,17 @@ module.exports = (app) => {
         res.sendStatus(405,"METHOD NOW ALLOWED");
     }),
  //PUT => Update resource
-    app.put(API_BASE_ARM + "/:team", (req,res) =>{
+   /* app.put(API_BASE_ARM + "/:Team", (req,res) =>{
         const team = req.params.Team;
         let newdata = req.body;
 
     // Encuentra el índice del elemento con el ID dado en la lista de datos
-    const index = data.findIndex(p => p.team === team);
+    const index = data.findIndex(p => p.Team === team);
 
     if(index === -1){
         // El elemento con el ID dado no existe, devolver un error 404 NOT FOUND
         res.sendStatus(404, "NOT FOUND");
-    } else if (!newdata || Object.keys(newdata).length === 0 || newdata.team !== team){
+    } else if (!newdata || Object.keys(newdata).length === 0 || newdata.Team !== team){
         // Los datos proporcionados son inválidos o el ID no coincide, devolver un error 400 BAD REQUEST
         res.sendStatus(400, "BAD REQUEST");
     } else {
@@ -200,7 +200,28 @@ module.exports = (app) => {
         data[index] = newdata;
         res.sendStatus(200, "OK");
     }
-}),
+}),*/
+app.put(API_BASE_ARM + "/:Team", (req, res) => {
+
+    const pais = req.params.Team;
+    let dato = req.body;
+    let actualizado = false;
+
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].Team === pais) {
+            data[i] = dato;
+            actualizado = true;
+            break;
+        }
+    }
+
+    if (!actualizado) {
+        res.status(404).send("Not Found");
+    } else {
+        res.status(200).send("OK");
+    }
+});
+
 
     // DELETE => Delete all data
     app.delete(API_BASE_ARM+ "/", (req,res) => {
@@ -209,40 +230,23 @@ module.exports = (app) => {
 }),
 
     // DELETE => Delete specific data
-    app.delete(API_BASE_ARM + "/:team", (req,res) => {
-        const team = req.params.Team;
-        const initialLength = data.length;
-        data = data.filter(data => data.Team !== team);
-        if (data.length < initialLength) {
-            res.status(200).send("DELETED");
-        } else {
-            res.sendStatus(404, "TEAM NOT FOUND");
-        }
-    }),
-    //Post
-    app.post(API_BASE_ARM + "/", (req, res) => {
-        for (const dato of data) {
-        // Comparar cada atributo de cada objeto en `data` con los atributos de `nuevosDatos`
-        let sonIguales = true;
-        for (const clave in nuevosDatos) {
-            if (dato.hasOwnProperty(clave) && dato[clave] !== nuevosDatos[clave]) {
-                sonIguales = false;
-                break; // Salir del bucle interior si encuentra alguna diferencia
+    
+    app.delete(API_BASE_ARM+"/:name", (req,res) => {
+        let name=req.params.name;
+        dbRugby.remove( {"Team":name},{},(err,numRemoved)=>{
+        if(err){
+            res.sendStatus(500,"Internal Error");
+        }else{
+            if(numRemoved>=1){
+                res.sendStatus(200,"Removed");
+            }else{
+                res.sendStatus(404,"Not found");
             }
         }
-        // Si todos los atributos son iguales, mostrar un mensaje de error y salir de la función
-        if (sonIguales) {
-            console.log("Error: Los datos son iguales a los datos existentes.");
-            return;
-        } else {
-            // El recurso no existe, agregarlo a csv
-            datos.push(req.body);
-            res.status(201).send("Created");
-        }
-
-    }});
+        });
+    });
     // POST => Try to use not allowed method
-    app.post(API_BASE_ARM + "/:team", (req,res) =>{
+    app.post(API_BASE_ARM + "/:Team", (req,res) =>{
         const team = req.params.Team;
         let newdata = req.body;
         res.sendStatus(405, "METHOD NOT ALLOWED");
