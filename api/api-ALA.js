@@ -2,6 +2,49 @@ const API_BASE_ALA = "/api/v1/trimestralpib_stats";
 
 var data = [];
 
+function validarDatos(req, res, next) {
+    const jsonRecibido = req.body;
+    const esquemaEsperado = {
+        "country": "string",
+        "date": "string",
+        "trimestral_pib": "string",
+        "trimestral_variable_pib": "string",
+        "annual_variable_pib": "string"
+        };
+        const keysRecibidas = Object.keys(jsonRecibido);
+        const keysEsperadas = Object.keys(esquemaEsperado);
+        const keysFaltantes = keysEsperadas.filter(key => !keysRecibidas.includes(key));
+        
+        //comprueba q no haya claves de mas
+        const clavesExtra = keysRecibidas.filter(key => !keysEsperadas.includes(key));
+        if (clavesExtra.length > 0) {
+            console.error(`Se encontraron claves adicionales en el JSON: ${clavesExtra.join(', ')}`);
+            return res.sendStatus(400, "Bad request");
+        }
+    
+        //comprueba q no haya claves de menos
+        if (keysFaltantes.length > 0) {
+            console.error(`Faltan las siguientes claves en el JSON: ${keysFaltantes.join(', ')}` );
+            return res.sendStatus(400, "Bad request");
+        }
+    
+        //comprueba q sean los tipos q son
+        const erroresTipo = [];
+        keysEsperadas.forEach(key => {
+            const tipoEsperado = esquemaEsperado[key];
+            const valor = jsonRecibido[key];
+            if (typeof valor !== tipoEsperado) {
+                erroresTipo.push(`El valor de '${key}' debe ser de tipo '${tipoEsperado}'`);
+            }
+        });
+        if (erroresTipo.length > 0) {
+            console.error(`Errores de tipo: ${erroresTipo.join(', ')}`);
+            return res.sendStatus(400, "Bad request");
+        }
+    
+        next();
+    }
+
 module.exports = (app) => {
     
     // GET => Lista todos los datos
@@ -66,9 +109,9 @@ module.exports = (app) => {
         }
     }),
 
-    // POST => Crea un nuevo airbnb
+    // POST => Crea un nuevo
 
-    app.post(API_BASE_ALA + "/", (req,res) => {
+    app.post(API_BASE_ALA + "/", validarDatos, (req,res) => {
         let newdata = req.body;
         const equal = data.some(old => old.country === newdata.country && old.date === newdata.date && old.trimestral_pib === newdata.trimestral_pib 
             && old.trimestral_variable_pib === newdata.trimestral_variable_pib && old.annual_variable_pib === newdata.annual_variable_pib);
