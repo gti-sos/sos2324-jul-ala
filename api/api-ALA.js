@@ -96,7 +96,7 @@ module.exports = (app) => {
         }
     }),
 
-    // GET => Get data by host_location
+    // GET => Get data 
 
     app.get(API_BASE_ALA + "/:country",(req,res)=>{
         const PAIS = req.params.country;
@@ -128,52 +128,7 @@ module.exports = (app) => {
         }
     })
     
-    /*app.post(API_BASE_ALA + "/", (request, response) => {
-        const country = request.body.country;
-        const date = request.body.date;
-        const trimestral_pib = request.body.trimestral_pib;
-        const trimestral_variable_pib = request.body.trimestral_variable_pib;
-        const annual_variable_pib = request.body.annual_variable_pib;
-      
-        db.find({},function(err,filteredList){
-      
-            if(err){
-                response.sendStatus(500);
-            }
-      
-            // Validar que se envíen todos los campos necesarios
-            const requiredFields = ['country', 'date', 'trimestral_pib', 'trimestral_variable_pib', 'annual_variable_pib'];
-            for (const field of requiredFields) {
-                if (!request.body.hasOwnProperty(field)) {
-                return response.status(400).json(`Missing required field: ${field}`);
-                }
-            }
-            // Verificar que la solicitud se hizo en la ruta correcta
-            if (request.originalUrl != API_BASE_ALA+"/") {
-                response.status(405).json('Url no permitida');
-            }else{ 
-      
-                // Verificar si el recurso ya existe
-                //const existingObject = evolution_stats.find(obj => obj.territory === territory && obj.period === period);
-                filteredList = filteredList.filter((obj)=>
-                                {
-                                    return(country == obj.country && date == obj.date && trimestral_pib == obj.trimestral_pib &&
-                                        trimestral_variable_pib == obj.trimestral_variable_pib && annual_variable_pib == obj.annual_variable_pib)
-                                });
-                //const existingObject = db.find({territory : NewEvolution.territory, period : NewEvolution.period});
-                if (filteredList.length !=0) {
-                    // Si el recurso ya existe, devolver un código de respuesta 409
-                    response.status(409).json(`El recurso ya existe.`);
-                } else {
-                    // Si el recurso no existe, agregarlo a la lista y devolver un código de respuesta 201
-                    db.insert(request.body);
-                    //evolution_stats.push(request.body);
-                    response.sendStatus(201);
-                    console.log("Se ha insertado un nuevo dato");
-                }
-            }
-        });
-    }),*/
+    
 
     // PUT => Can't update root directory
     app.put(API_BASE_ALA + "/", (req,res)=> {
@@ -181,7 +136,7 @@ module.exports = (app) => {
         res.sendStatus(405,"METHOD NOW ALLOWED");
     }),
 
-    //PUT => Update resource by listing_id
+    //PUT => Update resource 
 
     app.put(API_BASE_ALA + "/:country", (req,res) =>{
         const country = req.params.country;
