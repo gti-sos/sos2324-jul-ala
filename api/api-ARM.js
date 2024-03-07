@@ -71,11 +71,18 @@ module.exports = (app) => {
     // GET => Lista todos los datos
     
     app.get(API_BASE_ARM+"/",(req,res)=>{
-        res.status(200).send(JSON.stringify(data));
+        db.find({},(err, manofthematch)=>{
+            if(err) {
+                res.sendStatus(500, "Internal Error");
+            }else{
+                res.send(JSON.stringify(manofthematch));
+            }
+        })
     }),
 
     // GET => loadInitialData (al hacer un GET cree 10 o más datos en el array de NodeJS si está vacío)
     app.get(API_BASE_ARM+"/loadInitialData",(req,res) => {
+        db.insert(data);
         if(data.length === 0){
             let newdata = [
                 {Date:"14-06-2018",Team:"Russia",Opponent:"Saudi Arabia",GoalScored:"5",BallPossession:"40",Attempts:"13",OnTarget:"7",OffTarget:"3",Blocked:"3",Corners:"6",Offsides:"3",FreeKicks:"11",Saves:"0",PassAccuracy:"78",Passes:"306",DistanceCovered:"118",FoulsCommitted:"22",YellowCard:"0",Yellow_Red:"",Red:"",ManoftheMatch:"Yes",stGoal:"12",Round:"Group Stage",PSO:"No",GoalsinPSO:"0",Owngoals:"0",OwngoalTime:""},
@@ -201,24 +208,35 @@ module.exports = (app) => {
         res.sendStatus(200, "OK");
     }
 }),*/
-app.put(API_BASE_ARM + "/:Team", (req, res) => {
+/*app.put(API_BASE_ARM + "/:Tountry", (req,res) =>{
+    const Team = req.params.Team;
+    let newdata = req.body;
 
-    const pais = req.params.Team;
-    let dato = req.body;
-    let actualizado = false;
+    const index = data.findIndex(p => p.Team === Team);
 
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].Team === pais) {
-            data[i] = dato;
-            actualizado = true;
-            break;
-        }
-    }
-
-    if (!actualizado) {
-        res.status(404).send("Not Found");
+    if(index === -1){
+        res.sendStatus(404, "NOT FOUND");
+    } else if (!newdata || Object.keys(newdata).length === 0 || newdata.Team !== Team){
+        res.sendStatus(400, "BAD REQUEST");
     } else {
-        res.status(200).send("OK");
+        data[index] = newdata;
+        res.sendStatus(200, "OK");
+    }
+}),*/
+app.put(API_BASE +"/:country", (req, res) => {
+    const pais = req.params.country;
+    let data = req.body;
+   
+      
+    //filtro para obtener los datos del pais introducido
+    const countryData = data.filter(p => p.Team === pais);
+
+    //veo si los datos introducidos no son vacios (si son validos)
+    if (!newdata || Object.keys(newdata).length === 0 || newdata.Team !== pais) {
+        res.sendStatus(400, "Bad Request");
+    } else {
+        countryData.push(newdata);
+        res.sendStatus(200, "Ok");
     }
 });
 

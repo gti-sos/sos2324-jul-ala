@@ -1,4 +1,4 @@
-let cool = require("cool-ascii-faces");
+let dataStore = require("nedb");
 let express = require("express");
 let bodyParser = require("body-parser");
 let API_ALA = require("./api/api-ALA")
@@ -8,6 +8,7 @@ let API_ARM = require("./api/api-ARM")
 
 const adrian_data = require('./index-ALA.js')
 const antonio_data = require('./index-ARM.js')
+let db_ARM = new dataStore();
 const ahmed_data = require('./index-AAF.js')
 
 let app = express();
@@ -17,7 +18,7 @@ const PORT = (process.env.PORT || 20000);
 
 //api
 API_ALA(app);
-API_ARM(app);
+API_ARM(app, db_ARM);
 API_AAF(app);
 
 
@@ -28,24 +29,11 @@ app.listen(PORT, ()=>{
 //static
 
 app.use("/", express.static("./public"));
-
-//cool
-
-app.get("/cool", (req, res)=>{
-    res.send(`<html><body><h1>${cool()}</h1></body></html>`);
-});
-
+s
 //samples
 
 app.get("/samples/ALA", (req, res)=>{
     const resultado = calcularMedia(adrian_data, "country", "España", "trimestral_pib")
-    res.send(`<html><body><h1>${resultado}</h1></body></html>`);
-
-
-});
-
-app.get("/samples/ARM", (req, res)=>{
-    const resultado = calcularMediaAttemptsSpain(antonio_data, "Spain")
     res.send(`<html><body><h1>${resultado}</h1></body></html>`);
 
 
@@ -79,25 +67,6 @@ function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumer
     const media = suma / valoresNumericos.length;
 
     return media;
-}
-
-//antonio
-function calcularMediaAttemptsSpain(antonio_data, pais) {
-    // Filtrar los datos para obtener solo las líneas en las que el pais aparece como equipo o como oponente
-    const datosPais = antonio_data.filter(l => l.Team === pais || l.Opponent === pais);
-
-    // Verificar si se encontraron datos para el pais
-    if (datosPais.length === 0) {
-        return `No se encontraron datos para `, pais ,` como equipo u oponente.`;
-    }
-
-    // Calcular la suma total de intentos
-    const sumaAttempts = datosPais.reduce((total, l) => total + parseInt(l.Attempts), 0);
-
-    // Calcular la media de intentos
-    const mediaAttempts = sumaAttempts / datosPais.length;
-
-    return mediaAttempts;
 }
 //ahmed
 
