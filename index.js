@@ -29,7 +29,7 @@ app.listen(PORT, ()=>{
 //static
 
 app.use("/", express.static("./public"));
-s
+
 //samples
 
 app.get("/samples/ALA", (req, res)=>{
