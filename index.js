@@ -6,9 +6,10 @@ let API_AAF = require("./api/api-AAF")
 let API_ARM = require("./api/api-ARM")
 
 
-const adrian_data = require('./index-ALA.js')
-const antonio_data = require('./index-ARM.js')
+//const adrian_data = require('./index-ALA.js')
+//const antonio_data = require('./index-ARM.js')
 let db_ARM = new dataStore();
+let db_ALA = new dataStore();
 const ahmed_data = require('./index-AAF.js')
 
 let app = express();
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 const PORT = (process.env.PORT || 20000);
 
 //api
-API_ALA(app);
+API_ALA(app, db_ALA);
 API_ARM(app, db_ARM);
 API_AAF(app);
 
@@ -30,27 +31,10 @@ app.listen(PORT, ()=>{
 
 app.use("/", express.static("./public"));
 
-//samples
-
-app.get("/samples/ALA", (req, res)=>{
-    const resultado = calcularMedia(adrian_data, "country", "España", "trimestral_pib")
-    res.send(`<html><body><h1>${resultado}</h1></body></html>`);
-
-
-});
-
-app.get("/samples/AAF", (req, res)=>{
-    const resultado = calcularMediaPorLetra(ahmed_data,"S")
-    res.send(`<html><body><h1>${resultado}</h1></body></html>`);
-
-
-});
-
-
 
 
 //Adrian
-function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumerico) {
+/*function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumerico) {
     // Filtrar los datos para obtener solo los que coinciden con el valor geográfico proporcionado
     const datosFiltrados = adrian_data.filter(item => item.country === valorGeografico);
 
@@ -67,7 +51,8 @@ function calcularMedia(adrian_data, campoGeografico, valorGeografico, campoNumer
     const media = suma / valoresNumericos.length;
 
     return media;
-}
+}*/
+
 //ahmed
 
 function calcularMediaPorLetra(data, letra) {
