@@ -102,9 +102,9 @@ module.exports = (app,db) => {
           }
 
            // Verificar si hay resultados después de la filtración
-        /*if (listings.length === 0) {
+        if (listings.length === 0) {
             return res.status(404).send("Not Found");
-        }*/
+        }
   
           // Aplicar paginación si los parámetros limit y offset están presentes
           let paginatedListings = listings;
