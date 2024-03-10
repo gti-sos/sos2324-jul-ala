@@ -7,7 +7,8 @@ let API_ARM = require("./api/api-ARM")
 
 let db_ARM = new dataStore();
 let db_ALA = new dataStore();
-const ahmed_data = require('./index-AAF.js')
+let db_AAF = new dataStore();
+
 
 let app = express();
 app.use(bodyParser.json());
@@ -17,7 +18,7 @@ const PORT = (process.env.PORT || 20000);
 //api
 API_ALA(app, db_ALA);
 API_ARM(app, db_ARM);
-API_AAF(app);
+API_AAF(app, db_AAF);
 
 
 app.listen(PORT, ()=>{
