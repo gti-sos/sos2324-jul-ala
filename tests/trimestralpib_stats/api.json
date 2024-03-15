@@ -365,7 +365,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"country\": \"Lituania\", \"date\": \"IV Trim 2018\", \"trimestral_pib\": \"34.799 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"01/12/2018\", \"trimestral_pib\": \"34.799 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -609,7 +609,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"country\": \"Lituania\", \"date\": \"IV Trim 2018\", \"trimestral_pib\": \"33333333 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"01/12/2018\", \"trimestral_pib\": \"33333333 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
 					"options": {
 						"raw": {
 							"language": "json"
