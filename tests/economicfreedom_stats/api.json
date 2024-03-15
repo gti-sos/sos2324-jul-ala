@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "c6841b08-63f4-47b9-a613-c925013465e0",
+		"name": "F05",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33041748"
+	},
+	"item": [
+		{
+			"name": "Load Initial Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/loadInitialData",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL DATA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Canada",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats?country=Canada",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Canada"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Togo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Togo\",\r\n    \"year\":2025,\r\n    \"overallScore\":10,\r\n    \"sizeOfGovernment\":3,\r\n    \"legalSystemsAndPropertyRight\":0.1,\r\n    \"soundMoney\":0.001,\r\n    \"freedomToTradeInternationally\":0.3,\r\n    \"regulation\":0.001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Togo 405 Not Allowed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Sahara\",\r\n    \"year\":2025,\r\n    \"overallScore\":10,\r\n    \"sizeOfGovernment\":3,\r\n    \"legalSystemsAndPropertyRight\":0.1,\r\n    \"soundMoney\":0.001,\r\n    \"freedomToTradeInternationally\":0.3,\r\n    \"regulation\":0.001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Togo",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"Togo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT year=2035 in Latvia",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Latvia\",\r\n    \"year\":2035,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Latvia",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"Latvia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT NOT ALLOWED",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Togo\",\r\n    \"year\":2025,\r\n    \"overallScore\":10,\r\n    \"sizeOfGovernment\":3,\r\n    \"legalSystemsAndPropertyRight\":0.1,\r\n    \"soundMoney\":0.001,\r\n    \"freedomToTradeInternationally\":0.3,\r\n    \"regulation\":0.001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 1 PUT 400 BAD REQUEST",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Sahara\",\r\n    \"year\":2035,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Latvia",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"Latvia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 2 POST 409 CONFLICT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Switzerland\",\r\n    \"year\":2017,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 3 POST 400 BAD REQUEST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"abc\":\"Switzerland\",\r\n    \"year\":2017,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 4 DELETE 404 NOT FOUND",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats?country=Sahara",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Sahara"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 5 POST 405 METHOD NOT ALLOWED",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Sahara\",\r\n    \"year\":2035,\r\n    \"overallScore\":9.07,\r\n    \"sizeOfGovernment\":8.57,\r\n    \"legalSystemsAndPropertyRight\":8.16,\r\n    \"soundMoney\":9.63,\r\n    \"freedomToTradeInternationally\":9.6,\r\n    \"regulation\":9.4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Sahara",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"Sahara"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Latvia",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Latvia",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"Latvia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ALL",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
