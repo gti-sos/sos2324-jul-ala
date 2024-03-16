@@ -38,7 +38,7 @@ module.exports = (app,db) => {
     // Permite paginacion con limit y offset
 
     app.get(API_BASE_AAF + "/", (req, res) => {
-        const { from, to, limit, offset, ...queryParams } = req.query;     
+        const { from, to, limit, offset, ...queryParams } = req.query;
         // Verifica si hay parámetros 'from' y 'to'
         if (from !== undefined && to !== undefined) {
             const fromYear = parseInt(from);
@@ -93,7 +93,7 @@ module.exports = (app,db) => {
             if (err) {
                 return res.status(500).send("Internal Server Error");
             }
-                // Verificar si hay resultados
+            // Verificar si hay resultados
             if (listings.length === 0) {
                 return res.status(404).send("NOT FOUND");
             }
@@ -108,16 +108,31 @@ module.exports = (app,db) => {
                     paginatedListings = listings.slice(0, limitNum);
                 }
             }
-            // Eliminar el campo _id de los resultados y enviar la respuesta
-            const responseBody = paginatedListings.map((listing) => {
-                delete listing._id;
-                return listing;
-            });
-            res.status(200).send(responseBody);
+            // Eliminar el campo _id de los resultados si es una colección
+            // o mantenerlo si es un recurso individual
+            let responseBody;
+            if (from !== undefined && to !== undefined || Object.keys(queryParams).length === 0) {
+                responseBody = paginatedListings.map((listing) => {
+                    delete listing._id;
+                    return listing;
+                });
+            } else {
+                // Si es un recurso individual, mantener el campo _id
+                responseBody = paginatedListings.map((listing) => {
+                    const { _id, ...rest } = listing;
+                    return rest;
+                });
+            }
+            // Devolver un array si es una colección, o un objeto si es un recurso individual
+            if (from !== undefined && to !== undefined || Object.keys(queryParams).length === 0) {
+                res.status(200).send(responseBody);
+            } else {
+                res.status(200).send(responseBody[0]);
+            }
         }
     });
-
-
+    
+    
         // GET => loadInitialData (al hacer un GET cree 10 o más datos en el array de NodeJS si está vacío)
     app.get(API_BASE_AAF+"/loadInitialData",(req,res) => {
       db.find({},(err,listings) => {
@@ -143,7 +158,6 @@ module.exports = (app,db) => {
     }),
 
 
-    
     // GET => Search data by year
     app.get(API_BASE_AAF + "/year/:year", (req, res) => {
         const year = req.params.year;
@@ -163,6 +177,7 @@ module.exports = (app,db) => {
             }
         });
     });
+
 
     // GET => Buscar por año y país
     app.get(API_BASE_AAF + "/:year/:country", (req, res) => {
@@ -184,12 +199,18 @@ module.exports = (app,db) => {
                 if (listings.length === 0) {
                     return res.status(404).send("NOT FOUND");
                 } else {
-                    // Eliminar el campo _id de los resultados y enviar la respuesta
+                    // Eliminar el campo _id de los resultados
                     const responseBody = listings.map((listing) => {
                         delete listing._id;
                         return listing;
                     });
-                    return res.status(200).send(responseBody);
+                    // Devolver un array si es una colección
+                    if (responseBody.length > 1) {
+                        return res.status(200).send(responseBody);
+                    } else {
+                        // Devolver un objeto si es un recurso concreto
+                        return res.status(200).send(responseBody[0]);
+                    }
                 }
             }
         });
@@ -228,10 +249,12 @@ module.exports = (app,db) => {
         }
     });
 
+
     // PUT => Can't update root directory
     app.put(API_BASE_AAF + "/", (req,res)=> {
         res.sendStatus(405,"METHOD NOW ALLOWED");
     }),
+
 
     // PUT => Update resource by country
     app.put(API_BASE_AAF + "/:country", (req, res) => {
@@ -250,6 +273,7 @@ module.exports = (app,db) => {
             });
         }
     }),
+
 
     // PUT => Update resource by year and country
     app.put(API_BASE_AAF + "/:year/:country", (req, res) => {
@@ -274,6 +298,7 @@ module.exports = (app,db) => {
         }
     }),
 
+
     // DELETE => Delete all data
     app.delete(API_BASE_AAF + "/", (req, res) => {
         db.remove({}, { multi: true }, (err, numRemoved) => { 
@@ -289,6 +314,7 @@ module.exports = (app,db) => {
             }
         });
     }),
+
 
     // DELETE => Delete specific data by country
     app.delete(API_BASE_AAF + "/:country", (req, res) => {
@@ -307,6 +333,7 @@ module.exports = (app,db) => {
         });
     }),
 
+
     // DELETE => Delete specific data by year and country
     app.delete(API_BASE_AAF + "/:year/:country", (req, res) => {
         const year = parseInt(req.params.year);
@@ -316,7 +343,7 @@ module.exports = (app,db) => {
         if (!(/^\d{4}$/.test(year))) {
             return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
         }
-        
+
         db.remove({ year: year, country: country }, {}, (err, numRemoved) => {
             if (err) {
                 res.sendStatus(500).send("INTERNAL ERROR");
@@ -330,6 +357,7 @@ module.exports = (app,db) => {
         });
     }),
 
+    
     // POST => Method not allowed
     app.post(API_BASE_AAF + "/:country", (req, res) => {
         // Not allowed
