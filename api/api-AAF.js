@@ -238,7 +238,7 @@ module.exports = (app,db) => {
 
         const country = req.params.country;
         let data = req.body;
-
+        
         if (!data || Object.keys(data).length === 0 || data.country !== country) {
             res.sendStatus(400, "BAD REQUEST"); // Invalid data
         } else {
@@ -251,16 +251,21 @@ module.exports = (app,db) => {
         }
     }),
 
-    // PUT => Update resource by overallScore and sizeOfGovernment
-    app.put(API_BASE_AAF + "/:overallScore/:sizeOfGovernment", (req, res) => {
-        const overallScore = parseFloat(req.params.overallScore);
-        const sizeOfGovernment = parseFloat(req.params.sizeOfGovernment);
+    // PUT => Update resource by year and country
+    app.put(API_BASE_AAF + "/:year/:country", (req, res) => {
+        const year = parseInt(req.params.year);
+        const country = req.params.country;
         let data = req.body;
-    
-        if (!data || Object.keys(data).length === 0 || data.overallScore !== overallScore || data.sizeOfGovernment !== sizeOfGovernment) {
+
+        // Verificar si el año tiene un formato válido (cuatro dígitos)
+        if (!(/^\d{4}$/.test(year))) {
+            return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
+        }
+
+        if (!data || Object.keys(data).length === 0 || data.year !== year || data.country !== country) {
             res.sendStatus(400, "BAD REQUEST"); // Invalid data
         } else {
-            db.update({ overallScore: overallScore, sizeOfGovernment: sizeOfGovernment }, data, { }, (err) => {
+            db.update({ year: year, country: country }, data, { }, (err) => {
                 if (err) {
                     res.sendStatus(500, "Internal Server Error"); 
                 }
@@ -302,12 +307,17 @@ module.exports = (app,db) => {
         });
     }),
 
-    // DELETE => Delete specific data by overallScore and sizeOfGovernment
-    app.delete(API_BASE_AAF + "/:overallScore/:sizeOfGovernment", (req, res) => {
-        const overallScore = parseFloat(req.params.overallScore);
-        const sizeOfGovernment = parseFloat(req.params.sizeOfGovernment);
-    
-        db.remove({ overallScore: overallScore, sizeOfGovernment: sizeOfGovernment }, {}, (err, numRemoved) => {
+    // DELETE => Delete specific data by year and country
+    app.delete(API_BASE_AAF + "/:year/:country", (req, res) => {
+        const year = parseInt(req.params.year);
+        const country = req.params.country;
+        
+        // Verificar si el año tiene un formato válido (cuatro dígitos)
+        if (!(/^\d{4}$/.test(year))) {
+            return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
+        }
+        
+        db.remove({ year: year, country: country }, {}, (err, numRemoved) => {
             if (err) {
                 res.sendStatus(500).send("INTERNAL ERROR");
             } else if (numRemoved === 0) {

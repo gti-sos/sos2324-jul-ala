@@ -71,6 +71,27 @@
 			"response": []
 		},
 		{
+			"name": "GET .../2017/Taiwan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/2017/Taiwan",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"2017",
+						"Taiwan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST Togo",
 			"request": {
 				"method": "POST",
@@ -129,13 +150,13 @@
 			"response": []
 		},
 		{
-			"name": "PUT year=2035 in Latvia",
+			"name": "PUT in .../2017/Latvia",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\":\"Latvia\",\r\n    \"year\":2035,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"raw": "{\r\n    \"country\":\"Latvia\",\r\n    \"year\":2017,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,7 +164,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Latvia",
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/2017/Latvia",
 					"host": [
 						"{{SERVER}}"
 					],
@@ -151,7 +172,37 @@
 						"api",
 						"v1",
 						"economicfreedom_stats",
+						"2017",
 						"Latvia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT year=2035 in Switzerland",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Switzerland\",\r\n    \"year\":2035,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Switzerland",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"Switzerland"
 					]
 				}
 			},
@@ -326,12 +377,12 @@
 			"response": []
 		},
 		{
-			"name": "DELETE Latvia",
+			"name": "DELETE Togo",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Latvia",
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/Togo",
 					"host": [
 						"{{SERVER}}"
 					],
@@ -339,7 +390,37 @@
 						"api",
 						"v1",
 						"economicfreedom_stats",
-						"Latvia"
+						"Togo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE .../2017/Chile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v1/economicfreedom_stats/2017/Chile",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"economicfreedom_stats",
+						"2017",
+						"Chile"
 					]
 				}
 			},
