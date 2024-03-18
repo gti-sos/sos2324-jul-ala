@@ -632,6 +632,50 @@
 			"response": []
 		},
 		{
+			"name": "put año/pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"country\": \"España\",\r\n        \"date\": \"01/12/2018\",\r\n        \"trimestral_pib\": \"35555555 M€\",\r\n        \"trimestral_variable_pib\": \"0,70%\",\r\n        \"annual_variable_pib\": \"2,20%\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLBASE}}/api/v1/trimestralpib_stats/2018/España",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"trimestralpib_stats",
+						"2018",
+						"España"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "error 400",
 			"event": [
 				{
@@ -779,6 +823,41 @@
 						"v1",
 						"trimestralpib_stats",
 						"Lituania"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borra año/pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URLBASE}}/api/v1/trimestralpib_stats/2018/España",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"trimestralpib_stats",
+						"2018",
+						"España"
 					]
 				}
 			},

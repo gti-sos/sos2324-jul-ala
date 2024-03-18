@@ -257,22 +257,37 @@ module.exports = (app,db) => {
       }
   }),
       // PUT => Update resource by latitude and longitude
-      app.put(API_BASE_ALA + "/:trimestral_pib/:trimestral_variable_pib", (req, res) => {
-        const trimestral_pib = parseFloat(req.params.latitude);
-        const trimestral_variable_pib = parseFloat(req.params.longitude);
-        let data = req.body;
-  
-        if (!data || Object.keys(data).length === 0 || data.trimestral_pib !== trimestral_pib || data.trimestral_variable_pib !== trimestral_variable_pib) {
-            res.sendStatus(400, "BAD REQUEST"); // Datos inválidos
-        } else {
-            db.update({ trimestral_pib: trimestral_pib, trimestral_variable_pib: trimestral_variable_pib }, data, { }, (err) => {
-                if (err) {
-                    res.sendStatus(500, "Internal Server Error"); // Error interno del servidor
-                }
-                res.sendStatus(200, "Ok"); //Actualizacion correcta
-            });
+     
+    app.put(API_BASE_ALA + "/:year/:country", (req, res) => {
+        const { year, country } = req.params;
+        const data = req.body;
+    
+        // Verificar si el año tiene un formato válido (cuatro dígitos)
+        if (!(/^\d{4}$/.test(year))) {
+            return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
         }
+    
+        // Verificar si los datos proporcionados son válidos
+        if (!data || Object.keys(data).length === 0 || data.country !== country || data.date.substring(6) !== year) {
+            return res.status(400).send("Bad Request. Invalid data.");
+        }
+    
+        // Actualizar la base de datos
+        db.update({ country: country, date: data.date }, data, {}, (err, numAffected) => {
+            if (err) {
+                res.sendStatus(500, "Internal Server Error");
+            } else {
+                if (numAffected === 0) {
+                    res.sendStatus(404, "RESOURCE NOT FOUND");
+                } else {
+                    res.sendStatus(200, "Ok");
+                }
+            }
+        });
     }),
+    
+    
+
 
     // DELETE => Delete all data
     app.delete(API_BASE_ALA + "/", (req, res) => {
@@ -309,23 +324,51 @@ module.exports = (app,db) => {
     }),
 
     // DELETE => Delete specific data by latitude and longitude
-    app.delete(API_BASE_ALA + "/:trimestral_pib/:trimestral_variable_pib", (req, res) => {
-    const trimestral_pib = parseFloat(req.params.trimestral_pib);
-    const trimestral_variable_pib = parseFloat(req.params.trimestral_variable_pib);
-
-    // Eliminar el documento con la latitud y longitud especificadas de la base de datos
-    db.remove({ trimestral_pib: trimestral_pib, trimestral_variable_pib: trimestral_variable_pib }, {}, (err, numRemoved) => {
-        if (err) {
-            res.sendStatus(500).send("INTERNAL ERROR");
-        } else if (numRemoved === 0) {
-            // No se encontró ningún documento con la latitud y longitud especificadas, devolver un error 404 NOT FOUND
-            res.sendStatus(404, "NOT FOUND");
-        } else {
-            // Se eliminó correctamente el documento
-            res.sendStatus(200, "OK");
+    /*app.delete(API_BASE_ALA + "/:year/:country", (req, res) => {
+        const year = parseInt(req.params.year);
+        const country = req.params.country;
+        
+        // Verificar si el año tiene un formato válido (cuatro dígitos)
+        if (!(/^\d{4}$/.test(year))) {
+            return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
         }
-    });
+
+        db.remove({ year: year, country: country }, {}, (err, numRemoved) => {
+            if (err) {
+                res.sendStatus(500).send("INTERNAL ERROR");
+            } else if (numRemoved === 0) {
+                // Parameters not found
+                res.sendStatus(404, "NOT FOUND");
+            } else {
+                // All good
+                res.sendStatus(200, "OK");
+            }
+        });
+    }),*/
+
+    app.delete(API_BASE_ALA + "/:year/:country", (req, res) => {
+        const { year, country } = req.params;
+    
+        // Verificar si el año tiene un formato válido (cuatro dígitos)
+        if (!(/^\d{4}$/.test(year))) {
+            return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
+        }
+    
+        // Eliminar el documento de la base de datos
+        db.remove({ country: country, "date": new RegExp(`^\\d{2}/\\d{2}/${year}$`) }, { multi: true }, (err, numRemoved) => {
+            if (err) {
+                res.status(500).send("Internal Server Error");
+            } else {
+                if (numRemoved === 0) {
+                    res.status(404).send("RESOURCE NOT FOUND");
+                } else {
+                    res.status(200).send("Deleted successfully");
+                }
+            }
+        });
     }),
+    
+    
 
     // POST => Method not allowed
     app.post(API_BASE_ALA + "/:country", (req, res) => {
