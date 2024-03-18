@@ -1,0 +1,14 @@
+{
+	"id": "35323ed1-cc8f-4e3e-9f10-769a00de9ecf",
+	"name": "nube",
+	"values": [
+		{
+			"key": "SERVER",
+			"value": "https://sos2324-17.appspot.com",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-03-18T09:49:21.151Z",
+	"_postman_exported_using": "Postman/10.24.3-240314-0648"
+}

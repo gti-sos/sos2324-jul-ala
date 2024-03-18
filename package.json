@@ -7,7 +7,8 @@
     "start": "node index",
     "test-trimestralpib_stats": "npx newman run ./tests/trimestralpib_stats/api.json -e ./tests/trimestralpib_stats/environments/localhost.json",
     "test-economicalfreedom_stats":"npx newman run ./tests/economicfreedom_stats/api.json -e ./tests/economicfreedom_stats/environments/local.json",
-    "test": "npm run test-trimestralpib_stats && npm run test-economicalfreedom_stats"
+    "test-manofthematch": "npx newman run ./tests/manofthematch/api.json -e ./tests/manofthematch/environments/local.json",
+    "test": "npm run test-trimestralpib_stats && npm run test-economicalfreedom_stats && npm run test-manofthematch"
   },
   "author": "",
   "license": "GPL-3.0",
