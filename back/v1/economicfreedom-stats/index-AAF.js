@@ -24,7 +24,7 @@ let initialData = [
     { country: "Latvia", year: 2017, overallScore: 8.00, sizeOfGovernment: 7.16, legalSystemsAndPropertyRight: 6.99, soundMoney: 9.90, freedomToTradeInternationally: 8.75, regulation: 8.00 }
 ];
 
-module.exports = (app,db) => {
+function loadBackendAAF(app,db) {
     
     // REDIRECT al portal de documentación
     app.get(API_BASE_AAF + "/docs", (req, res) => {
@@ -95,7 +95,7 @@ module.exports = (app,db) => {
             }
             // Verificar si hay resultados
             if (listings.length === 0) {
-                return res.status(404).send("NOT FOUND");
+                return res.status(404).send("Database is empty");
             }
             // Aplicar paginación si los parámetros limit y offset están presentes
             let paginatedListings = listings;
@@ -364,3 +364,5 @@ module.exports = (app,db) => {
         res.status(405).send("METHOD NOT ALLOWED. Please use this endpoint to create a new resource without specifying an ID or param.");
     });
 };
+
+export {loadBackendAAF};
