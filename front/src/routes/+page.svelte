@@ -84,7 +84,7 @@
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/">economicfreedom_stats [v1]</Button>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/">economicfreedom_stats [v2]</Button>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v2/economicfreedom_stats/">economicfreedom_stats [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
                                         </CardBody>
@@ -127,7 +127,7 @@
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="info" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/docs">economicfreedom-stats [v1]</Button>
-                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/docs">economicfreedom-stats [v2]</Button>
+                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v2/economicfreedom_stats/docs">economicfreedom-stats [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
                                         </CardBody>
