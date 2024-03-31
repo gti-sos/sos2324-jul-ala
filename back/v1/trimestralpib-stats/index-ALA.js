@@ -35,7 +35,7 @@ let initialData = [
 
 
 
-module.exports = (app,db) => {
+function loadBackendALA(app,db) {
     
   // REDIRECT al portal de documentación
   app.get(API_BASE_ALA + "/docs", (req, res) => {
@@ -866,3 +866,4 @@ module.exports = (app) => {
 */
 
 
+export {loadBackendALA};
