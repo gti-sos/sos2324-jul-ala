@@ -6,6 +6,7 @@ import {loadBackendALA} from "./back/v1/trimestralpib-stats/index-ALA.js";
 import {loadBackendALA_v2} from "./back/v2/trimestralpib-stats/index-ALA.js";
 import {loadBackendAAF} from "./back/v1/economicfreedom-stats/index-AAF.js";
 import {loadBackendARM} from "./back/v1/manofthematch/index-ARM.js";
+import cors from "cors";
 
 import {handler} from "./front/build/handler.js";
 
@@ -18,7 +19,7 @@ let db_ALA_v2 = new dataStore();
 
 let app = express();
 
-//app.use(cors());
+app.use(cors());
 
 app.use(bodyParser.json());
 
