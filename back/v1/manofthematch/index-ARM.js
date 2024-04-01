@@ -160,7 +160,7 @@ function loadBackendARM(app,db) {
   
              // Verificar si hay resultados después de la filtración
           if (listings.length === 0) {
-              return res.status(404).send("Not Found");
+              return res.status(404).send("Database is empty");
           }
     
             // Aplicar paginación si los parámetros limit y offset están presentes

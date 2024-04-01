@@ -1,0 +1,154 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.centered-image {
+    display: block; /* Convertir en bloque */
+    margin: 0 auto; /* Centrar horizontalmente */
+    width: 7%; /* Establecer el ancho máximo al tamaño máximo de su contenedor */
+    height: 7%; /* Mantener la proporción de aspecto */
+}
+
+/* Estilos generales */
+body {
+    color: #333;
+    line-height: 1.6;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+/* Estilos para el contenedor del contenido */
+.content-container {
+    background-color: #fff; /* Fondo blanco para el cuadro */
+    border-radius: 10px; /* Bordes redondeados para el cuadro */
+    padding: 20px; /* Espaciado interno dentro del cuadro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el cuadro */
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #076050; /* Azul oscuro */
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center; /* Centrar el texto */
+    font-weight: bold; /* Negrita */
+}
+
+h2 {
+    color: #008080; /* Cyan oscuro */
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #007bff; /* Cyan claro */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Estilos para la lista de miembros del equipo */
+.team-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.member {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.member a {
+    color: #007bff; /* Cyan claro */
+    text-decoration: none;
+}
+
+.member a:hover {
+    color: #0056b3;
+}
+
+/* Estilos para la sección de descripción del proyecto */
+.project-description {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px; /* Separación entre secciones */
+}
+
+/* Estilos para los botones de API */
+.api-button {
+    padding: 15px;
+    background-color: #00cccc; /* Cyan claro */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.api-button:hover {
+    background-color: #00b3b3; /* Cyan más oscuro */
+}
+
+/* Estilos para la caja de enlaces */
+.link-box {
+    background-color: #f5f5f5; /* Fondo gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    margin-bottom: 20px; /* Separación del contenido */
+}
+
+.api-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+    text-align: center;
+}
+
+.nav-link:hover {
+    background-color: #47c3ed !important;
+    font-weight: bold !important;
+    color: rgb(255, 255, 255);
+}
+.nav-link{
+    font-weight: bold !important;
+    color: rgb(0, 0, 0);
+}
+.menu-item:hover {
+    background-color: #267089 !important;
+    font-weight: bold !important;
+    color: rgb(255, 255, 255);
+}
+.menu-item{
+    font-weight: bold !important;
+    color: rgb(0, 0, 0);
+}
+.fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el menú se muestre encima del contenido */
+}
+

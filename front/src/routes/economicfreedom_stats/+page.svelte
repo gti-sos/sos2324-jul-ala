@@ -10,7 +10,7 @@ import { Pagination, PaginationItem, PaginationLink } from '@sveltestrap/sveltes
 
 let API = '/api/v2/economicfreedom_stats';
 if(dev)
-    API = 'http://localhost:10000'+API;
+    API = 'http://localhost:20000'+API;
 
 
 // ===============================================

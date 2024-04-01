@@ -8,6 +8,7 @@ import {loadBackendAAF_v2} from "./back/v2/economicfreedom-stats/index-AAF.js";
 import {loadBackendARM} from "./back/v1/manofthematch/index-ARM.js";
 
 import {handler} from "./front/build/handler.js";
+import cors from "cors";
 
 let db_ARM = new dataStore();
 let db_ALA = new dataStore();
@@ -16,8 +17,10 @@ let db_AAF = new dataStore();
 let db_AAF_v2 = new dataStore();
 
 
-
 let app = express();
+
+app.use(cors());
+
 app.use(bodyParser.json());
 
 

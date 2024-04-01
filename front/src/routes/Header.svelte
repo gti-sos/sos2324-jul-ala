@@ -27,13 +27,13 @@
     <Nav tabs class="fixed-navbar" style="background-color: white; justify-content: center;"> 
         <NavItem class="nav-item"> 
             <NavLink href="/" class="nav-link d-flex align-items-center"> 
-                <img src="/home-icon.png" alt="Casa" style="width: 20px; height: 20px; margin-right: 5px;"> 
+                <img src="/favicon.png" alt="Casa" style="width: 20px; height: 20px; margin-right: 5px;"> 
                 Inicio 
             </NavLink> 
         </NavItem>
         <Dropdown nav autoClose={true}>
             <DropdownToggle nav class="nav-link" caret>
-                <img src="/icono-api.png" alt="API" style="width: 20px; height: 20px; margin-right: 5px;"> 
+                <img src="/favicon.png" alt="API" style="width: 20px; height: 20px; margin-right: 5px;"> 
                 APIS
             </DropdownToggle>
             <DropdownMenu>
@@ -43,7 +43,7 @@
         </Dropdown>
         <Dropdown nav autoClose={true}>
             <DropdownToggle nav class="nav-link" caret>
-                <img src="/icono-github.png" alt="GitHub" style="width: 20px; height: 20px; margin-right: 5px;"> 
+                <img src="/favicon.png" alt="GitHub" style="width: 20px; height: 20px; margin-right: 5px;"> 
                 GitHub
             </DropdownToggle>
             <DropdownMenu>
@@ -52,7 +52,7 @@
         </Dropdown>
         <Dropdown nav autoClose={true}>
             <DropdownToggle nav class="nav-link" caret>
-                <img src="/icono-frontend.png" alt="Frontends" style="width: 20px; height: 20px; margin-right: 5px;"> 
+                <img src="/favicon.png" alt="Frontends" style="width: 20px; height: 20px; margin-right: 5px;"> 
                 Frontends
             </DropdownToggle>
             <DropdownMenu>
@@ -61,7 +61,7 @@
         </Dropdown>
         <Dropdown nav autoClose={true}>
             <DropdownToggle nav class="nav-link" caret>
-                <img src="/icono-documentacion.png" alt="Documentaciones" style="width: 20px; height: 20px; margin-right: 5px;"> 
+                <img src="/favicon.png" alt="Documentaciones" style="width: 20px; height: 20px; margin-right: 5px;"> 
                 Documentaciones
             </DropdownToggle>
             <DropdownMenu>
