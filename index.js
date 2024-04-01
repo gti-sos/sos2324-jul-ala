@@ -7,7 +7,6 @@ import {loadBackendALA_v2} from "./back/v2/trimestralpib-stats/index-ALA.js";
 import {loadBackendAAF} from "./back/v1/economicfreedom-stats/index-AAF.js";
 import {loadBackendAAF_v2} from "./back/v2/economicfreedom-stats/index-AAF.js";
 import {loadBackendARM} from "./back/v1/manofthematch/index-ARM.js";
-import cors from "cors";
 
 import {handler} from "./front/build/handler.js";
 import cors from "cors";
