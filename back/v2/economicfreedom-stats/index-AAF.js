@@ -28,7 +28,7 @@ function loadBackendAAF_v2(app,db) {
     
     // REDIRECT al portal de documentación
     app.get(API_BASE_AAF + "/docs", (req, res) => {
-      res.redirect("https://documenter.getpostman.com/view/33041748/2sA2xh3tAF");
+      res.redirect("https://documenter.getpostman.com/view/33041748/2sA35HX19v");
     });
 
 
