@@ -386,22 +386,28 @@ async function deleteListing(country){
                                 <Input type="text" id="country" bind:value={selectedFilter.country} required />
                             </FormGroup>
                         </Col>
+                        <Col>  
+                            <FormGroup>
+                                <Label for="year">Año</Label>
+                                <Input type="number" id="year" bind:value={selectedFilter.year} required />
+                            </FormGroup>
+                        </Col>
                         <Col>
                             <FormGroup>
                                 <Label for="overallScore">Overall Score</Label>
-                                <Input type="number" id="overallScore" bind:value={selectedFilter.overallScore} required />
+                                <Input type="number" step="0.01" id="overallScore" bind:value={selectedFilter.overallScore} required />
                             </FormGroup>
                         </Col>
                         <Col>
                             <FormGroup>
                                 <Label for="sizeOfGovernment">Size Of Government</Label>
-                                <Input type="number" id="sizeOfGovernment" bind:value={selectedFilter.sizeOfGovernment} required />
+                                <Input type="number" step="0.01" id="sizeOfGovernment" bind:value={selectedFilter.sizeOfGovernment} required />
                             </FormGroup>
                         </Col>
                         <Col>
                             <FormGroup>
                                 <Label for="legalSystemsAndPropertyRight">Legal Systems And Property Right</Label>
-                                <Input type="number" id="legalSystemsAndPropertyRight" bind:value={selectedFilter.legalSystemsAndPropertyRight} required />
+                                <Input type="number" step="0.01" id="legalSystemsAndPropertyRight" bind:value={selectedFilter.legalSystemsAndPropertyRight} required />
                             </FormGroup>
                         </Col>
                     </Row>
@@ -409,19 +415,19 @@ async function deleteListing(country){
                         <Col>
                             <FormGroup>
                                 <Label for="soundMoney">Sound Money</Label>
-                                <Input type="number" id="soundMoney" bind:value={selectedFilter.soundMoney} required />
+                                <Input type="number" step="0.01" id="soundMoney" bind:value={selectedFilter.soundMoney} required />
                             </FormGroup>
                         </Col>
                         <Col>
                             <FormGroup>
                                 <Label for="freedomToTradeInternationally">Freedom To Trade Internationally</Label>
-                                <Input type="number" id="freedomToTradeInternationally" bind:value={selectedFilter.freedomToTradeInternationally} required />
+                                <Input type="number" step="0.01" id="freedomToTradeInternationally" bind:value={selectedFilter.freedomToTradeInternationally} required />
                             </FormGroup>
                         </Col>
                         <Col>
                             <FormGroup>
                                 <Label for="regulation">Regulation</Label>
-                                <Input type="number" id="regulation" bind:value={selectedFilter.regulation} required />
+                                <Input type="number" step="0.01" id="regulation" bind:value={selectedFilter.regulation} required />
                             </FormGroup>
                         </Col>
                     </Row>
@@ -621,7 +627,7 @@ async function deleteListing(country){
         {/if}
 
 {:else}
-	<p class="container">No hay datos disponibles</p>
+	    <p class="container">No hay datos disponibles</p>
 {/if}
 
 <hr>
