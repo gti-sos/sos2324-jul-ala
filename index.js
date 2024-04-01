@@ -18,7 +18,7 @@ let db_ALA_v2 = new dataStore();
 
 let app = express();
 
-app.use(cors());
+//app.use(cors());
 
 app.use(bodyParser.json());
 
