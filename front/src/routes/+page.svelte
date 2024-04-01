@@ -83,28 +83,29 @@
                                 <Col sm="12" md="4">
                                     <Card class="api-wrapper">
                                         <CardBody>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/">trimestralpib_stats [v1]</Button>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v2/trimestralpib_stats/">trimestralpib_stats [v2]</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/manofthematch/" >manofthematch [v1]</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumí Moreno</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/">economicfreedom_stats [v1]</Button>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/api/v2/economicfreedom_stats/">economicfreedom_stats [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                                <Col sm="12" md="4">
-                                    <Card class="api-wrapper">
-                                        <CardBody>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/" >trimestralpib_stats [v1]</Button>
-                                            <CardText><hr></CardText>
-                                            <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian Leon Arjona</a></CardSubtitle>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                                <Col sm="12" md="4">
-                                    <Card class="api-wrapper">
-                                        <CardBody>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/manofthematch/">manofthematch [v1]</Button>
-                                            <CardText><hr></CardText>
-                                            <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumi Moreno</a></CardSubtitle>
                                         </CardBody>
                                     </Card>
                                 </Col>
@@ -126,28 +127,29 @@
                                 <Col sm="12" md="4">
                                     <Card class="api-wrapper">
                                         <CardBody>
+                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/docs">trimestralpib_stats [v1]</Button>
+                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v2/trimestralpib_stats/docs">trimestralpib_stats [v2]</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
+                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v1/manofthematch/docs" >manofthematch [v1]</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumí Moreno</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
                                             <Button color="info" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/docs">economicfreedom-stats [v1]</Button>
                                             <Button color="info" href="https://sos2324-17.appspot.com/api/v2/economicfreedom_stats/docs">economicfreedom-stats [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                                <Col sm="12" md="4">
-                                    <Card class="api-wrapper">
-                                        <CardBody>
-                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/docs" >trimestralpib_stats [v1]</Button>
-                                            <CardText><hr></CardText>
-                                            <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian Leon Arjona</a></CardSubtitle>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                                <Col sm="12" md="4">
-                                    <Card class="api-wrapper">
-                                        <CardBody>
-                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v1/manofthematch/docs">manofthematch [v1]</Button>
-                                            <CardText><hr></CardText>
-                                            <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumi Moreno</a></CardSubtitle>
                                         </CardBody>
                                     </Card>
                                 </Col>
@@ -169,27 +171,27 @@
                                 <Col sm="12" md="4">
                                     <Card class="api-wrapper">
                                         <CardBody>
-                                            <Button color="warning" href="https://sos2324-17.appspot.com/api/v2/economicfreedom_stats/">economicfreedom-stats</Button>
+                                            <Button color="warning" href="https://sos2324-17.appspot.com/trimestralpib_stats/">trimestralpib_stats</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
+                                            <Button color="warning" href="https://sos2324-17.appspot.com/manofthematch/" >manofthematch</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumí Moreno</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
+                                            <Button color="warning" href="https://sos2324-17.appspot.com/economicfreedom_stats/">economicfreedom_stats</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                                <Col sm="12" md="4">
-                                    <Card class="api-wrapper">
-                                        <CardBody>
-                                            <Button color="warning" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/" >trimestralpib_stats</Button>
-                                            <CardText><hr></CardText>
-                                            <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian Leon Arjona</a></CardSubtitle>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                                <Col sm="12" md="4">
-                                    <Card class="api-wrapper">
-                                        <CardBody>
-                                            <Button color="warning" href="https://sos2324-17.appspot.com/api/v1/manofthematch/">manofthematch</Button>
-                                            <CardText><hr></CardText>
-                                            <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumi Moreno</a></CardSubtitle>
                                         </CardBody>
                                     </Card>
                                 </Col>
