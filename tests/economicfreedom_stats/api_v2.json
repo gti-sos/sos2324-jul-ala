@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "2d1b6dbd-3a8a-4938-8daa-c5cf052210e1",
+		"name": "F07",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33041748"
+	},
+	"item": [
+		{
+			"name": "Load Initial Data Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/loadInitialData"
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL DATA Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Canada Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v2/economicfreedom_stats?country=Canada",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"economicfreedom_stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Canada"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET .../2017/Taiwan Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/2017/Taiwan"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Togo Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Togo\",\r\n    \"year\":2025,\r\n    \"overallScore\":10,\r\n    \"sizeOfGovernment\":3,\r\n    \"legalSystemsAndPropertyRight\":0.1,\r\n    \"soundMoney\":0.001,\r\n    \"freedomToTradeInternationally\":0.3,\r\n    \"regulation\":0.001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Togo 405 Not Allowed Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Sahara\",\r\n    \"year\":2025,\r\n    \"overallScore\":10,\r\n    \"sizeOfGovernment\":3,\r\n    \"legalSystemsAndPropertyRight\":0.1,\r\n    \"soundMoney\":0.001,\r\n    \"freedomToTradeInternationally\":0.3,\r\n    \"regulation\":0.001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/Togo"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Mozambique Bad Fields 400 Bad Request Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Mozambique\",\r\n    \"year\":2017,\r\n    \"overallScore\":10,\r\n    \"sizeOfGovernment\":3,\r\n    \"legalSystemsAndPropertyRight\":0.1,\r\n    \"soundMoney\":0.001,\r\n    \"freedomToTradenally\":0.3,\r\n    \"regulation\":0.001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT in .../2017/Latvia Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Latvia\",\r\n    \"year\":2017,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/2017/Latvia"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT year=2035 in Switzerland Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Switzerland\",\r\n    \"year\":2035,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/Switzerland"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT NOT ALLOWED Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Togo\",\r\n    \"year\":2025,\r\n    \"overallScore\":10,\r\n    \"sizeOfGovernment\":3,\r\n    \"legalSystemsAndPropertyRight\":0.1,\r\n    \"soundMoney\":0.001,\r\n    \"freedomToTradeInternationally\":0.3,\r\n    \"regulation\":0.001\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/"
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 1 PUT 400 BAD REQUEST Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Sahara\",\r\n    \"year\":2035,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/Latvia"
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 2 POST 409 CONFLICT Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Switzerland\",\r\n    \"year\":2017,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats"
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 3 POST 400 BAD REQUEST Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"abc\":\"Switzerland\",\r\n    \"year\":2017,\r\n    \"overallScore\":8.57,\r\n    \"sizeOfGovernment\":7.72,\r\n    \"legalSystemsAndPropertyRight\":8.94,\r\n    \"soundMoney\":9.88,\r\n    \"freedomToTradeInternationally\":8.08,\r\n    \"regulation\":8.23\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats"
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 4 DELETE 404 NOT FOUND Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v2/economicfreedom_stats?country=Sahara",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"economicfreedom_stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Sahara"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR 5 POST 405 METHOD NOT ALLOWED Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"country\":\"Sahara\",\r\n    \"year\":2035,\r\n    \"overallScore\":9.07,\r\n    \"sizeOfGovernment\":8.57,\r\n    \"legalSystemsAndPropertyRight\":8.16,\r\n    \"soundMoney\":9.63,\r\n    \"freedomToTradeInternationally\":9.6,\r\n    \"regulation\":9.4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/Sahara"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Togo Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/Togo"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE .../2017/Chile Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats/2017/Chile"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ALL Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{SERVER}}/api/v2/economicfreedom_stats"
+			},
+			"response": []
+		}
+	]
+}

@@ -13,7 +13,7 @@
 <div>
 <Container class="content-container" style="justify-content: center;"> 
         <h1>SOS2324-17</h1>
-        <img src="/logo-sos.png" alt="SOS" class="centered-image">
+        <img src="/favicon.png" alt="SOS" class="centered-image">
         <hr>
         <Row>
             <Col sm="12" md="6">
@@ -103,6 +103,7 @@
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/">economicfreedom_stats [v1]</Button>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v2/economicfreedom_stats/">economicfreedom_stats [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
                                         </CardBody>
@@ -145,7 +146,8 @@
                                 <Col sm="12" md="4">
                                     <Card class="api-wrapper">
                                         <CardBody>
-                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/docs">economicfreedom_stats [v1]</Button>
+                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v1/economicfreedom_stats/docs">economicfreedom-stats [v1]</Button>
+                                            <Button color="info" href="https://sos2324-17.appspot.com/api/v2/economicfreedom_stats/docs">economicfreedom-stats [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
                                         </CardBody>
