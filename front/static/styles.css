@@ -11,9 +11,16 @@
     width: 7%; /* Establecer el ancho máximo al tamaño máximo de su contenedor */
     height: 7%; /* Mantener la proporción de aspecto */
 }
+.logo {
+    display: block; /* Convertir en bloque */
+    margin: 0 auto; /* Centrar horizontalmente */
+    width: 3%; /* Establecer el ancho máximo al tamaño máximo de su contenedor */
+    height: 3%; /* Mantener la proporción de aspecto */
+}
 
 /* Estilos generales */
 body {
+    background-image: url("waves.gif");
     color: #333;
     line-height: 1.6;
     font-family: "Rubik", sans-serif;
