@@ -21,7 +21,7 @@
     let error_msg = "";
     let dato = {};
     let country = $page.params.country;
-    let trimestral_pib = $page.params.trimestral_pib;
+    let year = $page.params.year;
 
     let updatedListing ={
         country: "",
@@ -44,7 +44,7 @@
 
 
     async function getResource(){
-        const response = await fetch(API+`/${country}`,{
+        const response = await fetch(API+`/${year}/${country}`,{
                                         method: "GET"               
             }); 
         try{    
@@ -79,7 +79,7 @@
             error_msg = "No se puede actualizar si el dato no se pasa completo";
             window.scrollTo(0, 0);
         } else {
-            const response = await fetch(API+`/${country}`, {
+            const response = await fetch(API+`/${year}/${country}`, {
                 method: 'PUT',
                 headers:{
                     "Content-Type" : "application/json"
