@@ -94,6 +94,7 @@
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/manofthematch/" >manofthematch [v1]</Button>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v2/manofthematch/" >manofthematch [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumí Moreno</a></CardSubtitle>
                                         </CardBody>

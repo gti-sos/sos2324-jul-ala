@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "f3451195-43d5-46b4-8627-e250a433eabb",
-		"name": "D01",
-		"schema": "https://schema.getpostman.com/json/collection/v1.1.0/collection.json",
+		"_postman_id": "1cccbe01-f47c-4008-9e15-c5052628026f",
+		"name": "v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26189208"
 	},
 	"item": [
@@ -38,13 +38,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/loadInitialData",
+					"raw": "{{SERVER}}/api/v2/manofthematch/loadInitialData",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						"loadInitialData"
 					]
@@ -72,13 +72,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{SERVER}}/api/v2/manofthematch",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch"
 					]
 				}
@@ -105,13 +105,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch?from=2017&to=2019",
+					"raw": "{{SERVER}}/api/v2/manofthematch?from=2017&to=2019",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch"
 					],
 					"query": [
@@ -148,13 +148,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch?Corners=4",
+					"raw": "{{SERVER}}/api/v2/manofthematch?Corners=4",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch"
 					],
 					"query": [
@@ -187,13 +187,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/year/2018",
+					"raw": "{{SERVER}}/api/v2/manofthematch/year/2018",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						"year",
 						"2018"
@@ -222,51 +222,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/year/2019",
+					"raw": "{{SERVER}}/api/v2/manofthematch/year/2019",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						"year",
 						"2019"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "year/country",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/2018/Portugal",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"manofthematch",
-						"2018",
-						"Portugal"
 					]
 				}
 			},
@@ -292,13 +257,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/?limit=2&offset=3",
+					"raw": "{{SERVER}}/api/v2/manofthematch/?limit=2&offset=3",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						""
 					],
@@ -337,7 +302,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituan\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}\r\n",
+					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -345,13 +310,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/",
+					"raw": "{{SERVER}}/api/v2/manofthematch/",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						""
 					]
@@ -380,7 +345,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituan\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}",
+					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -388,13 +353,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/",
+					"raw": "{{SERVER}}/api/v2/manofthematch/",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						""
 					]
@@ -431,13 +396,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/",
+					"raw": "{{SERVER}}/api/v2/manofthematch/",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						""
 					]
@@ -474,13 +439,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/España",
+					"raw": "{{SERVER}}/api/v2/manofthematch/España",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						"España"
 					]
@@ -508,13 +473,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/",
+					"raw": "{{SERVER}}/api/v2/manofthematch/",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						""
 					]
@@ -542,13 +507,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch?country=Españita",
+					"raw": "{{SERVER}}/api/v2/manofthematch?country=Españita",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch"
 					],
 					"query": [
@@ -590,13 +555,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/Lituania",
+					"raw": "{{SERVER}}/api/v2/manofthematch/Lituania",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						"Lituania"
 					]
@@ -633,13 +598,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/Russia",
+					"raw": "{{SERVER}}/api/v2/manofthematch/Russia",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						"Russia"
 					]
@@ -676,58 +641,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{SERVER}}/api/v2/manofthematch",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get put",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"api",
-						"v1",
+						"v2",
 						"manofthematch"
 					]
 				}
@@ -754,13 +674,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/Portugal",
+					"raw": "{{SERVER}}/api/v2/manofthematch/Portugal",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch",
 						"Portugal"
 					]
@@ -788,13 +708,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{SERVER}}/api/v2/manofthematch",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch"
 					]
 				}
@@ -821,13 +741,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{SERVER}}/api/v2/manofthematch",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch"
 					]
 				}
@@ -854,13 +774,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{SERVER}}/api/v2/manofthematch",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"api",
-						"v1",
+						"v2",
 						"manofthematch"
 					]
 				}
