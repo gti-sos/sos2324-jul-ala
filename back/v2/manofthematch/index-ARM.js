@@ -31,7 +31,7 @@ const initialData = [
 
 
 
-function loadBackendARM2(app,db) {
+function loadBackendARM_v2(app,db) {
     // REDIRECT al portal de documentación
   app.get(API_BASE_ARM + "/docs", (req, res) => {
     res.redirect("https://documenter.getpostman.com/view/26189208/2sA35K31w9");
@@ -260,4 +260,4 @@ function loadBackendARM2(app,db) {
   };
   
 
-export {loadBackendARM2};
+export {loadBackendARM_v2};

@@ -76,7 +76,7 @@
                 <DropdownItem class="menu-item" href = "{API}/trimestralpib_stats/docs">trimestralpib_stats [v1] (Adrian)</DropdownItem>
                 <DropdownItem class="menu-item" href = "{API_v2}/trimestralpib_stats/docs">trimestralpib_stats [v2] (Adrian)</DropdownItem>
                 <DropdownItem class="menu-item" href = "{API}/manofthematch/docs">manofthematch [v1] (Antonio)</DropdownItem>
-                <DropdownItem class="menu-item" href = "{API_v2}/manofthematch/docs">manofthematch <div v2=""></div> (Antonio)</DropdownItem>
+                <DropdownItem class="menu-item" href = "{API_v2}/manofthematch/docs">manofthematch [v2] (Antonio)</DropdownItem>
                 <DropdownItem class="menu-item" href = "{API}/economicfreedom_stats/docs">economicfreedom_stats [v1](Ahmed)</DropdownItem>
                 <DropdownItem class="menu-item" href = "{API_v2}/economicfreedom_stats/docs">economicfreedom_stats [v2] (Ahmed)</DropdownItem>
             </DropdownMenu>
