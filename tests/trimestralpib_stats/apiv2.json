@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "f3451195-43d5-46b4-8627-e250a433eabb",
-		"name": "D01",
-		"schema": "https://schema.getpostman.com/json/collection/v1.1.0/collection.json",
-		"_exporter_id": "26189208"
+		"_postman_id": "e5313f0d-f705-4d7c-8f5f-ee96e623ce53",
+		"name": "Collection trimestralpib-stats v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26037869"
 	},
 	"item": [
 		{
@@ -13,39 +13,27 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 201\", function () {\r",
+							"pm.test(\"Status code is 201\", function(){\r",
 							"    pm.response.to.have.status(201);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/loadInitialData",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/loadInitialData",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
 						"loadInitialData"
 					]
 				}
@@ -59,9 +47,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -72,14 +60,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
+						"v2",
+						"trimestralpib_stats",
+						""
 					]
 				}
 			},
@@ -92,9 +81,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -105,14 +94,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch?from=2017&to=2019",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats?from=2017&to=2019",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
+						"v2",
+						"trimestralpib_stats"
 					],
 					"query": [
 						{
@@ -129,15 +118,15 @@
 			"response": []
 		},
 		{
-			"name": "por corners",
+			"name": "por pais",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -148,19 +137,58 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch?Corners=4",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats?country=Francia",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
+						"v2",
+						"trimestralpib_stats"
 					],
 					"query": [
 						{
-							"key": "Corners",
-							"value": "4"
+							"key": "country",
+							"value": "Francia"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "por trimestral_pib",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats?trimestral_pib=157.082 M€",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"trimestralpib_stats"
+					],
+					"query": [
+						{
+							"key": "trimestral_pib",
+							"value": "157.082 M€"
 						}
 					]
 				}
@@ -174,9 +202,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -187,14 +215,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/year/2018",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/year/2018",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
 						"year",
 						"2018"
 					]
@@ -209,9 +237,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 404\", function () {\r",
+							"pm.test(\"Status code is 404\", function(){\r",
 							"    pm.response.to.have.status(404);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -222,14 +250,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/year/2019",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/year/2019",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
 						"year",
 						"2019"
 					]
@@ -244,9 +272,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -257,16 +285,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/2018/Portugal",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/2018/España",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
 						"2018",
-						"Portugal"
+						"España"
 					]
 				}
 			},
@@ -279,9 +307,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -292,14 +320,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/?limit=2&offset=3",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/?limit=2&offset=3",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
 						""
 					],
 					"query": [
@@ -323,9 +351,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 201\", function () {\r",
+							"pm.test(\"Status code is 201\", function(){\r",
 							"    pm.response.to.have.status(201);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -337,7 +365,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituan\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}\r\n",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"01/12/2018\", \"trimestral_pib\": \"34.799 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -345,14 +373,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
 						""
 					]
 				}
@@ -360,58 +388,15 @@
 			"response": []
 		},
 		{
-			"name": "post 409",
+			"name": "error 400",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 409\", function () {\r",
-							"    pm.response.to.have.status(409);\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituan\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"manofthematch",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "post 400",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 400\", function () {\r",
+							"pm.test(\"Status code is 400\", function(){\r",
 							"    pm.response.to.have.status(400);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -423,7 +408,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\"}",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"IV Trim 2018\", \"trimestral_pib\": \"34.799 M€\", \"trimestral_variable_pib\": \"1,00%\" }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -431,14 +416,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
 						""
 					]
 				}
@@ -446,15 +431,15 @@
 			"response": []
 		},
 		{
-			"name": "post 405",
+			"name": "error 409",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 405\", function () {\r",
-							"    pm.response.to.have.status(405);\r",
-							"});"
+							"pm.test(\"Status code is 409\", function(){\r",
+							"    pm.response.to.have.status(409);\r",
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -466,7 +451,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\"}",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"IV Trim 2018\", \"trimestral_pib\": \"34.799 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -474,14 +459,57 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/España",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "error 405",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function(){\r",
+							"    pm.response.to.have.status(405);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"IV Trim 2018\", \"trimestral_pib\": \"34.799 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/España",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"trimestralpib_stats",
 						"España"
 					]
 				}
@@ -489,15 +517,15 @@
 			"response": []
 		},
 		{
-			"name": "get despues post",
+			"name": "con post",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -508,30 +536,29 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
-						""
+						"v2",
+						"trimestralpib_stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get 404",
+			"name": "error 404",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 404\", function () {\r",
+							"pm.test(\"Status code is 404\", function(){\r",
 							"    pm.response.to.have.status(404);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -542,14 +569,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch?country=Españita",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats?country=Españita",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
+						"v2",
+						"trimestralpib_stats"
 					],
 					"query": [
 						{
@@ -568,9 +595,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -582,7 +609,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"01/12/2018\", \"trimestral_pib\": \"33333333 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -590,14 +617,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/Lituania",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/Lituania",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
+						"v2",
+						"trimestralpib_stats",
 						"Lituania"
 					]
 				}
@@ -605,15 +632,59 @@
 			"response": []
 		},
 		{
-			"name": "put 400",
+			"name": "put año/pais",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 400\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"country\": \"España\",\r\n        \"date\": \"01/12/2018\",\r\n        \"trimestral_pib\": \"35555555 M€\",\r\n        \"trimestral_variable_pib\": \"0,70%\",\r\n        \"annual_variable_pib\": \"2,20%\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/2018/España",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"trimestralpib_stats",
+						"2018",
+						"España"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "error 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){\r",
 							"    pm.response.to.have.status(400);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -625,7 +696,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"IV Trim 2018\", \"trimestral_pib\": \"33333333 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -633,30 +704,30 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/Russia",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/España",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch",
-						"Russia"
+						"v2",
+						"trimestralpib_stats",
+						"España"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "put 405",
+			"name": "error 405",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 405\", function () {\r",
+							"pm.test(\"Status code is 405\", function(){\r",
 							"    pm.response.to.have.status(405);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -668,7 +739,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
+					"raw": "{ \"country\": \"Lituania\", \"date\": \"IV Trim 2018\", \"trimestral_pib\": \"33333333 M€\", \"trimestral_variable_pib\": \"1,00%\", \"annual_variable_pib\": \"5,30%\" }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -676,108 +747,30 @@
 					}
 				},
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
+						"v2",
+						"trimestralpib_stats",
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get put",
+			"name": "pais mod",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"manofthematch"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete pais",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch/Portugal",
-					"host": [
-						"{{SERVER}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"manofthematch",
-						"Portugal"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get delete",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -788,29 +781,29 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
+						"v2",
+						"trimestralpib_stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "delete all",
+			"name": "borra pais",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -821,29 +814,131 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/Lituania",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
+						"v2",
+						"trimestralpib_stats",
+						"Lituania"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "get delete all",
+			"name": "borra año/pais",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 404\", function () {\r",
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/2018/España",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"trimestralpib_stats",
+						"2018",
+						"España"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sin pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"trimestralpib_stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borra todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"trimestralpib_stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "static vacio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function(){\r",
 							"    pm.response.to.have.status(404);\r",
-							"});"
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -854,18 +949,25 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v1/manofthematch",
+					"raw": "{{URLBASE}}/api/v2/trimestralpib_stats/",
 					"host": [
-						"{{SERVER}}"
+						"{{URLBASE}}"
 					],
 					"path": [
 						"api",
-						"v1",
-						"manofthematch"
+						"v2",
+						"trimestralpib_stats",
+						""
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "URLBASE",
+			"value": "https://sos2324-17.appspot.com"
 		}
 	]
 }

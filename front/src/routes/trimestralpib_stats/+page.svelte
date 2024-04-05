@@ -283,13 +283,13 @@ async function deleteAll(){
     }
 };
 
-async function deleteListing(country,tp){
-    let response = await fetch(API + "/" + country + "/" + tp,{
+async function deleteListing(country){
+    let response = await fetch(API + "/" + country ,{
             method: "DELETE"
         });
     const status = response.status;
     if (status == 200){
-        success2_msg = "El recurso con pais "+country+" y trimestral_pib "+tp+" ha sido eliminado";
+        success2_msg = "El recurso con pais "+country+ "ha sido eliminado";
         error_msg = "";
         getListings();
         window.scrollTo(0, 0);
@@ -445,7 +445,7 @@ async function deleteListing(country,tp){
             <Col class='mb-3'>
                 <Card>
                     <CardHeader>
-                        <CardTitle>{listing.name}</CardTitle>
+                        <CardTitle>{listing.country}</CardTitle>
                     </CardHeader>
                     <CardBody>
                         <CardText>
@@ -455,8 +455,8 @@ async function deleteListing(country,tp){
                             <strong>Pib trimestral variable:</strong> {listing.trimestral_variable_pib} <br>
                             <strong>Pib anual variable:</strong> {listing.annual_variable_pib} <br>
                         </CardText>
-                        <Button color="danger" on:click={() => deleteListing(listing.country, listing.trimestral_pib)}>Borrar</Button>
-                        <Button color="warning" on:click={() => { window.location.href = `trimestralpib_stats/${listing.country}/${listing.trimestral_pib}` }}>
+                        <Button color="danger" on:click={() => deleteListing(listing.country)}>Borrar</Button>
+                        <Button color="warning" on:click={() => { window.location.href = `trimestralpib_stats/${listing.year}/${listing.country}` }}>
                             Editar
                         </Button>
                     </CardBody>
@@ -476,7 +476,7 @@ async function deleteListing(country,tp){
                 <Row cols={{ xs:2,sm: 2, md: 3, lg: 3, xl:3}}>
                     <Col class='mb-3'>
                         <FormGroup>
-                            <Label for="name">Country</Label>
+                            <Label for="country">Country</Label>
                             <Input
                                 type="text"
                                 id="country"
