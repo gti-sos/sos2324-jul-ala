@@ -50,10 +50,11 @@ function loadBackendARM_v2(app,db) {
         if (from !== undefined && to !== undefined) {
           const fromYear = parseInt(from);
           const toYear = parseInt(to);
+          
           if (isNaN(fromYear) || isNaN(toYear)) {
               return res.status(400).send("Invalid year format. Please provide valid year values.");
           }
-    
+     
             // Filtra los resultados dentro del rango de años especificado
             db.find({}, (err, listings) => {
                 if (err) {
