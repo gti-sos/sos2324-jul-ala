@@ -1,32 +1,33 @@
 const API_BASE_ARM = "/api/v2/manofthematch";
 
 const initialData = [
-    {date:"14/06/2018",country:"Spain",Opponent:"Saudi Arabia",GoalScored:"5",BallPossession:"40",attemps:"13",OnTarget:"7",OffTarget:"3",Blocked:"3",Corners:"6"},
-    {date:"14/06/2018",country:"Saudi Arabia",Opponent:"Russia",GoalScored:"0",BallPossession:"60",attemps:"6",OnTarget:"0",OffTarget:"3",Blocked:"3",Corners:"2"},
-    {date:"15/06/2018",country:"Egypt",Opponent:"Uruguay",GoalScored:"0",BallPossession:"43",attemps:"8",OnTarget:"3",OffTarget:"3",Blocked:"2",Corners:"0"},
-    {date:"15/06/2018",country:"Uruguay",Opponent:"Egypt",GoalScored:"1",BallPossession:"57",attemps:"14",OnTarget:"4",OffTarget:"6",Blocked:"4",Corners:"5"},
-    {date:"15/06/2018",country:"Morocco",Opponent:"Iran",GoalScored:"0",BallPossession:"64",attemps:"13",OnTarget:"3",OffTarget:"6",Blocked:"4",Corners:"5"},
-    {date:"15/06/2018",country:"Iran",Opponent:"Morocco",GoalScored:"1",BallPossession:"36",attemps:"8",OnTarget:"2",OffTarget:"5",Blocked:"1",Corners:"2"},
-    {date:"15/06/2018",country:"Portugal",Opponent:"Spain",GoalScored:"3",BallPossession:"39",attemps:"8",OnTarget:"3",OffTarget:"2",Blocked:"3",Corners:"4"},
-    {date:"15/06/2018",country:"Spain",Opponent:"Portugal",GoalScored:"3",BallPossession:"61",attemps:"12",OnTarget:"5",OffTarget:"5",Blocked:"2",Corners:"5"},
-    {date:"16/06/2018",country:"France",Opponent:"Australia",GoalScored:"2",BallPossession:"51",attemps:"12",OnTarget:"5",OffTarget:"4",Blocked:"3",Corners:"5"},
-    {date:"16/06/2018",country:"Australia",Opponent:"France",GoalScored:"1",BallPossession:"49",attemps:"4",OnTarget:"1",OffTarget:"2",Blocked:"1",Corners:"1"},
-    {date:"16/06/2018",country:"Argentina",Opponent:"Iceland",GoalScored:"1",BallPossession:"72",attemps:"26",OnTarget:"7",OffTarget:"9",Blocked:"10",Corners:"10"},
-    {date:"16/06/2018",country:"Iceland",Opponent:"Argentina",GoalScored:"1",BallPossession:"28",attemps:"9",OnTarget:"3",OffTarget:"5",Blocked:"1",Corners:"2"},
-    {date:"16/06/2018",country:"Peru",Opponent:"Denmark",GoalScored:"0",BallPossession:"52",attemps:"18",OnTarget:"6",OffTarget:"7",Blocked:"5",Corners:"3"},
-    {date:"16/06/2018",country:"Denmark",Opponent:"Peru",GoalScored:"1",BallPossession:"48",attemps:"10",OnTarget:"3",OffTarget:"5",Blocked:"2",Corners:"7"},
-    {date:"17/06/2018",country:"Croatia",Opponent:"Nigeria",GoalScored:"2",BallPossession:"54",attemps:"11",OnTarget:"2",OffTarget:"7",Blocked:"2",Corners:"6"},
-    {date:"17/06/2018",country:"Nigeria",Opponent:"Croatia",GoalScored:"0",BallPossession:"46",attemps:"14",OnTarget:"2",OffTarget:"5",Blocked:"7",Corners:"5"},
-    {date:"17/06/2018",country:"Costa Rica",Opponent:"Serbia",GoalScored:"0",BallPossession:"50",attemps:"10",OnTarget:"3",OffTarget:"3",Blocked:"4",Corners:"5"},
-    {date:"17/06/2018",country:"Serbia",Opponent:"Costa Rica",GoalScored:"1",BallPossession:"50",attemps:"10",OnTarget:"3",OffTarget:"5",Blocked:"2",Corners:"4"},
-    {date:"17/06/2018",country:"Germany",Opponent:"Mexico",GoalScored:"0",BallPossession:"60",attemps:"25",OnTarget:"9",OffTarget:"9",Blocked:"7",Corners:"8"},
-    {date:"17/06/2018",country:"Mexico",Opponent:"Germany",GoalScored:"1",BallPossession:"40",attemps:"12",OnTarget:"4",OffTarget:"6",Blocked:"2",Corners:"1"},
-    {date:"17/06/2018",country:"Brazil",Opponent:"Switzerland",GoalScored:"1",BallPossession:"52",attemps:"20",OnTarget:"4",OffTarget:"9",Blocked:"7",Corners:"7"},
-    {date:"17/06/2018",country:"Switzerland",Opponent:"Brazil",GoalScored:"1",BallPossession:"48",attemps:"6",OnTarget:"2",OffTarget:"4",Blocked:"0",Corners:"2"},
-    {date:"18/06/2018",country:"Sweden",Opponent:"Korea Republic",GoalScored:"1",BallPossession:"52",attemps:"15",OnTarget:"4",OffTarget:"5",Blocked:"6",Corners:"6"},
-    {date:"18/06/2018",country:"Korea Republic",Opponent:"Sweden",GoalScored:"0",BallPossession:"48",attemps:"5",OnTarget:"0",OffTarget:"2",Blocked:"3",Corners:"5"},
-    {date:"18/06/2018",country:"Belgium",Opponent:"Panama",GoalScored:"3",BallPossession:"61",attemps:"15",OnTarget:"6",OffTarget:"7",Blocked:"2",Corners:"9"},
-    {date:"18/06/2018",country:"Panama",Opponent:"Belgium",GoalScored:"0",BallPossession:"39",attemps:"6",OnTarget:"2",OffTarget:"4",Blocked:"0",Corners:"3"},
+    {year:2018, date:"14/06/2018",country:"Saudi Arabia",Opponent:"Russia",GoalScored:"0",BallPossession:"60",attemps:"6",OnTarget:"0",OffTarget:"3",Blocked:"3",Corners:"2"},
+    {year:2018, date:"15/06/2018",country:"Egypt",Opponent:"Uruguay",GoalScored:"0",BallPossession:"43",attemps:"8",OnTarget:"3",OffTarget:"3",Blocked:"2",Corners:"0"},
+    {year:2018, date:"15/06/2018",country:"Uruguay",Opponent:"Egypt",GoalScored:"1",BallPossession:"57",attemps:"14",OnTarget:"4",OffTarget:"6",Blocked:"4",Corners:"5"},
+    {year:2018, date:"15/06/2018",country:"Morocco",Opponent:"Iran",GoalScored:"0",BallPossession:"64",attemps:"13",OnTarget:"3",OffTarget:"6",Blocked:"4",Corners:"5"},
+    {year:2018, date:"15/06/2018",country:"Iran",Opponent:"Morocco",GoalScored:"1",BallPossession:"36",attemps:"8",OnTarget:"2",OffTarget:"5",Blocked:"1",Corners:"2"},
+    {year:2018, date:"15/06/2018",country:"Portugal",Opponent:"Spain",GoalScored:"3",BallPossession:"39",attemps:"8",OnTarget:"3",OffTarget:"2",Blocked:"3",Corners:"4"},
+    {year:2018, date:"15/06/2018",country:"Spain",Opponent:"Portugal",GoalScored:"3",BallPossession:"61",attemps:"12",OnTarget:"5",OffTarget:"5",Blocked:"2",Corners:"5"},
+    {year:2018, date:"16/06/2018",country:"Australia",Opponent:"France",GoalScored:"1",BallPossession:"49",attemps:"4",OnTarget:"1",OffTarget:"2",Blocked:"1",Corners:"1"},
+    {year:2018, date:"16/06/2018",country:"Australia",Opponent:"France",GoalScored:"1",BallPossession:"49",attemps:"4",OnTarget:"1",OffTarget:"2",Blocked:"1",Corners:"1"},
+    {year:2018, date:"16/06/2018",country:"France",Opponent:"Australia",GoalScored:"2",BallPossession:"51",attemps:"12",OnTarget:"5",OffTarget:"4",Blocked:"3",Corners:"5"},
+    {year:2018, date:"16/06/2018",country:"Australia",Opponent:"France",GoalScored:"1",BallPossession:"49",attemps:"4",OnTarget:"1",OffTarget:"2",Blocked:"1",Corners:"1"},
+    {year:2018, date:"16/06/2018",country:"Argentina",Opponent:"Iceland",GoalScored:"1",BallPossession:"72",attemps:"26",OnTarget:"7",OffTarget:"9",Blocked:"10",Corners:"10"},
+    {year:2018, date:"16/06/2018",country:"Iceland",Opponent:"Argentina",GoalScored:"1",BallPossession:"28",attemps:"9",OnTarget:"3",OffTarget:"5",Blocked:"1",Corners:"2"},
+    {year:2018, date:"16/06/2018",country:"Peru",Opponent:"Denmark",GoalScored:"0",BallPossession:"52",attemps:"18",OnTarget:"6",OffTarget:"7",Blocked:"5",Corners:"3"},
+    {year:2018, date:"16/06/2018",country:"Denmark",Opponent:"Peru",GoalScored:"1",BallPossession:"48",attemps:"10",OnTarget:"3",OffTarget:"5",Blocked:"2",Corners:"7"},
+    {year:2018, date:"17/06/2018",country:"Croatia",Opponent:"Nigeria",GoalScored:"2",BallPossession:"54",attemps:"11",OnTarget:"2",OffTarget:"7",Blocked:"2",Corners:"6"},
+    {year:2018, date:"17/06/2018",country:"Nigeria",Opponent:"Croatia",GoalScored:"0",BallPossession:"46",attemps:"14",OnTarget:"2",OffTarget:"5",Blocked:"7",Corners:"5"},
+    {year:2018, date:"17/06/2018",country:"Costa Rica",Opponent:"Serbia",GoalScored:"0",BallPossession:"50",attemps:"10",OnTarget:"3",OffTarget:"3",Blocked:"4",Corners:"5"},
+    {year:2018, date:"17/06/2018",country:"Serbia",Opponent:"Costa Rica",GoalScored:"1",BallPossession:"50",attemps:"10",OnTarget:"3",OffTarget:"5",Blocked:"2",Corners:"4"},
+    {year:2018, date:"17/06/2018",country:"Germany",Opponent:"Mexico",GoalScored:"0",BallPossession:"60",attemps:"25",OnTarget:"9",OffTarget:"9",Blocked:"7",Corners:"8"},
+    {year:2018, date:"17/06/2018",country:"Mexico",Opponent:"Germany",GoalScored:"1",BallPossession:"40",attemps:"12",OnTarget:"4",OffTarget:"6",Blocked:"2",Corners:"1"},
+    {year:2018, date:"17/06/2018",country:"Brazil",Opponent:"Switzerland",GoalScored:"1",BallPossession:"52",attemps:"20",OnTarget:"4",OffTarget:"9",Blocked:"7",Corners:"7"},
+    {year:2018, date:"17/06/2018",country:"Switzerland",Opponent:"Brazil",GoalScored:"1",BallPossession:"48",attemps:"6",OnTarget:"2",OffTarget:"4",Blocked:"0",Corners:"2"},
+    {year:2018, date:"18/06/2018",country:"Sweden",Opponent:"Korea Republic",GoalScored:"1",BallPossession:"52",attemps:"15",OnTarget:"4",OffTarget:"5",Blocked:"6",Corners:"6"},
+    {year:2018, date:"18/06/2018",country:"Korea Republic",Opponent:"Sweden",GoalScored:"0",BallPossession:"48",attemps:"5",OnTarget:"0",OffTarget:"2",Blocked:"3",Corners:"5"},
+    {year:2018, date:"18/06/2018",country:"Belgium",Opponent:"Panama",GoalScored:"3",BallPossession:"61",attemps:"15",OnTarget:"6",OffTarget:"7",Blocked:"2",Corners:"9"},
+    {year:2018, date:"18/06/2018",country:"Panama",Opponent:"Belgium",GoalScored:"0",BallPossession:"39",attemps:"6",OnTarget:"2",OffTarget:"4",Blocked:"0",Corners:"3"},
 ];
 
 
@@ -61,7 +62,7 @@ function loadBackendARM_v2(app,db) {
                 }
     
                 const filteredListings = listings.filter(listing => {
-                    const listingYear = new Date(listing.date).getFullYear();
+                    const listingYear = new Date(listing.date).getFullYear;
                     return listingYear >= fromYear && listingYear <= toYear;
                 });
     
@@ -221,7 +222,7 @@ function loadBackendARM_v2(app,db) {
      
   app.post(API_BASE_ARM +"/", (req, res) => {
     let report = req.body;
-    let object_params = ["date", "country", "Opponent", "GoalScored", "BallPossession", "attemps", "OnTarget", "OffTarget", "Blocked", "Corners"];
+    let object_params = ["year","date", "country", "Opponent", "GoalScored", "BallPossession", "attemps", "OnTarget", "OffTarget", "Blocked", "Corners"];
     const queryParams = Object.keys(report);
     const missingFields = object_params.filter(field => !queryParams.includes(field));
     if (missingFields.length > 0) {
