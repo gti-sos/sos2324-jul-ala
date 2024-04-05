@@ -306,7 +306,7 @@
 
 <div class="contenedor">
     <div class="titulo">
-        <h2>Datos de World Risk Index</h2>
+        <h2>Datos del mundial 2018 FIFA</h2>
     </div>
 
     <table class="tablaCampos">
@@ -462,7 +462,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input
+                        <input 
                             id="GoalScored"
                             bind:value={GoalScored}
                         />
