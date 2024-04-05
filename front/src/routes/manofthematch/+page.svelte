@@ -306,7 +306,7 @@
 
 <div class="contenedor">
     <div class="titulo">
-        <h2>Datos del mundial 2018 FIFA</h2>
+        <h2>Datos de los partidos del mundial 2018 FIFA</h2>
     </div>
 
     <table class="tablaCampos">
