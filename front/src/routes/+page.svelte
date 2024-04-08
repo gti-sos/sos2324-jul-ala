@@ -24,9 +24,9 @@
                     <CardBody>
                         <CardSubtitle>
                             <ul>
-                                <li><a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></li>
-                                <li><a href="https://github.com/adrile15">Adrian Leon Arjona</a></li>
-                                <li><a href="https://github.com/antrummor">Antonio Rumi Moreno</a></li>
+                                <li><a href="https://github.com/ahmfra">Ahmed Amine Fraj</a>economicfreedom-stats</li>
+                                <li><a href="https://github.com/adrile15">Adrian Leon Arjona</a>trimestralpib-stats</li>
+                                <li><a href="https://github.com/antrummor">Antonio Rumi Moreno</a>manofthematch</li>
                             </ul>
                         </CardSubtitle>
                     </CardBody>

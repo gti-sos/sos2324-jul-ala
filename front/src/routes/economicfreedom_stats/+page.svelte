@@ -87,7 +87,7 @@ onMount(async () => {
         success2_msg = "";
     }, 10000);
 });
-
+/*
 async function getListings() {
     let response = await fetch(`${API}?limit=${pageSize}&offset=${pagination*10}`, {
             method: "GET"
@@ -108,6 +108,48 @@ async function getListings() {
         error_msg = "Ha ocurrido un error en el servidor";
         success_msg = "";
         window.scrollTo(0, 0);
+    }
+};
+*/
+async function getListings() {
+    try {
+        // Construye la URL de búsqueda con los parámetros de paginación
+        let url = `${API}?limit=${pageSize}&offset=${pagination * pageSize}`;
+
+        // Realiza la búsqueda utilizando los parámetros 'from' y 'to', si están definidos
+        if (selectedFilter.from && selectedFilter.to) {
+            url += `&from=${selectedFilter.from}&to=${selectedFilter.to}`;
+        }
+
+        // Realiza la petición GET a la API con la URL de búsqueda generada
+        let response = await fetch(url, {
+            method: "GET"
+        });
+
+        // Verifica el estado de la respuesta
+        const status = response.status;
+
+        if (status === 200) {
+            // Obtiene los datos de la respuesta
+            const data = await response.json();
+            listings = data;
+            totalItems = data.length;
+            success_msg = "Mostrando datos";
+            error_msg = "";
+            window.scrollTo(0, 0);
+        } else if (status === 404) {
+            error_msg = "No se encontraron datos disponibles";
+            success_msg = "";
+            window.scrollTo(0, 0);
+        } else if (status === 500) {
+            error_msg = "Ha ocurrido un error en el servidor";
+            success_msg = "";
+            window.scrollTo(0, 0);
+        }
+    } catch (error) {
+        error_msg = "Ha ocurrido un error al procesar la solicitud";
+        success_msg = "";
+        console.error(error);
     }
 };
 
