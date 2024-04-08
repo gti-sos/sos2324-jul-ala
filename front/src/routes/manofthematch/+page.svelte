@@ -195,62 +195,53 @@
     };
     
     async function searchListings() {
-        try {
-            // Construye la URL de búsqueda a partir de los filtros proporcionados
-            let searchParams = new URLSearchParams();
-            if (Object.keys(selectedFilter).length === 0) {
-                selectedFilter = {
-                    year: "",
-                    date: "",
-                    country: "",
-                    Opponent: "",
-                    GoalScored: "",
-                    BallPossession: "",
-                    attemps: "",
-                    OnTarget: "",
-                    OffTarget: "",
-                    Blocked: "",
-                    Corners: ""
-                };
+    try {
+        // Construye la URL de búsqueda a partir de los filtros proporcionados
+        let searchParams = new URLSearchParams();
+        for (const key in selectedFilter) {
+            if (selectedFilter[key] !== '') {
+                searchParams.append(key, selectedFilter[key]);
             }
-            for (const key in selectedFilter) {
-                if (selectedFilter[key] !== '') {
-                    searchParams.append(key, selectedFilter[key]);
-                }
-            }
-            let searchUrl = `${API}?${searchParams.toString()}`;
-            console.log(searchUrl);
-            // Realiza la petición GET a la API con la URL de búsqueda generada
-            let response = await fetch(searchUrl, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-    
-            // Manejo de la respuesta de la API
-            let status = response.status;
-            console.log(`Response status: ${status}`);
-    
-            if (response.status == 200) {
-                // Actualiza los datos después de una búsqueda exitosa
-                success_msg = "Mostrando los datos solicitados";
-                let data = await response.json();
-                listings = data;
-                console.log(data);
-            } else {
-                // Manejo de errores
-                if (response.status == 400) {
-                    error_msg = 'Error en la estructura de los datos';
-                } else if (response.status == 404) {
-                    error_msg = 'No se encontraron datos';
-                }
-            }
-        } catch (error) {
-            error_msg = error;
-            console.log(error);
         }
+        let searchUrl = `${API}?${searchParams.toString()}`;
+        
+        // Realiza la petición GET a la API con la URL de búsqueda generada
+        let response = await fetch(searchUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        // Obtiene el estado de la respuesta
+        let status = response.status;
+
+        if (status === 200) {
+            // Si la respuesta es 200, significa que se encontraron datos
+            let data = await response.json();
+            listings = data;
+            success_msg = "Mostrando los datos solicitados";
+            error_msg = "";
+        } else if (status === 404) {
+            // Si la respuesta es 404, significa que no se encontraron datos
+            listings = [];
+            success_msg = "";
+            error_msg = "No se encontraron datos";
+        } else {
+            // Si la respuesta es diferente de 200 y 404, muestra un mensaje de error genérico
+            listings = [];
+            success_msg = "";
+            error_msg = "Ha ocurrido un error al procesar la solicitud";
+        }
+    } catch (error) {
+        // Si se produce un error en la solicitud, muestra un mensaje de error
+        console.error(error);
+        listings = [];
+        success_msg = "";
+        error_msg = "Ha ocurrido un error al procesar la solicitud";
     }
+}
+
     
     async function createListing(){
         if (!newListing.year || !newListing.date || !newListing.country || 
@@ -337,7 +328,7 @@
     <Container class="content-container" style="justify-content: center;"> 
         <!--______________________________________Cabecera_____________________________________-->
         <Container style="justify-content: center; text-align: center;">
-                <h1> Datos sobre la libertad economica de paises</h1>
+                <h1> Datos sobre los partidos del mundial 2018</h1>
         </Container>
     
         <br/>
