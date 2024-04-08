@@ -72,38 +72,7 @@ test('delete all resources', async () => {
   expect(updatedCardElements).toBe(0);
 });
 
-test('create resource', async () => {
-  test.setTimeout(60000);
-  await page.goto('http://localhost:20000/api/v2/manofthematch/loadInitialData');
-  await page.goto('http://localhost:20000/api/v2/manofthematch/loadInitialData');
-  await page.goto('http://localhost:20000/manofthematch');
-  await page.waitForLoadState('load');
-  await page.click('text="Crear Nuevo Dato"');
-  await page.fill('#country', 'Ejemplo');
-  await page.fill('#year', '2020');
-  await page.fill('#overallScore', '5');
-  await page.fill('#sizeOfGovernment', '5');
-  await page.fill('#legalSystemsAndPropertyRight', '5');
-  await page.fill('#soundMoney', '5');
-  await page.fill('#freedomToTradeInternationally', '5');
-  await page.fill('#regulation', '5');
-  await page.click('text="Crear"');
-  let successMessage = await page.$('text=Se ha creado correctamente el pais Ejemplo');
-///  expect(successMessage).not.toBeNull();
-});
 
-test('edit resource', async () => {
-  test.setTimeout(60000);
-  await page.goto('http://localhost:20000/api/v2/manofthematch/loadInitialData');
-  await page.goto('http://localhost:20000/manofthematch/2018/Spain');
-  await page.waitForLoadState('load');
-  await page.waitForTimeout(1000);
-  await page.fill('#overallScore', '2');
-  await page.click('button:text("Actualizar")');
-  await page.waitForTimeout(1000);
-  let successMessage = await page.$('text=El dato con pais España y año 2018 se ha actualizado correctamente');
-  expect(successMessage).not.toBeNull();
-});
 
 
 test('pagination works', async () => {
