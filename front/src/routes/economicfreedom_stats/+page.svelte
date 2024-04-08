@@ -175,14 +175,15 @@ async function searchListings() {
         let searchParams = new URLSearchParams();
         if (Object.keys(selectedFilter).length === 0) {
             selectedFilter = {
-                country: '',
-                year: '', 
-                overallScore: '', 
-                sizeOfGovernment: '', 
-                legalSystemsAndPropertyRight: '', 
-                soundMoney: '', 
-                freedomToTradeInternationally: '', 
-                regulation: ''
+
+                country: "",
+                year: "", 
+                overallScore: "", 
+                sizeOfGovernment: "", 
+                legalSystemsAndPropertyRight: "", 
+                soundMoney: "", 
+                freedomToTradeInternationally: "", 
+                regulation: ""
             };
         }
         for (const key in selectedFilter) {
@@ -241,7 +242,7 @@ async function createListing(){
         });
     const status = response.status;
     if (status == 201){
-        success2_msg = "Se ha creado correctamente el alquiler de nombre "+newListing.name;
+        success_msg = "Se ha creado correctamente pais "+newListing.country;
         error_msg = "";
         showForm = false;
         await getListings();
@@ -268,7 +269,6 @@ async function deleteAll(){
     const status = response.status;
     if (status == 200){
         success2_msg = "Todos los datos han sido eliminados";
-        alert("Todos los datos han sido eliminados");
         error_msg = "";
         window.location.reload();
     } else if (status == 204) {
@@ -303,14 +303,13 @@ async function deleteListing(country){
         window.scrollTo(0, 0);
     }
 };
-
 </script>
 
 
 <Container class="content-container" style="justify-content: center;"> 
     <!--______________________________________Cabecera_____________________________________-->
     <Container style="justify-content: center; text-align: center;">
-            <h1> Datos de libertad economica de paises</h1>
+            <h1> Datos sobre la libertad economica de paises</h1>
     </Container>
 
     <br/>
@@ -324,7 +323,7 @@ async function deleteListing(country){
             <Button color="success" on:click={() => {showForm = true;}}>Crear Nuevo Dato</Button>
         </Col>
         <Col cols={{ xs:4 }}>
-            <Button color="danger" on:click="{deleteAll}">Borrar Todos los Datos</Button>
+            <Button color="danger" id = "deleteAllButton" on:click="{deleteAll}">Borrar Todos los Datos</Button>
         </Col>
         <Col>
             <Button color="primary" on:click={() => {showFilter = true;}}>Filtro por campos</Button>
@@ -352,10 +351,10 @@ async function deleteListing(country){
     <h2> Filtro por años</h2>
     <Row>
         <Col>
-            <Input type="number" id="fromInput" placeholder="From"/>
+            <Input type="number" id="fromInput" placeholder="Desde"/>
         </Col>
         <Col>
-            <Input type="number" id="toInput" placeholder="To"/>
+            <Input type="number" id="toInput" placeholder="Hasta"/>
         </Col>
         <Col>
             <Button color="primary" on:click={searchListing}>Buscar</Button>
@@ -380,53 +379,55 @@ async function deleteListing(country){
             <form on:submit|preventDefault={searchListings}>
                 <Container fluid>
                     <Row>
-                        <Col>  
+                        <Col>
                             <FormGroup>
-                                <Label for="country">Country</Label>
+                                <Label for="country">Pais</Label>
                                 <Input type="text" id="country" bind:value={selectedFilter.country} required />
                             </FormGroup>
                         </Col>
-                        <Col>  
+                        <Col>
                             <FormGroup>
-                                <Label for="year">Año</Label>
-                                <Input type="number" id="year" bind:value={selectedFilter.year} required />
+                                <Label for="year">Year</Label>
+                                <Input type="number" step="0.01" id="year" bind:value={selectedFilter.year} required />
                             </FormGroup>
                         </Col>
                         <Col>
                             <FormGroup>
-                                <Label for="overallScore">Overall Score</Label>
+                                <Label for="overallScore">Nota general</Label>
                                 <Input type="number" step="0.01" id="overallScore" bind:value={selectedFilter.overallScore} required />
-                            </FormGroup>
-                        </Col>
-                        <Col>
-                            <FormGroup>
-                                <Label for="sizeOfGovernment">Size Of Government</Label>
-                                <Input type="number" step="0.01" id="sizeOfGovernment" bind:value={selectedFilter.sizeOfGovernment} required />
-                            </FormGroup>
-                        </Col>
-                        <Col>
-                            <FormGroup>
-                                <Label for="legalSystemsAndPropertyRight">Legal Systems And Property Right</Label>
-                                <Input type="number" step="0.01" id="legalSystemsAndPropertyRight" bind:value={selectedFilter.legalSystemsAndPropertyRight} required />
                             </FormGroup>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
                             <FormGroup>
-                                <Label for="soundMoney">Sound Money</Label>
-                                <Input type="number" step="0.01" id="soundMoney" bind:value={selectedFilter.soundMoney} required />
+                                <Label for="sizeOfGovernment">Tamaño de gobierno</Label>
+                                <Input type="number" step="0.01" id="sizeOfGovernment" bind:value={selectedFilter.sizeOfGovernment} required />
                             </FormGroup>
                         </Col>
                         <Col>
                             <FormGroup>
-                                <Label for="freedomToTradeInternationally">Freedom To Trade Internationally</Label>
+                                <Label for="legalSystemsAndPropertyRight">Sistemas legales y derecho a la propiedad</Label>
+                                <Input type="number" step="0.01" id="legalSystemsAndPropertyRight" bind:value={selectedFilter.legalSystemsAndPropertyRight} required />
+                            </FormGroup>
+                        </Col>
+                        <Col>
+                            <FormGroup>
+                                <Label for="soundMoney">Moneda fuerte</Label>
+                                <Input type="number" step="0.01" id="soundMoney" bind:value={selectedFilter.soundMoney} required />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <FormGroup>
+                                <Label for="freedomToTradeInternationally">Libertad de comerciar internacionalmente</Label>
                                 <Input type="number" step="0.01" id="freedomToTradeInternationally" bind:value={selectedFilter.freedomToTradeInternationally} required />
                             </FormGroup>
                         </Col>
                         <Col>
                             <FormGroup>
-                                <Label for="regulation">Regulation</Label>
+                                <Label for="regulation">Regulacion</Label>
                                 <Input type="number" step="0.01" id="regulation" bind:value={selectedFilter.regulation} required />
                             </FormGroup>
                         </Col>
@@ -457,177 +458,177 @@ async function deleteListing(country){
         </Container>
       </Modal>
     {/if}
+    <!-- AQUI SE MUESTRAN LOS DATOS -->
+    <Row cols={{ xs:2,sm: 3, md: 3, lg: 3, xl:4}}>
+        {#each listings as listing}
+            <Col class='mb-3'>
+                <Card class="tarjeta">
+                    <CardHeader>
+                        <CardTitle>{listing.country}</CardTitle>
+                    </CardHeader>
+                    <CardBody class='tarjetas-datos'>
+                        <CardText>
+                            <strong>Country:</strong> {listing.country} <br>
+                            <strong>Año:</strong> {listing.year} <br>
+                            <strong>Nota general:</strong> {listing.overallScore} <br>
+                            <strong>Tamaño de gobierno:</strong> {listing.sizeOfGovernment} <br>
+                            <strong>Sistemas legales y derecho a la propiedad:</strong> {listing.legalSystemsAndPropertyRight} <br>
+                            <strong>Moneda fuerte:</strong> {listing.soundMoney} <br>
+                            <strong>Libertad de comerciar internacionalmente:</strong> {listing.freedomToTradeInternationally} <br>
+                            <strong>Regulacion:</strong> {listing.regulation} <br>
+                        </CardText>
+                        <Button color="danger" id ="deleteResourceButton" on:click={() => deleteListing(listing.country)}>Borrar</Button>
+                        <Button color="warning" on:click={() => { window.location.href = `economicfreedom_stats/${listing.year}/${listing.country}` }}>
+                            Editar
+                        </Button>
+                    </CardBody>
+                </Card>
+            </Col>
+        {/each}
+    </Row>
+</Container>
 
-        <!-- AQUI SE MUESTRAN LOS DATOS -->
-        <Row cols={{ xs:2,sm: 3, md: 3, lg: 3, xl:4}}>
-            {#each listings as listing}
-                <Col class='mb-3'>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>{listing.name}</CardTitle>
-                        </CardHeader>
-                        <CardBody>
-                            <CardText>
-                                <strong>Pais:</strong>{listing.country} <br>
-                                <strong>Año:</strong> {listing.year} <br>
-                                <strong>Nota general:</strong> {listing.overallScore} <br>
-                                <strong>Tamaño del gobierno:</strong> {listing.sizeOfGovernment} <br>
-                                <strong>Sistema legal y derecho a la propiedad:</strong> {listing.legalSystemsAndPropertyRight} <br>
-                                <strong>Moneda fuerte:</strong> {listing.soundMoney} <br>
-                                <strong>Libertad de comerciar internacionalmente:</strong> {listing.freedomToTradeInternationally} <br>
-                                <strong>Regulacion: </strong>{listing.regulation} <br>
 
-                            </CardText>
-                            <Button color="danger" on:click={() => deleteListing(listing.country)}>Borrar</Button>
-                            <Button color="warning" on:click={() => { window.location.href = `economicfreedom_stats/${listing.country}` }}>
-                                Editar
-                            </Button>
-                        </CardBody>
-                    </Card>
-                </Col>
-            {/each}
-        </Row>
-    </Container>
-
-        {#if showForm}
-        <Modal isOpen={showForm} {toggle} {size}>
-            <ModalHeader {toggle}>Filtrar datos</ModalHeader>
-            <ModalBody>
-                
-                <Container class='mb-3'>
-                    <Row cols={{ xs:2,sm: 2, md: 3, lg: 3, xl:3}}>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="country">Pais</Label>
-                                <Input
-                                    type="text"
-                                    id="country"
-                                    name="country"
-                                    placeholder="Escribe un pais"
-                                    bind:value={newListing.country}
-                                    required
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="year">Año</Label>
-                                <Input
-                                    type="number"
-                                    id="year"
-                                    name="year"
-                                    placeholder="Escribe un año"
-                                    bind:value={newListing.year}
-                                    required
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="overallScore">Nota general</Label>
-                                <Input
-                                    type="number"
-                                    id="overallScore"
-                                    name="overallScore"
-                                    bind:value={newListing.overallScore}
-                                    required
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="sizeOfGovernment">Tamaño de gobierno</Label>
-                                <Input
-                                    type="number"
-                                    id="sizeOfGovernment"
-                                    name="sizeOfGovernment"
-                                    placeholder="Escribe una tamaño de gobierno"
-                                    bind:value={newListing.sizeOfGovernment}
-                                    required
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="legalSystemsAndPropertyRight">Sistema legal y derechos a la propiedad</Label>
-                                <Input
-                                    type="number"
-                                    id="legalSystemsAndPropertyRight"
-                                    name="legalSystemsAndPropertyRight"
-                                    placeholder="Escribe un Sistema legal y derechos a la propiedad"
-                                    bind:value={newListing.legalSystemsAndPropertyRight}
-                                    required
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="soundMoney">Moneda fuerte</Label>
-                                <Input
-                                    type="number"
-                                    id="soundMoney"
-                                    name="soundMoney"
-                                    placeholder="Escribe una moneda fuerte"
-                                    bind:value={newListing.soundMoney}
-                                    required
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="freedomToTradeInternationally">Libertad de comerciar internacionalmente</Label>
-                                <Input
-                                    type="number"
-                                    id="freedomToTradeInternationally"
-                                    name="freedomToTradeInternationally"
-                                    placeholder="Escribe una libertad de comerciar internacionalmente"
-                                    bind:value={newListing.freedomToTradeInternationally}
-                                    required
-                                />
-                            </FormGroup>
-                        </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="regulation">Regulacion</Label>
-                                <Input
-                                    type="number"
-                                    id="regulation"
-                                    name="regulation"
-                                    placeholder="Escribe una regulacion"
-                                    bind:value={newListing.regulation}
-                                    required
-                                />
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                </Container>
-            </ModalBody>
-            <ModalFooter>
-                <Button color="success" on:click={createListing}>Crear</Button>
-            </ModalFooter>
-            <Container>
-                {#if error_msg != ""}
-                <Alert color="danger">
-                    <strong>Error:</strong> {error_msg}
-                </Alert>
-                {:else if success_msg != ""}
-                <Alert color="success">
-                    <strong>Éxito:</strong> {success_msg}
-                </Alert>
-                
-                {/if}
-                {#if success2_msg != ""}
-                <Alert color="success">
-                    <strong>Éxito:</strong> {success2_msg}
-                </Alert>
-                {/if}
+    {#if showForm}
+    <Modal isOpen={showForm} {toggle} {size}>
+        <ModalHeader {toggle}>Filtrar datos</ModalHeader>
+        <ModalBody>
+            
+            <Container class='mb-3'>
+                <Row cols={{ xs:2,sm: 2, md: 3, lg: 3, xl:3}}>
+                    <Col class='mb-3'>
+                        <FormGroup>
+                            <Label for="country">Country</Label>
+                            <Input
+                                type="text"
+                                id="country"
+                                name="country"
+                                placeholder="País"
+                                bind:value={newListing.country}
+                                required
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col class='mb-3'>
+                        <FormGroup>
+                            <Label for="year">Año</Label>
+                            <Input
+                                type="number"
+                                id="year"
+                                name="year"
+                                bind:value={newListing.year}
+                                required
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col class='mb-3'>
+                        <FormGroup>
+                            <Label for="overallScore">Nota general</Label>
+                            <Input
+                                type="number"
+                                id="overallScore"
+                                name="overallScore"
+                                placeholder="Nota general"
+                                bind:value={newListing.overallScore}
+                                required
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col class='mb-3'>
+                        <FormGroup>
+                            <Label for="sizeOfGovernment">Tamaño de gobierno</Label>
+                            <Input
+                                type="number"
+                                id="sizeOfGovernment"
+                                name="sizeOfGovernment"
+                                placeholder="Tamaño de gobierno"
+                                bind:value={newListing.sizeOfGovernment}
+                                required
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col class='mb-3'>
+                        <FormGroup>
+                            <Label for="legalSystemsAndPropertyRight">Sistemas legales y derecho a la propiedad</Label>
+                            <Input
+                                type="number"
+                                id="legalSystemsAndPropertyRight"
+                                name="legalSystemsAndPropertyRight"
+                                placeholder="Sistemas legales y derecho a la propiedad"
+                                bind:value={newListing.legalSystemsAndPropertyRight}
+                                required
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col class='mb-3'>
+                        <FormGroup>
+                            <Label for="soundMoney">Moneda fuerte</Label>
+                            <Input
+                                type="number"
+                                id="soundMoney"
+                                name="soundMoney"
+                                placeholder="Moneda fuerte"
+                                bind:value={newListing.soundMoney}
+                                required
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col class='mb-3'>
+                        <FormGroup>
+                            <Label for="freedomToTradeInternationally">Libertad de comerciar internacionalmente</Label>
+                            <Input
+                                type="number"
+                                id="freedomToTradeInternationally"
+                                name="freedomToTradeInternationally"
+                                placeholder="Libertad de comerciar internacionalmente"
+                                bind:value={newListing.freedomToTradeInternationally}
+                                required
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col class='mb-3'>
+                        <FormGroup>
+                            <Label for="regulation">Regulacion</Label>
+                            <Input
+                                type="number"
+                                id="regulation"
+                                name="regulation"
+                                placeholder="Regulacion"
+                                bind:value={newListing.regulation}
+                                required
+                            />
+                        </FormGroup>
+                    </Col>
+                </Row>
             </Container>
-        </Modal>
-        
-        {/if}
+        </ModalBody>
+        <ModalFooter>
+            <Button color="success" on:click={createListing}>Crear</Button>
+        </ModalFooter>
+        <Container>
+            {#if error_msg != ""}
+            <Alert color="danger">
+                <strong>Error:</strong> {error_msg}
+            </Alert>
+            {:else if success_msg != ""}
+            <Alert color="success">
+                <strong>Éxito:</strong> {success_msg}
+            </Alert>
+            
+            {/if}
+            {#if success2_msg != ""}
+            <Alert color="success">
+                <strong>Éxito:</strong> {success2_msg}
+            </Alert>
+            {/if}
+        </Container>
+    </Modal>
+    
+    {/if}
+
 
 {:else}
-	    <p class="container">No hay datos disponibles</p>
+	<p class="container">No hay datos disponibles</p>
 {/if}
 
 <hr>
