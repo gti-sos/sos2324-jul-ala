@@ -62,7 +62,7 @@ function loadBackendARM_v2(app,db) {
                 }
     
                 const filteredListings = listings.filter(listing => {
-                    const listingYear = new Date(listing.date).getFullYear;
+                    const listingYear = listing.year;
                     return listingYear >= fromYear && listingYear <= toYear;
                 });
     
@@ -116,27 +116,14 @@ function loadBackendARM_v2(app,db) {
                 }
             }
     
-            // Eliminar el campo _id de los resultados si es una colección
-            // o mantenerlo si es un recurso individual
-            let responseBody;
-            if (from !== undefined && to !== undefined || Object.keys(queryParams).length === 0) {
-                responseBody = paginatedListings.map((listing) => {
-                    delete listing._id;
-                    return listing;
-                });
-            } else {
-                // Si es un recurso individual, mantener el campo _id
-                responseBody = paginatedListings.map((listing) => {
-                    const { _id, ...rest } = listing;
-                    return rest;
-                });
-            }
-            // Devolver un array si es una colección, o un objeto si es un recurso individual
-            if (from !== undefined && to !== undefined || Object.keys(queryParams).length === 0) {
-                res.status(200).send(responseBody);
-            } else {
-                res.status(200).send(responseBody[0]);
-            }
+            
+    
+            // Eliminar el campo _id de los resultados y enviar la respuesta
+            const responseBody = paginatedListings.map((listing) => {
+                delete listing._id;
+                return listing;
+            });
+            res.status(200).send(responseBody);
         }
     });
     
