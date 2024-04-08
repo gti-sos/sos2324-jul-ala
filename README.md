@@ -1,9 +1,9 @@
 ## SOS2324-17
 
 - **Team**
-  - [Ahmed Amine Fraj](https://github.com/ahmfra)
-  - [Adrian Leon Arjona](https://github.com/adrile15)
-  - [Antonio Rumi Moreno](https://github.com/antrummor)
+  - [Ahmed Amine Fraj](https://github.com/ahmfra) economicfreedom-stats
+  - [Adrian Leon Arjona](https://github.com/adrile15) trimestralpib-stats
+  - [Antonio Rumi Moreno](https://github.com/antrummor) manofthematch
 
 
 - **Project description**: Our work consists on comparing the GDB (Gross Domestic Product) of each country with the economical freedom of its citizens.
