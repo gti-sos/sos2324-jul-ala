@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "1cccbe01-f47c-4008-9e15-c5052628026f",
 		"name": "v2",
+		"description": "Esta es un prueba de mi api/v2. La cual consiste en unos partidos de futbol de selecciones.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26189208"
 	},
@@ -105,7 +106,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SERVER}}/api/v2/manofthematch?from=2017&to=2019",
+					"raw": "{{SERVER}}/api/v2/manofthematch?from=2016&to=2019",
 					"host": [
 						"{{SERVER}}"
 					],
@@ -117,7 +118,7 @@
 					"query": [
 						{
 							"key": "from",
-							"value": "2017"
+							"value": "2016"
 						},
 						{
 							"key": "to",
@@ -197,6 +198,41 @@
 						"manofthematch",
 						"year",
 						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "year country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v2/manofthematch/2018/Spain",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"manofthematch",
+						"2018",
+						"Spain"
 					]
 				}
 			},
@@ -302,7 +338,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}\r\n",
+					"raw": "{\"year\":2018, \"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -345,7 +381,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}",
+					"raw": "{\"year\": 2018 ,\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -388,7 +424,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\"}",
+					"raw": "{\"year\": 2018 ,\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -431,7 +467,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\"}",
+					"raw": "{\"year\": 2018 ,\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -547,7 +583,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
+					"raw": "{\"year\": 2018 ,\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -563,6 +599,50 @@
 						"api",
 						"v2",
 						"manofthematch",
+						"Lituania"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put año pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"year\": 2018 ,\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/api/v2/manofthematch/2018/Lituania",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"manofthematch",
+						"2018",
 						"Lituania"
 					]
 				}
@@ -590,7 +670,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
+					"raw": "{\"year\": 2018 ,\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -633,7 +713,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
+					"raw": "{\"year\": 2018 ,\"date\": \"14-06-2018\", \"country\": \"Lituania\", \"Opponent\": \"Saudi Arabia\", \"GoalScored\": \"5\", \"BallPossession\": \"40\", \"attemps\": \"13\", \"OnTarget\": \"7\", \"OffTarget\": \"3\", \"Blocked\": \"3\", \"Corners\": \"6\", \"Offsides\": \"3\", \"FreeKicks\": \"11\", \"Saves\": \"0\", \"PassAccuracy\": \"78\", \"Passes\": \"306\", \"DistanceCovered\": \"118\", \"FoulsCommitted\": \"22\", \"YellowCard\": \"0\", \"Yellow_Red\": \"2\", \"Red\": \"2\", \"ManoftheMatch\": \"Yes\", \"stGoal\": \"12\", \"Round\": \"Group Stage\", \"PSO\": \"No\", \"GoalsinPSO\": \"0\", \"Owngoals\": \"0\", \"OwngoalTime\": \"2\"}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -683,6 +763,41 @@
 						"v2",
 						"manofthematch",
 						"Portugal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete año pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/api/v2/manofthematch/2018/Spain",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"api",
+						"v2",
+						"manofthematch",
+						"2018",
+						"Spain"
 					]
 				}
 			},
