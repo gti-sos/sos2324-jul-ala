@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node index",
     "pretest": "npm start &",
-    "test-trimestralpib_stats": "npx newman run ./tests/integration/trimestralpib_stats/api_v2.json -e ./tests/integration/trimestralpib_stats/environments/localhost.json",
-    "test-economicalfreedom_stats": "npx newman run ./tests/integration/economicfreedom_stats/api.json -e ./tests/integration/economicfreedom_stats/environments/local.json",
-    "test-manofthematch": "npx newman run ./tests/integration/manofthematch/api.json -e ./tests/integration/manofthematch/environments/local.json",
-    "test-integration":"npx newman run ./tests/integration/economicfreedom_stats/api.json -e ./tests/integration/economicfreedom_stats/environments/local.json",
+    "test-trimestralpib_stats": "npx newman run ./tests/integration/trimestralpib_stats/api_v2.json -e ./tests/integration/trimestralpib_stats/environments/gcloud.json",
+    "test-economicalfreedom_stats": "npx newman run ./tests/integration/economicfreedom_stats/api.json -e ./tests/integration/economicfreedom_stats/environments/gcloud.json",
+    "test-manofthematch": "npx newman run ./tests/integration/manofthematch/api.json -e ./tests/integration/manofthematch/environments/gcloud.json",
+    "test-integration": "npx newman run ./tests/integration/economicfreedom_stats/api.json -e ./tests/integration/economicfreedom_stats/environments/gcloud.json",
     "test-e2e": "npx playwright test",
     "test": "npm run test-integration && npm run test-e2e",
     "posttest": "kill `ps -uax | grep \"node index\" | grep -v \"grep\" | grep -v \"sh\" | awk '{print $2}'`"
