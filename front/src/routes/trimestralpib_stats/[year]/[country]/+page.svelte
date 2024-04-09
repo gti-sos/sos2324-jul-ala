@@ -199,19 +199,19 @@
                             <Col class='mb-3'>
                                 <FormGroup>
                                     <Label for="trimestral_pib">Pib trimestral</Label>
-                                    <Input type="number" id="trimestral_pib" invalid={!updatedListing.trimestral_pib} bind:value={updatedListing.trimestral_pib} placeholder="Nuevo pib trimestral" step="0.01"/>
+                                    <Input type="text" id="trimestral_pib" invalid={!updatedListing.trimestral_pib} bind:value={updatedListing.trimestral_pib} placeholder="Nuevo pib trimestral" step="0.01"/>
                                 </FormGroup>
                             </Col>
                             <Col class='mb-3'>
                                 <FormGroup>
                                     <Label for="trimestral_variable_pib">Pib trimestral variable</Label>
-                                    <Input type="number" id="trimestral_variable_pib" invalid={!updatedListing.trimestral_variable_pib} bind:value={updatedListing.trimestral_variable_pib} placeholder="Nuevo pib trimestral variable" step="0.01"/>
+                                    <Input type="text" id="trimestral_variable_pib" invalid={!updatedListing.trimestral_variable_pib} bind:value={updatedListing.trimestral_variable_pib} placeholder="Nuevo pib trimestral variable" step="0.01"/>
                                 </FormGroup>
                             </Col>
                             <Col class='mb-3'>
                                 <FormGroup>
                                     <Label for="annual_variable_pib">Pib anual variable</Label>
-                                    <Input type="number" id="annual_variable_pib" invalid={!updatedListing.annual_variable_pib} bind:value={updatedListing.annual_variable_pib} placeholder="Nuevo pib anual variable" step="0.01"/>
+                                    <Input type="text" id="annual_variable_pib" invalid={!updatedListing.annual_variable_pib} bind:value={updatedListing.annual_variable_pib} placeholder="Nuevo pib anual variable" step="0.01"/>
                                 </FormGroup>
                         </Col>
                     </Row>
