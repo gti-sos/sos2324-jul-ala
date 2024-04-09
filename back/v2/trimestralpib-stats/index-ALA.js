@@ -180,33 +180,46 @@ function loadBackendALA_v2(app,db) {
 
     // GET => Buscar por host_location y year
     app.get(API_BASE_ALA + "/:year/:country", (req, res) => {
-      const { year, country } = req.params;
-      // Verificar si el año tiene un formato válido (cuatro dígitos)
-      if (!(/^\d{4}$/.test(year))) {
-      return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
-      };
-      // Parsear el año de la consulta a entero
-      const yearInt = parseInt(year);
-      // Crear una expresión regular para buscar en el campo date
-      const regex = new RegExp(`^\\d{2}/\\d{2}/${yearInt}$`);
-      db.find({ country: country, date: { $regex: regex } }, (err, listings) => {
-          if (err) {
-              res.sendStatus(500, "INTERNAL ERROR");
-          } else {
-              if (listings.length === 0) {
-                  res.sendStatus(404, "RESOURCE NOT FOUND");
-              } else {
-                  res.status(200).send(JSON.stringify(listings.map((listing => { delete listing._id; return listing; }))));
-              }
-          }
-      });
+        const { year, country } = req.params;
+        
+        // Verificar si el año tiene un formato válido (cuatro dígitos)
+        if (!(/^\d{4}$/.test(year))) {
+            return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
+        }
+
+        // Convertir el año a entero
+        const yearInt = parseInt(year);
+
+        // Realizar la búsqueda en la base de datos
+        db.find({ year: yearInt, country: country }, (err, listings) => {
+            if (err) {
+                return res.status(500).send("INTERNAL ERROR");
+            } else {
+                if (listings.length === 0) {
+                    return res.status(404).send("NOT FOUND");
+                } else {
+                    // Eliminar el campo _id de los resultados
+                    const responseBody = listings.map((listing) => {
+                        delete listing._id;
+                        return listing;
+                    });
+                    // Devolver un array si es una colección
+                    if (responseBody.length > 1) {
+                        return res.status(200).send(responseBody);
+                    } else {
+                        // Devolver un objeto si es un recurso concreto
+                        return res.status(200).send(responseBody[0]);
+                    }
+                }
+            }
+        });
     }),
 
   // POST => Create a new listing
   app.post(API_BASE_ALA + "/", (req, res) => {
 
     const newData =  req.body;
-    const expectedFields = ["country", "date", "trimestral_pib", "trimestral_variable_pib", "annual_variable_pib"];
+    const expectedFields = ["country", "date", "trimestral_pib", "trimestral_variable_pib", "annual_variable_pib", "year"];
     const receivedFields = Object.keys(newData);
     const isValidData = expectedFields.every(field => receivedFields.includes(field));
 
@@ -214,7 +227,7 @@ function loadBackendALA_v2(app,db) {
         res.sendStatus(400, "Bad Request"); // Datos inválidos
     } else {
         // Verificar si ya existe un documento con el mismo cci en la base de datos
-        db.findOne({ country: newData.country, trimestral_pib: newData.trimestral_pib, trimestral_variable_pib: newData.trimestral_variable_pib }, (err, existingData) => {
+        db.findOne({ country: newData.country, trimestral_pib: newData.trimestral_pib, trimestral_variable_pib: newData.trimestral_variable_pib, year: newData.year }, (err, existingData) => {
             if (err) {
                 res.sendStatus(500, "Internal Error"); // Error interno del servidor
             } else {
@@ -259,32 +272,26 @@ function loadBackendALA_v2(app,db) {
   }),
       // PUT => Update resource by latitude and longitude
      
-    app.put(API_BASE_ALA + "/:year/:country", (req, res) => {
-        const { year, country } = req.params;
-        const data = req.body;
-    
+      app.put(API_BASE_ALA + "/:year/:country", (req, res) => {
+        const year = parseInt(req.params.year);
+        const country = req.params.country;
+        let data = req.body;
+
         // Verificar si el año tiene un formato válido (cuatro dígitos)
         if (!(/^\d{4}$/.test(year))) {
             return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
         }
-    
-        // Verificar si los datos proporcionados son válidos
-        if (!data || Object.keys(data).length === 0 || data.country !== country || data.date.substring(6) !== year) {
-            return res.status(400).send("Bad Request. Invalid data.");
-        }
-    
-        // Actualizar la base de datos
-        db.update({ country: country, date: data.date }, data, {}, (err, numAffected) => {
-            if (err) {
-                res.sendStatus(500, "Internal Server Error");
-            } else {
-                if (numAffected === 0) {
-                    res.sendStatus(404, "RESOURCE NOT FOUND");
-                } else {
-                    res.sendStatus(200, "Ok");
+
+        if (!data || Object.keys(data).length === 0 || data.year !== year || data.country !== country) {
+            res.sendStatus(400, "BAD REQUEST"); // Invalid data
+        } else {
+            db.update({ year: year, country: country }, data, { }, (err) => {
+                if (err) {
+                    res.sendStatus(500, "Internal Server Error"); 
                 }
-            }
-        });
+                res.sendStatus(200, "Ok"); 
+            });
+        }
     }),
     
     

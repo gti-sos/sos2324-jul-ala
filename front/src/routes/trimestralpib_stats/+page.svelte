@@ -407,7 +407,7 @@
                             <Col>
                                 <FormGroup>
                                     <Label for="trimestral_pib">Pib trimestral</Label>
-                                    <Input type="number" id="trimestral_pib" bind:value={selectedFilter.trimestral_pib} required />
+                                    <Input type="text" id="trimestral_pib" bind:value={selectedFilter.trimestral_pib} required />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -415,13 +415,13 @@
                             <Col>
                                 <FormGroup>
                                     <Label for="trimestral_variable_pib">Pib trimestral variable</Label>
-                                    <Input type="number" id="trimestral_variable_pib" bind:value={selectedFilter.trimestral_variable_pib} required />
+                                    <Input type="text" id="trimestral_variable_pib" bind:value={selectedFilter.trimestral_variable_pib} required />
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup>
                                     <Label for="annual_variable_pib">Pib anual variable</Label>
-                                    <Input type="number" id="annual_variable_pib" bind:value={selectedFilter.annual_variable_pib} required />
+                                    <Input type="text" id="annual_variable_pib" bind:value={selectedFilter.annual_variable_pib} required />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -528,7 +528,7 @@
                             <FormGroup>
                                 <Label for="trimestral_pib">Pib trimestral</Label>
                                 <Input
-                                    type="number"
+                                    type="text"
                                     id="trimestral_pib"
                                     name="trimestral_pib"
                                     placeholder="Pib trimestral"
@@ -541,7 +541,7 @@
                             <FormGroup>
                                 <Label for="trimestral_variable_pib">Pib trimestral variable</Label>
                                 <Input
-                                    type="number"
+                                    type="text"
                                     id="trimestral_variable_pib"
                                     name="trimestral_variable_pib"
                                     placeholder="Pib trimestral variable"
@@ -554,7 +554,7 @@
                             <FormGroup>
                                 <Label for="annual_variable_pib">Pib anual variable</Label>
                                 <Input
-                                    type="number"
+                                    type="text"
                                     id="annual_variable_pib"
                                     name="annual_variable_pib"
                                     placeholder="Pib anual variable"
