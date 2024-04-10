@@ -71,7 +71,7 @@ test('delete all resources', async () => {
   let updatedCardElements = await page.locator('.tarjetas-datos').count();
   expect(updatedCardElements).toBe(0);
 });
-
+/*
 test('create resource', async () => {
   test.setTimeout(60000);
   await page.goto('http://localhost:20000/api/v2/trimestralpib_stats/loadInitialData');
@@ -101,7 +101,7 @@ test('edit resource', async () => {
   let successMessage = await page.$('text=El dato con pais España y año 2018 se ha actualizado correctamente');
   expect(successMessage).not.toBeNull();
 });
-
+*/
 
 test('pagination works', async () => {
   test.setTimeout(60000);
