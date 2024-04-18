@@ -14,7 +14,6 @@
     "test": "npm run test-integration && npm run test-e2e",
     "posttest": "kill `ps -uax | grep \"node index\" | grep -v \"grep\" | grep -v \"sh\" | awk '{print $2}'`"
   },
-  
   "author": "",
   "license": "GPL-3.0",
   "dependencies": {
