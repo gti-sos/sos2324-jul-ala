@@ -69,6 +69,15 @@
         </Dropdown>
         <Dropdown nav autoClose={true}>
             <DropdownToggle nav class="nav-link" caret>
+                <img src="/icono-grafica.png" alt="Views" style="width: 20px; height: 20px; margin-right: 5px;"> 
+                Views
+            </DropdownToggle>
+            <DropdownMenu>
+                <DropdownItem class="menu-item" href = "/trimestralpib_stats/vistas">trimestralpib_stats</DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
+        <Dropdown nav autoClose={true}>
+            <DropdownToggle nav class="nav-link" caret>
                 <img src="/icono-documentacion.png" alt="Documentaciones" style="width: 20px; height: 20px; margin-right: 5px;"> 
                 Documentaciones
             </DropdownToggle>
