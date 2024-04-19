@@ -14,7 +14,7 @@
     
     let API = '/api/v2/trimestralpib_stats';
     if(dev)
-        API = 'http://localhost:10000'+API;
+        API = 'http://localhost:20000'+API;
     
     // ALERTA INFO
 
@@ -76,7 +76,7 @@
             console.log(precioPromedioPorCiudad);
 
             // Convertir los datos a un formato aceptado por Highcharts
-            const datos = Object.entries(precioPromedioPorCiudad).map(([ciudad, precio]) => ({ name: ciudad, y: precio }));
+            const datos = Object.entries(precioPromedioPorCiudad).map(([ciudad, precio]) => ({ country: ciudad, y: precio }));
             const datosOrdenados = datos.sort((a, b) => b.y - a.y);
             const precioMaximo = Math.max(...datos.map(item => item.y));
             const alturaejeY = precioMaximo + 50;
@@ -117,14 +117,14 @@
                     }
                 },
                 series: [{
-                    name: 'Precio promedio',
+                    country: 'Precio promedio',
                     colors: [
                         '#9b20d9', '#9215ac', '#861ec9', '#7a17e6', '#7010f9', '#277dbd', '#1f88b7', '#1693b1', '#0a9eaa',
                         '#03c69b',  '#00f194'
                     ],
                     colorByPoint: true,
                     groupPadding: 0,
-                    data: datosOrdenados.map(item => ({ name: item.name, y: item.y })),
+                    data: datosOrdenados.map(item => ({ country: item.country, y: item.y })),
                     dataLabels: {
                         enabled: true,
                         rotation: -90,
@@ -181,9 +181,9 @@
             popularAmenities['Others'] = othersFrequency;
         }
 
-        // Convertir el objeto de frecuencia en un arreglo de objetos {name, y}
+        // Convertir el objeto de frecuencia en un arreglo de objetos {country, y}
         const dataPie = Object.entries(popularAmenities).map(([amenity, frequency]) => ({
-            name: amenity,
+            country: amenity,
             y: frequency
         }));
 
@@ -201,17 +201,16 @@
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.y}'
+                        format: '<b>{point.country}</b>: {point.y}'
                     }
                 }
             },
             series: [{
-                name: 'Frecuencia',
+                country: 'Frecuencia',
                 colorByPoint: true,
                 data: dataPie
             }]
         });
-
     };
 
     // Función para calcular el precio promedio por ciudad
@@ -219,8 +218,8 @@
         const preciosPorCiudad = {};
 
         listings.forEach(listing => {
-            const ciudad = listing.city;
-            const precio = listing.price;
+            const ciudad = listing.country;
+            const precio = listing.trimestral_pib;
 
             if (!preciosPorCiudad[ciudad]) {
             preciosPorCiudad[ciudad] = [];

@@ -73,7 +73,7 @@
                 Views
             </DropdownToggle>
             <DropdownMenu>
-                <DropdownItem class="menu-item" href = "/trimestralpib_stats/vistas">trimestralpib_stats</DropdownItem>
+                <DropdownItem class="menu-item" href = "/trimestralpib_stats/views">trimestralpib_stats</DropdownItem>
             </DropdownMenu>
         </Dropdown>
         <Dropdown nav autoClose={true}>
