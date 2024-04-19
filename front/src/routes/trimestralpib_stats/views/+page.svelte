@@ -141,7 +141,79 @@
                     }]
             });
         };
-        
+        // Ahora, agregamos el gráfico de pastel
+
+        // Creamos un objeto para almacenar la frecuencia de cada comodidad
+        const amenityFrequency = {};
+
+        // Iterar sobre cada alojamiento en la lista de listings
+        listings.forEach(listing => {
+            // Iterar sobre las comodidades de cada alojamiento
+            listing.amenities_list.forEach(amenity => {
+                // Incrementar la frecuencia de la comodidad en el objeto amenityFrequency
+                if (amenity in amenityFrequency) {
+                    amenityFrequency[amenity]++;
+                } else {
+                    amenityFrequency[amenity] = 1;
+                }
+            });
+        });
+
+        // Filtrar las comodidades con una frecuencia menor a 20
+        const minFrequency = 20;
+        const popularAmenities = Object.entries(amenityFrequency)
+            .filter(([amenity, frequency]) => frequency >= minFrequency)
+            .reduce((acc, [amenity, frequency]) => {
+                acc[amenity] = frequency;
+                return acc;
+            }, {});
+
+        // Calcular la frecuencia total de las comodidades populares
+        const totalFrequency = Object.values(popularAmenities).reduce((acc, frequency) => acc + frequency, 0);
+
+        // Agrupar todas las comodidades con frecuencia menor a 20 en una categoría "Others"
+        const othersFrequency = Object.values(amenityFrequency)
+            .filter(frequency => frequency < minFrequency)
+            .reduce((acc, frequency) => acc + frequency, 0);
+
+        // Agregar la categoría "Others" al objeto de comodidades populares
+        if (othersFrequency > 0) {
+            popularAmenities['Others'] = othersFrequency;
+        }
+
+        // Convertir el objeto de frecuencia en un arreglo de objetos {country, y}
+        const dataPie = Object.entries(popularAmenities).map(([amenity, frequency]) => ({
+            country: amenity,
+            y: frequency
+        }));
+
+        // Configurar el gráfico de pastel
+        const pieChart = Highcharts.chart('pieContainer', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Proporción de comodidades más populares'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.country}</b>: {point.y}'
+                    }
+                }
+            },
+            series: [{
+                country: 'Frecuencia',
+                colorByPoint: true,
+                data: dataPie
+            }]
+        });
+
+    };
+
     // Función para calcular el precio promedio por ciudad
     function calculate_mean_price(listings) {
         const preciosPorCiudad = {};
@@ -174,7 +246,7 @@
     <Container class="content-container" style="justify-content: center;"> 
         <Container>
             <Row>
-                <Col><h1> Gráficas sobre datos pib por país</h1></Col>
+                <Col><h1> Gráficas alquileres manejados por AirBnB</h1></Col>
             </Row>
         </Container>
 
@@ -192,9 +264,11 @@
                 </Container>
                 <br/>
             {:else}
-            <Row><Col><h3> Comparativa de pib medios por país</h3></Col></Row>
+            <Row><Col><h3> Comparativa de precios medios por ciudad</h3></Col></Row>
             <Row><Col><div id="container" style="width:100%; height:400px;"></div></Col></Row>
-            
+            <br/>
+            <Row><Col><h3> Proporción de comodidades más populares</h3></Col></Row>
+            <Row><Col><div id="pieContainer" style="width:100%; height:400px;"></div></Col></Row>
             {/if}
             </Container>
         </Container>
