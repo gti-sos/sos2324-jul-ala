@@ -211,7 +211,6 @@
                 data: dataPie
             }]
         });
-
     };
 
     // Función para calcular el precio promedio por ciudad
