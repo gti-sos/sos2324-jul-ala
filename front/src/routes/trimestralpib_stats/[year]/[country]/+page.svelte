@@ -4,10 +4,8 @@
     import { Button, Icon, FormGroup, Label, Table, Input, Modal, ModalBody, ModalFooter, ModalHeader, 
             Alert, Card, CardBody, CardHeader, CardText, CardTitle,  Row, Col, 
             Container, ButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle} from '@sveltestrap/sveltestrap';
-    import { query_selector_all } from 'svelte/internal';
-    import { Pagination, PaginationItem, PaginationLink } from '@sveltestrap/sveltestrap';
     import { page } from '$app/stores'; 
-    import {faTrash, faPencil, faSpinner, faPlus, faHouse, faFilter, faMagnifyingGlass, faCheck, faXmark, faArrowLeft, faArrowRight, faLongArrowLeft} from '@fortawesome/free-solid-svg-icons';
+    import {faHouse, faCheck, faLongArrowLeft} from '@fortawesome/free-solid-svg-icons';
     import Fa from 'svelte-fa';
 
 
@@ -20,13 +18,14 @@
     let success2_msg = "";
     let error_msg = "";
     let dato = {};
-    let country = $page.params.country;
     let year = $page.params.year;
+    let country = $page.params.country;
 
     let updatedListing ={
         country: "",
+        year: "",
         date: "",
-        trimestral_pib: "",
+        trimestral_pib:"",
         trimestral_variable_pib: "",
         annual_variable_pib: ""
     };
@@ -42,14 +41,13 @@
             }, 10000);
                 });
 
-
     async function getResource(){
         const response = await fetch(API+`/${year}/${country}`,{
                                         method: "GET"               
             }); 
         try{    
-        const data = await response.json();
-        updatedListing = {...data};
+            const data = await response.json();
+            updatedListing = {...data};
         }catch(error){
             console.log(`Error parsing result: ${error}`);
         }
@@ -70,12 +68,13 @@
     };
 
     async function updateResource(){
-    if( updatedListing.country === "" || 
-        updatedListing.date === "" || 
-        updatedListing.trimestral_pib === "" || 
-        updatedListing.trimestral_variable_pib === "" || 
-        updatedListing.annual_variable_pib === ""  
-        ) {
+    if(     updatedListing.country === "" ||
+            updatedListing.year === "" || 
+            updatedListing.date === "" || 
+            updatedListing.trimestral_pib === "" || 
+            updatedListing.trimestral_variable_pib === "" || 
+            updatedListing.annual_variable_pib === ""  ) {
+
             error_msg = "No se puede actualizar si el dato no se pasa completo";
             window.scrollTo(0, 0);
         } else {
@@ -89,11 +88,11 @@
             const status = await response.status;
             if (status == 200){
                 getResource();
-                success2_msg = "El dato con pais "+country+" se ha actualizado correctamente. A continuación, serás redirigido al listado de recursos";
+                success2_msg = "El dato con pais "+country+" y año "+year+" se ha actualizado correctamente";
                 error_msg = "";
                 window.scrollTo(0, 0);
             } else if (status == 404){
-                error_msg = "El dato con pais "+country+" no existe en la base de datos";
+                error_msg = "El dato con pais "+country+" y año "+year+" no existe en la base de datos";
                 success_msg = "";
                 window.scrollTo(0, 0);
             } else if (status == 400){
@@ -117,14 +116,17 @@
                         <CardHeader style="background-color: #008080; color: white; text-decoration-style: solid; justify-content: center; text-align: center;">
                             <CardTitle><Fa icon={faHouse}/> {updatedListing.country}</CardTitle>
                         </CardHeader>
-                        <CardBody>
+                        <CardBody class='tarjetas-datos-edit'>
                             <CardText>
                                 <Row>
                                     <Col class='mb-3'>
                                         <strong>Pais: </strong>{updatedListing.country}
                                     </Col>
                                     <Col class='mb-3'>
-                                        <strong>Fecha de registro: </strong>{updatedListing.date}
+                                        <strong>Año: </strong>{updatedListing.year}
+                                    </Col>
+                                    <Col class='mb-3'>
+                                        <strong>Fecha: </strong>{updatedListing.date}
                                     </Col>
                                     <Col class='mb-3'>
                                         <strong>Pib trimestral: </strong>{updatedListing.trimestral_pib}
@@ -135,7 +137,6 @@
                                     <Col class='mb-3'>
                                         <strong>Pib anual variable: </strong>{updatedListing.annual_variable_pib}
                                     </Col>
-                                    
                                 </Row>
                             </CardText>
                         </CardBody>
@@ -170,6 +171,7 @@
                 </h1>
             </Col>
             <br>
+            <hr>
             <Row class="text-center">
                 <Button color="success" on:click={() => { window.location.href = `/trimestralpib_stats/`}}><Fa icon={faLongArrowLeft}/> Volver</Button>
             </Row>
@@ -177,36 +179,41 @@
             <hr>
             <Row cols={{ xs:2,sm: 2, md: 3, lg: 3, xl:3}}>
                             <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="nombre">Pais</Label>
-                                <Input id="nombre" bind:value={updatedListing.country} placeholder="Nuevo pais"/>
-                            </FormGroup>
+                                <FormGroup>
+                                    <Label for="country">Pais</Label>
+                                    <Input type="text" id="country" invalid={!updatedListing.country} bind:value={updatedListing.country} placeholder="Nuevo pais"/>
+                                </FormGroup>
+                                </Col>
+                                <Col class='mb-3'>
+                                <FormGroup>
+                                    <Label for="year">Año</Label>
+                                    <Input type="number" id="year" invalid={!updatedListing.year} bind:value={updatedListing.year} placeholder="Nuevo Año"/>
+                                </FormGroup>
+                                </Col>
+                                <Col class='mb-3'>
+                                <FormGroup>
+                                    <Label for="date">Fecha</Label>
+                                    <Input type="date" id="date" invalid={!updatedListing.date} bind:value={updatedListing.date} placeholder="Nueva fecha" step="0.01"/>
+                                </FormGroup>
                             </Col>
                             <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="fechaRegistro">Fecha de registro</Label>
-                                <Input type="text" id="fechaRegistro" bind:value={updatedListing.date} placeholder="Nueva fecha de registro"/>
-                            </FormGroup>
+                                <FormGroup>
+                                    <Label for="trimestral_pib">Pib trimestral</Label>
+                                    <Input type="text" id="trimestral_pib" invalid={!updatedListing.trimestral_pib} bind:value={updatedListing.trimestral_pib} placeholder="Nuevo pib trimestral" step="0.01"/>
+                                </FormGroup>
                             </Col>
                             <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="pibTrimestral">Pib trimestral</Label>
-                                <Input id="pibTrimestral" bind:value={updatedListing.trimestral_pib} placeholder="Nuevo pib trimestral"/>
-                            </FormGroup>
+                                <FormGroup>
+                                    <Label for="trimestral_variable_pib">Pib trimestral variable</Label>
+                                    <Input type="text" id="trimestral_variable_pib" invalid={!updatedListing.trimestral_variable_pib} bind:value={updatedListing.trimestral_variable_pib} placeholder="Nuevo pib trimestral variable" step="0.01"/>
+                                </FormGroup>
+                            </Col>
+                            <Col class='mb-3'>
+                                <FormGroup>
+                                    <Label for="annual_variable_pib">Pib anual variable</Label>
+                                    <Input type="text" id="annual_variable_pib" invalid={!updatedListing.annual_variable_pib} bind:value={updatedListing.annual_variable_pib} placeholder="Nuevo pib anual variable" step="0.01"/>
+                                </FormGroup>
                         </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="pibTrimestralVariable">Pib trimestral variable</Label>
-                                <Input id="pibTrimestralVariable" bind:value={updatedListing.trimestral_variable_pib} placeholder="Nuevo pib trimestral variable"/>
-                            </FormGroup>
-                        </Col>
-                        <Col class='mb-3'>
-                            <FormGroup>
-                                <Label for="annualVariablePib">Pib anual variable</Label>
-                                <Input id="annualVariablePib" bind:value={updatedListing.annual_variable_pib} placeholder="Nuevo pib anual variable"/>
-                            </FormGroup>
-                        </Col>
-                        
                     </Row>
                     <Col class="text-center">
                         <Button color="primary" on:click={updateResource}><Fa icon={faCheck}/> Actualizar</Button>

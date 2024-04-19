@@ -1,35 +1,35 @@
 const API_BASE_ALA = "/api/v2/trimestralpib_stats";
 
 let initialData = [
-    { country: "España", date: "01/12/2018", trimestral_pib: "305.818 M€", trimestral_variable_pib: "0,70%", annual_variable_pib: "2,20%" },
-    { country: "Alemania", date: "01/12/2018", trimestral_pib: "854.124 M€", trimestral_variable_pib: "0,90%", annual_variable_pib: "0,10%" },
-    { country: "Reino Unido", date: "01/12/2018", trimestral_pib: "610.918 M€", trimestral_variable_pib: "0,20%", annual_variable_pib: "1,20%" },
-    { country: "Francia", date: "01/12/2018", trimestral_pib: "598.352 M€", trimestral_variable_pib: "0,50%", annual_variable_pib: "1,50%" },
-    { country: "Italia", date: "01/12/2018", trimestral_pib: "444.875 M€", trimestral_variable_pib: "0,30%", annual_variable_pib: "0,30%" },
-    { country: "Portugal", date: "01/12/2018", trimestral_pib: "51.989 M€", trimestral_variable_pib: "0,60%", annual_variable_pib: "2,70%" },
-    { country: "Zona Euro", date: "01/12/2018", trimestral_pib: "2.938.241 M€", trimestral_variable_pib: "0,70%", annual_variable_pib: "1,20%" },
-    { country: "Estados Unidos", date: "01/12/2018", trimestral_pib: "4.581.625 M€", trimestral_variable_pib: "0,10%", annual_variable_pib: "2,10%" },
-    { country: "Japón", date: "01/12/2018", trimestral_pib: "1.074.283 M€", trimestral_variable_pib: "-0,10%", annual_variable_pib: "-0,30%" },
-    { country: "China", date: "01/12/2018", trimestral_variable_pib: "1,30%", annual_variable_pib: "6,50%" },
-    { country: "Argentina", date: "01/12/2018", trimestral_pib: "99.846 M€", trimestral_variable_pib: "-1,60%", annual_variable_pib: "-6,40%" },
-    { country: "Austria", date: "01/12/2018", trimestral_pib: "98.065 M€", trimestral_variable_pib: "1,30%", annual_variable_pib: "2,60%" },
-    { country: "Australia", date: "01/12/2018", trimestral_pib: "303.808 M€", trimestral_variable_pib: "0,20%", annual_variable_pib: "2,50%" },
-    { country: "Bélgica", date: "01/12/2018", trimestral_pib: "117.271 M€", trimestral_variable_pib: "1,00%", annual_variable_pib: "2,20%" },
-    { country: "Bulgaria", date: "01/12/2018", trimestral_pib: "14.293 M€", trimestral_variable_pib: "0,90%", annual_variable_pib: "3,30%" },
-    { country: "Brasil", date: "01/12/2018", trimestral_pib: "411.393 M€", trimestral_variable_pib: "-0,40%", annual_variable_pib: "1,10%" },
-    { country: "Canadá", date: "01/12/2018", trimestral_pib: "371.308 M€", trimestral_variable_pib: "0,20%", annual_variable_pib: "2,70%" },
-    { country: "Suiza", date: "01/12/2018", trimestral_pib: "157.082 M€", trimestral_variable_pib: "0,20%", annual_variable_pib: "2,00%" },
-    { country: "Chile", date: "01/12/2018", trimestral_pib: "62.299 M€", trimestral_variable_pib: "1,20%", annual_variable_pib: "3,30%" },
-    { country: "Colombia", date: "01/12/2018", trimestral_pib: "69.771 M€", trimestral_variable_pib: "0,10%", annual_variable_pib: "2,80%" },
-    { country: "Costa Rica", date: "01/12/2018", trimestral_pib: "13.094 M€", trimestral_variable_pib: "-0,70%", annual_variable_pib: "0,40%" },
-    { country: "Chipre", date: "01/12/2018", trimestral_pib: "5.548 M€", trimestral_variable_pib: "2,30%", annual_variable_pib: "6,30%" },
-    { country: "Chequia", date: "01/12/2018", trimestral_pib: "53.419 M€", trimestral_variable_pib: "0,80%", annual_variable_pib: "2,60%" },
-    { country: "Dinamarca", date: "01/12/2018", trimestral_pib: "76.815 M€", trimestral_variable_pib: "0,50%", annual_variable_pib: "2,10%" },
-    { country: "Estonia", date: "01/12/2018", trimestral_pib: "6.722 M€", trimestral_variable_pib: "1,20%", annual_variable_pib: "3,60%" },
-    { country: "Finlandia", date: "01/12/2018", trimestral_pib: "58.941 M€", trimestral_variable_pib: "0%", annual_variable_pib: "0,10%" },
-    { country: "Grecia", date: "01/12/2018", trimestral_pib: "45.158 M€", trimestral_variable_pib: "0,70%", annual_variable_pib: "2,20%" },
-    { country: "Croacia", date: "01/12/2018", trimestral_pib: "13.408 M€", trimestral_variable_pib: "0,60%", annual_variable_pib: "3,10%" },
-    { country: "Hungría", date: "01/12/2018", trimestral_pib: "34.799 M€", trimestral_variable_pib: "1,00%", annual_variable_pib: "5,30%" }
+    { country: "España", date: "01/12/2018", trimestral_pib: "305.818 M€", trimestral_variable_pib: "0,70%", annual_variable_pib: "2,20%", year: 2018 },
+    { country: "Alemania", date: "01/12/2018", trimestral_pib: "854.124 M€", trimestral_variable_pib: "0,90%", annual_variable_pib: "0,10%", year: 2018 },
+    { country: "Reino Unido", date: "01/12/2018", trimestral_pib: "610.918 M€", trimestral_variable_pib: "0,20%", annual_variable_pib: "1,20%", year: 2018 },
+    { country: "Francia", date: "01/12/2018", trimestral_pib: "598.352 M€", trimestral_variable_pib: "0,50%", annual_variable_pib: "1,50%", year: 2018 },
+    { country: "Italia", date: "01/12/2018", trimestral_pib: "444.875 M€", trimestral_variable_pib: "0,30%", annual_variable_pib: "0,30%", year: 2018 },
+    { country: "Portugal", date: "01/12/2018", trimestral_pib: "51.989 M€", trimestral_variable_pib: "0,60%", annual_variable_pib: "2,70%", year: 2018 },
+    { country: "Zona Euro", date: "01/12/2018", trimestral_pib: "2.938.241 M€", trimestral_variable_pib: "0,70%", annual_variable_pib: "1,20%", year: 2018 },
+    { country: "Estados Unidos", date: "01/12/2018", trimestral_pib: "4.581.625 M€", trimestral_variable_pib: "0,10%", annual_variable_pib: "2,10%", year: 2018 },
+    { country: "Japón", date: "01/12/2018", trimestral_pib: "1.074.283 M€", trimestral_variable_pib: "-0,10%", annual_variable_pib: "-0,30%", year: 2018 },
+    { country: "China", date: "01/12/2018", trimestral_variable_pib: "1,30%", annual_variable_pib: "6,50%", year: 2018 },
+    { country: "Argentina", date: "01/12/2018", trimestral_pib: "99.846 M€", trimestral_variable_pib: "-1,60%", annual_variable_pib: "-6,40%", year: 2018 },
+    { country: "Austria", date: "01/12/2018", trimestral_pib: "98.065 M€", trimestral_variable_pib: "1,30%", annual_variable_pib: "2,60%", year: 2018 },
+    { country: "Australia", date: "01/12/2018", trimestral_pib: "303.808 M€", trimestral_variable_pib: "0,20%", annual_variable_pib: "2,50%", year: 2018 },
+    { country: "Bélgica", date: "01/12/2018", trimestral_pib: "117.271 M€", trimestral_variable_pib: "1,00%", annual_variable_pib: "2,20%", year: 2018 },
+    { country: "Bulgaria", date: "01/12/2018", trimestral_pib: "14.293 M€", trimestral_variable_pib: "0,90%", annual_variable_pib: "3,30%", year: 2018 },
+    { country: "Brasil", date: "01/12/2018", trimestral_pib: "411.393 M€", trimestral_variable_pib: "-0,40%", annual_variable_pib: "1,10%", year: 2018 },
+    { country: "Canadá", date: "01/12/2018", trimestral_pib: "371.308 M€", trimestral_variable_pib: "0,20%", annual_variable_pib: "2,70%", year: 2018 },
+    { country: "Suiza", date: "01/12/2018", trimestral_pib: "157.082 M€", trimestral_variable_pib: "0,20%", annual_variable_pib: "2,00%", year: 2018 },
+    { country: "Chile", date: "01/12/2018", trimestral_pib: "62.299 M€", trimestral_variable_pib: "1,20%", annual_variable_pib: "3,30%", year: 2018 },
+    { country: "Colombia", date: "01/12/2018", trimestral_pib: "69.771 M€", trimestral_variable_pib: "0,10%", annual_variable_pib: "2,80%", year: 2018 },
+    { country: "Costa Rica", date: "01/12/2018", trimestral_pib: "13.094 M€", trimestral_variable_pib: "-0,70%", annual_variable_pib: "0,40%", year: 2018 },
+    { country: "Chipre", date: "01/12/2018", trimestral_pib: "5.548 M€", trimestral_variable_pib: "2,30%", annual_variable_pib: "6,30%", year: 2018 },
+    { country: "Chequia", date: "01/12/2018", trimestral_pib: "53.419 M€", trimestral_variable_pib: "0,80%", annual_variable_pib: "2,60%", year: 2018 },
+    { country: "Dinamarca", date: "01/12/2018", trimestral_pib: "76.815 M€", trimestral_variable_pib: "0,50%", annual_variable_pib: "2,10%", year: 2018 },
+    { country: "Estonia", date: "01/12/2018", trimestral_pib: "6.722 M€", trimestral_variable_pib: "1,20%", annual_variable_pib: "3,60%", year: 2018 },
+    { country: "Finlandia", date: "01/12/2018", trimestral_pib: "58.941 M€", trimestral_variable_pib: "0%", annual_variable_pib: "0,10%", year: 2018 },
+    { country: "Grecia", date: "01/12/2018", trimestral_pib: "45.158 M€", trimestral_variable_pib: "0,70%", annual_variable_pib: "2,20%", year: 2018 },
+    { country: "Croacia", date: "01/12/2018", trimestral_pib: "13.408 M€", trimestral_variable_pib: "0,60%", annual_variable_pib: "3,10%", year: 2018 },
+    { country: "Hungría", date: "01/12/2018", trimestral_pib: "34.799 M€", trimestral_variable_pib: "1,00%", annual_variable_pib: "5,30%", year: 2018 }
 ];
 
 
@@ -180,33 +180,46 @@ function loadBackendALA_v2(app,db) {
 
     // GET => Buscar por host_location y year
     app.get(API_BASE_ALA + "/:year/:country", (req, res) => {
-      const { year, country } = req.params;
-      // Verificar si el año tiene un formato válido (cuatro dígitos)
-      if (!(/^\d{4}$/.test(year))) {
-      return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
-      };
-      // Parsear el año de la consulta a entero
-      const yearInt = parseInt(year);
-      // Crear una expresión regular para buscar en el campo date
-      const regex = new RegExp(`^\\d{2}/\\d{2}/${yearInt}$`);
-      db.find({ country: country, date: { $regex: regex } }, (err, listings) => {
-          if (err) {
-              res.sendStatus(500, "INTERNAL ERROR");
-          } else {
-              if (listings.length === 0) {
-                  res.sendStatus(404, "RESOURCE NOT FOUND");
-              } else {
-                  res.status(200).send(JSON.stringify(listings.map((listing => { delete listing._id; return listing; }))));
-              }
-          }
-      });
+        const { year, country } = req.params;
+        
+        // Verificar si el año tiene un formato válido (cuatro dígitos)
+        if (!(/^\d{4}$/.test(year))) {
+            return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
+        }
+
+        // Convertir el año a entero
+        const yearInt = parseInt(year);
+
+        // Realizar la búsqueda en la base de datos
+        db.find({ year: yearInt, country: country }, (err, listings) => {
+            if (err) {
+                return res.status(500).send("INTERNAL ERROR");
+            } else {
+                if (listings.length === 0) {
+                    return res.status(404).send("NOT FOUND");
+                } else {
+                    // Eliminar el campo _id de los resultados
+                    const responseBody = listings.map((listing) => {
+                        delete listing._id;
+                        return listing;
+                    });
+                    // Devolver un array si es una colección
+                    if (responseBody.length > 1) {
+                        return res.status(200).send(responseBody);
+                    } else {
+                        // Devolver un objeto si es un recurso concreto
+                        return res.status(200).send(responseBody[0]);
+                    }
+                }
+            }
+        });
     }),
 
   // POST => Create a new listing
   app.post(API_BASE_ALA + "/", (req, res) => {
 
     const newData =  req.body;
-    const expectedFields = ["country", "date", "trimestral_pib", "trimestral_variable_pib", "annual_variable_pib"];
+    const expectedFields = ["country", "date", "trimestral_pib", "trimestral_variable_pib", "annual_variable_pib", "year"];
     const receivedFields = Object.keys(newData);
     const isValidData = expectedFields.every(field => receivedFields.includes(field));
 
@@ -214,7 +227,7 @@ function loadBackendALA_v2(app,db) {
         res.sendStatus(400, "Bad Request"); // Datos inválidos
     } else {
         // Verificar si ya existe un documento con el mismo cci en la base de datos
-        db.findOne({ country: newData.country, trimestral_pib: newData.trimestral_pib, trimestral_variable_pib: newData.trimestral_variable_pib }, (err, existingData) => {
+        db.findOne({ country: newData.country, trimestral_pib: newData.trimestral_pib, trimestral_variable_pib: newData.trimestral_variable_pib, year: newData.year }, (err, existingData) => {
             if (err) {
                 res.sendStatus(500, "Internal Error"); // Error interno del servidor
             } else {
@@ -259,32 +272,26 @@ function loadBackendALA_v2(app,db) {
   }),
       // PUT => Update resource by latitude and longitude
      
-    app.put(API_BASE_ALA + "/:year/:country", (req, res) => {
-        const { year, country } = req.params;
-        const data = req.body;
-    
+      app.put(API_BASE_ALA + "/:year/:country", (req, res) => {
+        const year = parseInt(req.params.year);
+        const country = req.params.country;
+        let data = req.body;
+
         // Verificar si el año tiene un formato válido (cuatro dígitos)
         if (!(/^\d{4}$/.test(year))) {
             return res.status(400).send("Bad Request. Please provide a valid year in YYYY format.");
         }
-    
-        // Verificar si los datos proporcionados son válidos
-        if (!data || Object.keys(data).length === 0 || data.country !== country || data.date.substring(6) !== year) {
-            return res.status(400).send("Bad Request. Invalid data.");
-        }
-    
-        // Actualizar la base de datos
-        db.update({ country: country, date: data.date }, data, {}, (err, numAffected) => {
-            if (err) {
-                res.sendStatus(500, "Internal Server Error");
-            } else {
-                if (numAffected === 0) {
-                    res.sendStatus(404, "RESOURCE NOT FOUND");
-                } else {
-                    res.sendStatus(200, "Ok");
+
+        if (!data || Object.keys(data).length === 0 || data.year !== year || data.country !== country) {
+            res.sendStatus(400, "BAD REQUEST"); // Invalid data
+        } else {
+            db.update({ year: year, country: country }, data, { }, (err) => {
+                if (err) {
+                    res.sendStatus(500, "Internal Server Error"); 
                 }
-            }
-        });
+                res.sendStatus(200, "Ok"); 
+            });
+        }
     }),
     
     
