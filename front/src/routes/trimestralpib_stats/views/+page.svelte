@@ -180,8 +180,8 @@
                 color: 'rgba(223, 83, 255, .5)',
                 data: data.map(item => ({
                     name: item.country,
-                    x: parseInt(item.trimestral_pib),
-                    y: parseInt(item.trimestral_variable_pib)
+                    x: parseFloat(item.trimestral_pib),
+                    y: parseFloat(item.trimestral_variable_pib.replace(',', '.'))
                 }))
             }]
         });
