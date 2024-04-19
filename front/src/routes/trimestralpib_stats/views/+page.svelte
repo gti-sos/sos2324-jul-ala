@@ -31,6 +31,7 @@
         }
     }
 
+    
     // Función asíncrona para cargar datos desde el servidor
     async function loadData() {
 
