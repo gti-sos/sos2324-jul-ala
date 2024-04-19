@@ -24,6 +24,7 @@
             if (data.length > 0) {
                 dataAvailable = true; 
                 createFirstGraph(data);
+                createSecondGraph(data);
             }
 
         } catch (error) {
@@ -109,6 +110,83 @@
     });
     }
 
+    // Crear un gráfico de dispersión utilizando Highcharts
+    function createSecondGraph(data) {
+
+        const scatterChart = Highcharts.chart('dispersion-container', {
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Relación entre "Pib trimestral" y "Pib trimestral variable" por país'
+            },
+            xAxis: {
+            title: {
+                enabled: true,
+                text: 'Pib trimestral',
+                style: {
+                    color: '#FF6347'  
+                }
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
+        },
+        yAxis: {
+            title: {
+                text: 'Pib trimestral variable',
+                style: {
+                    color: '#4682B4'  
+                }
+            }
+        },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 100,
+                y: 70,
+                floating: true,
+                backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+                borderWidth: 1
+            },
+            plotOptions: {
+                scatter: {
+                    marker: {
+                        radius: 5,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '<span style="color:{series.color}">{point.name}</span>: <b style="color:#FF6347">{point.x}</b> Pib trimestral, <b style="color:#4682B4">{point.y}</b> Pib trimestral variable'
+                    }
+                }
+            },
+            series: [{
+                name: 'Países',
+                color: 'rgba(223, 83, 255, .5)',
+                data: data.map(item => ({
+                    name: item.country,
+                    x: parseInt(item.trimestral_pib),
+                    y: parseInt(item.trimestral_variable_pib)
+                }))
+            }]
+        });
+    }
+
     onMount(() => {
         getData();
     });
@@ -163,3 +241,4 @@
 
 <div id="pastel-container"></div>
 <br>
+<div id="dispersion-container"></div>
