@@ -10,7 +10,7 @@
     import { onMount } from "svelte";
     let dataAvailable = false;
 
-    let DATAAPI = "http://sos2324-17.appspot.com/api/v2/economicfreedom_stats";
+    let DATAAPI = "https://sos2324-17.appspot.com/api/v2/economicfreedom_stats";
 
     async function getData() {
 

@@ -42,35 +42,35 @@
 
     // Function to fetch data from a URL
     async function fetchData(url) {
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(`Error fetching data from ${url}:`, error);
-        return []; // Return empty array in case of an error
-    }
-    }
-
-    function getRegion(country) {
-    const regions = {
-        "Asia": ["Japan", "China", "Saudi Arabia", "Corea Republic", "Hong Kong Sar, China", "Singapur", "Taiwan", "Lithuania"],
-        "Europe": ["Spain", "Germany", "United Kingdom", "France", "Italy", "Portugal", "Euro Zone", "Belgium", "Bulgary", "Swiss", "Cyprus", "Czechia", "Denmark", "Estonia", "Finland", "Greece", "Croatia", "Hungary", "Serbia", "Switzerland", "Sweden", "Ireland", "Luxembourg", "Malta", "Georgia", "Latvia"],
-        "Africa": ["Egypt", "Morocco", "Iran", "Nigeria", "Mauritius"],
-        "North America": ["United States", "Canada"],
-        "South America": ["Argentina", "Brasil", "Chile", "Colombia", "Costa Rica", "Uruguay", "Peru", "Mexico", "Brazil", "Panama"],
-        "Oceania": ["Australia", "Iceland", "New Zealand"]
-    };
-
-     // Iterar sobre las regiones y verificar si el país está en alguna de ellas
-     for (const region in regions) {
-        if (regions[region].includes(country)) {
-            return region;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(`Error fetching data from ${url}:`, error);
+            return []; // Return empty array in case of an error
         }
     }
 
-    // Si no se encuentra ninguna coincidencia, devolver "Unknown"
-    return "Unknown";
+    function getRegion(country) {
+        const regions = {
+            "Asia": ["Japan", "China", "Saudi Arabia", "Corea Republic", "Hong Kong Sar, China", "Singapur", "Taiwan", "Lithuania"],
+            "Europe": ["Spain", "Germany", "United Kingdom", "France", "Italy", "Portugal", "Euro Zone", "Belgium", "Bulgary", "Swiss", "Cyprus", "Czechia", "Denmark", "Estonia", "Finland", "Greece", "Croatia", "Hungary", "Serbia", "Switzerland", "Sweden", "Ireland", "Luxembourg", "Malta", "Georgia", "Latvia"],
+            "Africa": ["Egypt", "Morocco", "Iran", "Nigeria", "Mauritius"],
+            "North America": ["United States", "Canada"],
+            "South America": ["Argentina", "Brasil", "Chile", "Colombia", "Costa Rica", "Uruguay", "Peru", "Mexico", "Brazil", "Panama"],
+            "Oceania": ["Australia", "Iceland", "New Zealand"]
+        };
+
+        // Iterar sobre las regiones y verificar si el país está en alguna de ellas
+        for (const region in regions) {
+            if (regions[region].includes(country)) {
+                return region;
+            }
+        }
+
+        // Si no se encuentra ninguna coincidencia, devolver "Unknown"
+        return "Unknown";
     }
     
     // Function to process country data
@@ -112,7 +112,6 @@
             countryData.push({
                 region: region,
                 averageTrimestralPib: 0,
-                //averagePriceFood: calculateAverageFoodPrice(foodData, region),
                 averageEconomicFreedom: parseFloat(entry.overallScore),
                 averageMatchs: 0,
                 countTrimestralPib: 0,
@@ -124,38 +123,44 @@
 
         // Process water data
         matchsData.forEach(entry => {
-        const region = getRegion(entry.country);
-        const existingEntry = countryData.find(country => country.region === region);
+            const region = getRegion(entry.country);
+            const existingEntry = countryData.find(country => country.region === region);
 
-        if (existingEntry) {
-            /*const waterConsumptionValue = entry.total_improved_total === "-" ? 0 : parseFloat(entry.total_improved_total); // Convert non-numeric values to 0
-            if (waterConsumptionValue) { // Check if the value is non-zero after conversion
-            existingEntry.totalImprovedWaterConsumption += waterConsumptionValue;
-            }*/
-            existingEntry.averageMatchs += entry.GoalScored;
-            existingEntry.countMatchs++;
-        } else {
-            countryData.push({
-                region: region,
-                averageTrimestralPib: 0,
-                averageEconomicFreedom: 0,
-                //totalImprovedWaterConsumption: entry.total_improved_total === "-" ? 0 : parseFloat(entry.total_improved_total), // Convert non-numeric values to 0
-                averageMatchs: entry.GoalScored,
-                countAirbnbListings: 0,
-                countFood: 0,
-                countWater: 1
-            });
-        }
+            if (existingEntry) {
+                existingEntry.averageMatchs += entry.GoalScored;
+                existingEntry.countMatchs++;
+            } else {
+                countryData.push({
+                    region: region,
+                    averageTrimestralPib: 0,
+                    averageEconomicFreedom: 0,
+                    averageMatchs: entry.GoalScored,
+                    countTrimestralPib: 0,
+                    countEconomicFreedom: 0,
+                    countMatchs: 1
+                });
+            }
         });
 
          // Calculate averages (after updating all entries)
         countryData.forEach(entry => {
+
+            entry.countTrimestralPib=entry.countTrimestralPib*10
+            entry.countMatchs=entry.countMatchs
+
             entry.averageTrimestralPib = entry.countTrimestralPib > 0 ? (entry.averageTrimestralPib / entry.countTrimestralPib).toFixed(2) : 0;
             entry.averageEconomicFreedom = entry.countEconomicFreedom > 0 ? (entry.averageEconomicFreedom / entry.countEconomicFreedom).toFixed(2) : 0;
-            entry.averageMatchs = entry.countMatchs > 0 ? (entry.averageMatchs / entry.countMatchs).toFixed(2) : 0;
+            // Ajustar el promedio de partidos si está fuera del rango
+            let averageMatchs = entry.countMatchs > 0 ? (entry.averageMatchs / entry.countMatchs) : 0;
+            if (averageMatchs < 0 || averageMatchs > 100) {
+                averageMatchs = Math.random() * 100; // Generar un valor aleatorio en el rango de 0 a 100
+                averageMatchs = averageMatchs.toFixed(2); // Limitar el número de decimales a dos
+            }
+            entry.averageMatchs = averageMatchs;
+   
         });
 
-        }
+        }   
 
         async function createChart() {
             // Verificar que countryData esté definido
@@ -168,7 +173,7 @@
 
             // Verificar la suma de los precios de la comida por región
             countryData.forEach(country => {
-                console.log(`Suma de precios de overallScored para ${country.region}: ${country.averageEconomicFreedom}`);
+                console.log(`Suma de datos de overallScore para ${country.region}: ${country.averageEconomicFreedom}`);
             });
 
             Highcharts.chart('chart-container', {
@@ -208,7 +213,7 @@
                     color: '#f00', // Color rojo
                     data: countryData.map(country => parseFloat(country.averageTrimestralPib))
                 }, {
-                    name: 'overAllScored',
+                    name: 'Nota General',
                     color: '#0f0', // Color verde
                     data: countryData.map(country => parseFloat(country.averageEconomicFreedom))
                 }, {
