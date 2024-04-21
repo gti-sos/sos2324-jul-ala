@@ -1,26 +1,26 @@
 const API_BASE_AAF = "/api/v2/economicfreedom_stats";
 
 let initialData = [
-    { country: "Hong Kong SAR, China", year: 2017, overallScore: 9.07, sizeOfGovernment: 8.57, legalSystemsAndPropertyRight: 8.16, soundMoney: 9.63, freedomToTradeInternationally: 9.60, regulation: 9.40 },
-    { country: "Singapore", year: 2016, overallScore: 8.82, sizeOfGovernment: 7.52, legalSystemsAndPropertyRight: 8.36, soundMoney: 9.85, freedomToTradeInternationally: 9.55, regulation: 8.79 },
+    { country: "Hong Kong SAR, China", year: 2017, overallScore: 9.07, sizeOfGovernment: 9.57, legalSystemsAndPropertyRight: 8.16, soundMoney: 9.63, freedomToTradeInternationally: 9.60, regulation: 9.40 },
+    { country: "Singapore", year: 2016, overallScore: 8.82, sizeOfGovernment: 7.52, legalSystemsAndPropertyRight: 8.36, soundMoney: 9.85, freedomToTradeInternationally: 9.55, regulation: 7.79 },
     { country: "New Zealand", year: 2011, overallScore: 8.72, sizeOfGovernment: 6.64, legalSystemsAndPropertyRight: 9.17, soundMoney: 9.53, freedomToTradeInternationally: 8.95, regulation: 9.32 },
-    { country: "Switzerland", year: 2015, overallScore: 8.57, sizeOfGovernment: 7.72, legalSystemsAndPropertyRight: 8.94, soundMoney: 9.88, freedomToTradeInternationally: 8.08, regulation: 8.23 },
-    { country: "United States", year: 2011, overallScore: 8.46, sizeOfGovernment: 7.36, legalSystemsAndPropertyRight: 8.01, soundMoney: 9.77, freedomToTradeInternationally: 8.19, regulation: 8.98 },
+    { country: "Switzerland", year: 2015, overallScore: 8.57, sizeOfGovernment: 7.72, legalSystemsAndPropertyRight: 8.94, soundMoney: 9.88, freedomToTradeInternationally: 8.08, regulation: 4.23 },
+    { country: "United States", year: 2011, overallScore: 8.46, sizeOfGovernment: 7.36, legalSystemsAndPropertyRight: 8.01, soundMoney: 9.77, freedomToTradeInternationally: 8.19, regulation: 2.98 },
     { country: "Australia", year: 2001, overallScore: 8.29, sizeOfGovernment: 6.77, legalSystemsAndPropertyRight: 8.56, soundMoney: 9.58, freedomToTradeInternationally: 8.11, regulation: 8.41 },
-    { country: "United Kingdom", year: 2002, overallScore: 8.28, sizeOfGovernment: 6.56, legalSystemsAndPropertyRight: 8.23, soundMoney: 9.68, freedomToTradeInternationally: 8.64, regulation: 8.28 },
+    { country: "United Kingdom", year: 2002, overallScore: 8.28, sizeOfGovernment: 6.56, legalSystemsAndPropertyRight: 8.23, soundMoney: 9.68, freedomToTradeInternationally: 8.64, regulation: 6.28 },
     { country: "Denmark", year: 2017, overallScore: 8.22, sizeOfGovernment: 5.14, legalSystemsAndPropertyRight: 8.97, soundMoney: 9.68, freedomToTradeInternationally: 8.86, regulation: 8.43 },
-    { country: "Canada", year: 2017, overallScore: 8.22, sizeOfGovernment: 6.66, legalSystemsAndPropertyRight: 8.38, soundMoney: 9.57, freedomToTradeInternationally: 8.12, regulation: 8.37 },
+    { country: "Canada", year: 2017, overallScore: 8.22, sizeOfGovernment: 6.66, legalSystemsAndPropertyRight: 8.38, soundMoney: 9.57, freedomToTradeInternationally: 8.12, regulation: 5.37 },
     { country: "Ireland", year: 2019, overallScore: 8.18, sizeOfGovernment: 6.44, legalSystemsAndPropertyRight: 7.90, soundMoney: 9.28, freedomToTradeInternationally: 8.92, regulation: 8.33 },
-    { country: "Estonia", year: 2010, overallScore: 8.11, sizeOfGovernment: 6.40, legalSystemsAndPropertyRight: 7.84, soundMoney: 9.08, freedomToTradeInternationally: 8.93, regulation: 8.31 },
-    { country: "Luxembourg", year: 2010, overallScore: 8.11, sizeOfGovernment: 5.76, legalSystemsAndPropertyRight: 8.61, soundMoney: 9.17, freedomToTradeInternationally: 8.86, regulation: 8.14 },
+    { country: "Estonia", year: 2010, overallScore: 8.11, sizeOfGovernment: 6.40, legalSystemsAndPropertyRight: 7.84, soundMoney: 9.08, freedomToTradeInternationally: 8.93, regulation: 2.31 },
+    { country: "Luxembourg", year: 2010, overallScore: 8.11, sizeOfGovernment: 5.76, legalSystemsAndPropertyRight: 8.61, soundMoney: 9.17, freedomToTradeInternationally: 8.86, regulation: 6.14 },
     { country: "Chile", year: 2014, overallScore: 8.11, sizeOfGovernment: 8.06, legalSystemsAndPropertyRight: 6.94, soundMoney: 9.66, freedomToTradeInternationally: 8.66, regulation: 7.26 },
     { country: "Iceland", year: 2008, overallScore: 8.07, sizeOfGovernment: 6.20, legalSystemsAndPropertyRight: 8.72, soundMoney: 9.65, freedomToTradeInternationally: 7.98, regulation: 7.82 },
-    { country: "Taiwan", year: 2017, overallScore: 8.07, sizeOfGovernment: 7.52, legalSystemsAndPropertyRight: 7.19, soundMoney: 9.75, freedomToTradeInternationally: 8.15, regulation: 7.74 },
-    { country: "Lithuania", year: 2011, overallScore: 8.06, sizeOfGovernment: 7.38, legalSystemsAndPropertyRight: 7.29, soundMoney: 9.02, freedomToTradeInternationally: 8.67, regulation: 7.96 },
+    { country: "Taiwan", year: 2017, overallScore: 8.07, sizeOfGovernment: 7.52, legalSystemsAndPropertyRight: 7.19, soundMoney: 9.75, freedomToTradeInternationally: 8.15, regulation: 6.74 },
+    { country: "Lithuania", year: 2011, overallScore: 8.06, sizeOfGovernment: 7.38, legalSystemsAndPropertyRight: 7.29, soundMoney: 9.02, freedomToTradeInternationally: 8.67, regulation: 5.96 },
     { country: "Mauritius", year: 2017, overallScore: 8.05, sizeOfGovernment: 7.92, legalSystemsAndPropertyRight: 6.93, soundMoney: 9.51, freedomToTradeInternationally: 8.75, regulation: 7.15 },
-    { country: "Malta", year: 2013, overallScore: 8.04, sizeOfGovernment: 7.05, legalSystemsAndPropertyRight: 6.75, soundMoney: 9.36, freedomToTradeInternationally: 8.93, regulation: 8.11 },
+    { country: "Malta", year: 2013, overallScore: 8.04, sizeOfGovernment: 7.05, legalSystemsAndPropertyRight: 6.75, soundMoney: 9.36, freedomToTradeInternationally: 8.93, regulation: 5.11 },
     { country: "Germany", year: 2013, overallScore: 8.04, sizeOfGovernment: 6.07, legalSystemsAndPropertyRight: 8.20, soundMoney: 9.26, freedomToTradeInternationally: 8.65, regulation: 8.03 },
-    { country: "Georgia", year: 2017, overallScore: 8.00, sizeOfGovernment: 7.97, legalSystemsAndPropertyRight: 6.21, soundMoney: 8.92, freedomToTradeInternationally: 8.77, regulation: 8.11 },
+    { country: "Georgia", year: 2017, overallScore: 8.00, sizeOfGovernment: 7.97, legalSystemsAndPropertyRight: 6.21, soundMoney: 8.92, freedomToTradeInternationally: 8.77, regulation: 9.11 },
     { country: "Latvia", year: 2012, overallScore: 8.00, sizeOfGovernment: 7.16, legalSystemsAndPropertyRight: 6.99, soundMoney: 9.90, freedomToTradeInternationally: 8.75, regulation: 8.00 }
 ];
 
