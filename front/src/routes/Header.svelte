@@ -74,6 +74,7 @@
             </DropdownToggle>
             <DropdownMenu>
                 <DropdownItem class="menu-item" href = "/trimestralpib_stats/views">trimestralpib_stats</DropdownItem>
+                <DropdownItem class="menu-item" href = "/economicfreedom_stats/views">economicfreedom_stats</DropdownItem>
             </DropdownMenu>
         </Dropdown>
         <Dropdown nav autoClose={true}>

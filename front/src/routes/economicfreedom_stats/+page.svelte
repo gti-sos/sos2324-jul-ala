@@ -87,30 +87,7 @@ onMount(async () => {
         success2_msg = "";
     }, 10000);
 });
-/*
-async function getListings() {
-    let response = await fetch(`${API}?limit=${pageSize}&offset=${pagination*10}`, {
-            method: "GET"
-        });
-    const status = await response.status;
-    if (status == 200){
-        let data = await response.json();
-        listings = data;
-        totalItems = data.length;
-        success_msg = "Mostrando datos";
-        error_msg = "";
-        window.scrollTo(0, 0);
-    } else if (status == 404) {
-        error_msg = "No hay datos cargados en la base de datos o ya no hay más datos"
-        success_msg = "";
-        window.scrollTo(0, 0);
-    } else if (status == 500) {
-        error_msg = "Ha ocurrido un error en el servidor";
-        success_msg = "";
-        window.scrollTo(0, 0);
-    }
-};
-*/
+
 async function getListings() {
     try {
         // Construye la URL de búsqueda con los parámetros de paginación
