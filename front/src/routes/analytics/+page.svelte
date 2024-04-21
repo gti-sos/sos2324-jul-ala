@@ -72,7 +72,6 @@
     // Si no se encuentra ninguna coincidencia, devolver "Unknown"
     return "Unknown";
     }
-
     
     // Function to process country data
     async function processCountryData() {
