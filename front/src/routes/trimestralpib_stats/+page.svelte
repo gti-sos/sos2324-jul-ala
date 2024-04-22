@@ -232,7 +232,7 @@
     }
 }
 
-    
+
     async function createListing(){
         if (!newListing.country || !newListing.year || !newListing.date || 
         !newListing.trimestral_pib || !newListing.trimestral_variable_pib || !newListing.annual_variable_pib ) {

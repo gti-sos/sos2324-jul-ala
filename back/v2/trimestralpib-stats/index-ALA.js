@@ -127,6 +127,8 @@ function loadBackendALA_v2(app,db) {
           res.status(200).send(responseBody);
       }
   });
+
+
   
     // GET => loadInitialData (al hacer un GET cree 10 o más datos en el array de NodeJS si está vacío)
     app.get(API_BASE_ALA+"/loadInitialData",(req,res) => {

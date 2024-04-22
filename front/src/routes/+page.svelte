@@ -215,6 +215,14 @@
                                 <Col sm="12" md="4">
                                     <Card class="api-wrapper">
                                         <CardBody>
+                                            <Button color="warning" href="https://sos2324-17.appspot.com/analytics">Gráfica grupal</Button>
+                                            <CardText><hr></CardText>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
                                             <Button color="warning" href="https://sos2324-17.appspot.com/trimestralpib_stats/views">trimestralpib_stats</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
