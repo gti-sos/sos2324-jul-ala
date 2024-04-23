@@ -198,7 +198,7 @@
             <br>
             <hr>
             <Row class="text-center">
-                <Button color="success" on:click={() => { window.location.href = `/manofthematch/`}}><Fa icon={faLongArrowLeft}/> Volver</Button>
+                <Button color="primary" on:click={() => { window.location.href = `/manofthematch/`}}><Fa icon={faLongArrowLeft}/> Volver</Button>
             </Row>
             <br>
             <hr>

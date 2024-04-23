@@ -336,13 +336,13 @@
     <Container class="text-center">
         <Row>
             <Col cols={{ xs:4 }}>
-                <Button color="warning" on:click="{getInitialListings}">Cargar Datos Iniciales</Button>
+                <Button color="primary" on:click="{getInitialListings}">Cargar Datos Iniciales</Button>
             </Col>
             <Col cols={{ xs:4 }}>
-                <Button color="success" on:click={() => {showForm = true;}}>Crear Nuevo Dato</Button>
+                <Button color="primary" on:click={() => {showForm = true;}}>Crear Nuevo Dato</Button>
             </Col>
             <Col cols={{ xs:4 }}>
-                <Button color="danger" id = "deleteAllButton" on:click="{deleteAll}">Borrar Todos los Datos</Button>
+                <Button color="primary" id = "deleteAllButton" on:click="{deleteAll}">Borrar Todos los Datos</Button>
             </Col>
             <Col>
                 <Button color="primary" on:click={() => {showFilter = true;}}>Filtro por campos</Button>
@@ -474,7 +474,7 @@
             </ModalBody>
             <ModalFooter>
               <Button color="primary" on:click={searchListings}>Aplicar filtros</Button>
-              <Button color="secondary" on:click={toggle}>Cerrar</Button>
+              <Button color="primary" on:click={toggle}>Cerrar</Button>
             </ModalFooter>
             <Container>
                 {#if error_msg != ""}
@@ -517,8 +517,8 @@
                                 <strong>Tiros bloqueados:</strong> {listing.Blocked} <br>
                                 <strong>Corners:</strong> {listing.Corners} <br>
                             </CardText>
-                            <Button color="danger" id ="deleteResourceButton" on:click={() => deleteListing(listing.country)}>Borrar</Button>
-                            <Button color="warning" on:click={() => { window.location.href = `manofthematch/${listing.year}/${listing.country}` }}>
+                            <Button color="primary" id ="deleteResourceButton" on:click={() => deleteListing(listing.country)}>Borrar</Button>
+                            <Button color="primary" on:click={() => { window.location.href = `manofthematch/${listing.year}/${listing.country}` }}>
                                 Editar
                             </Button>
                         </CardBody>
@@ -681,7 +681,7 @@
                 </Container>
             </ModalBody>
             <ModalFooter>
-                <Button color="success" on:click={createListing}>Crear</Button>
+                <Button color="primary" on:click={createListing}>Crear</Button>
             </ModalFooter>
             <Container>
                 {#if error_msg != ""}
@@ -715,10 +715,10 @@
     <Container class="text-center">
         <Row>
             <Col cols={{ xs:6 }}>
-                <Button color="info" on:click={prevPage}>Página anterior</Button>
+                <Button color="primary" on:click={prevPage}>Página anterior</Button>
             </Col>
             <Col cols={{ xs:6 }}>
-                <Button color="info" on:click={nextPage}>Página siguiente</Button>
+                <Button color="primary" on:click={nextPage}>Página siguiente</Button>
             </Col>
         </Row>
     </Container>
