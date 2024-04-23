@@ -232,6 +232,15 @@
                                 <Col sm="12" md="4">
                                     <Card class="api-wrapper">
                                         <CardBody>
+                                            <Button color="warning" href="https://sos2324-17.appspot.com/manofthematch/views">manofthematch</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumi Moreno</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
                                             <Button color="warning" href="https://sos2324-17.appspot.com/economicfreedom_stats/views">economicfreedom_stats</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
