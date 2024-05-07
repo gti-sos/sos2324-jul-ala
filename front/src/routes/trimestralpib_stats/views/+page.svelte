@@ -5,6 +5,8 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+    <script src="https://fastly.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+
 </svelte:head>
 
 <script>
@@ -12,7 +14,15 @@
     import { onMount } from "svelte";
     let dataAvailable = false;
 
+    //Importamos biblioteca gráfica ECHARTS
+    import * as echarts from 'echarts';
+    //import worldJSON from '../views/world.json';
+
     let DATAAPI = "https://sos2324-17.appspot.com/api/v2/trimestralpib_stats";
+
+    let myChart;
+    var app = {};
+    var option;
 
     async function getData() {
 
@@ -25,6 +35,8 @@
                 dataAvailable = true; 
                 createFirstGraph(data);
                 createSecondGraph(data);
+                getGraph3(data);
+
             }
 
         } catch (error) {
@@ -187,8 +199,120 @@
         });
     }
 
+    async function getGraph3(data) {
+        // Filtramos los datos de España entre 2011 y 2014
+        const dataSpaFiltered = data.filter(
+            (item) =>
+                item.country === "Spain" &&
+                item.year>=2018,
+                
+        );
+
+        const dataFraFiltered = data.filter(
+            (item) =>
+                item.country === "France" &&
+                item.year>=2018,
+                
+        );
+        // Función para obtener el valor numérico del PIB trimestral o devolver 0 si no está definido o no es un número
+        const getNumericValue = (item) => {
+                const pibNumerico = parseFloat(item.trimestral_pib.replace(' M€', ''));
+                return isNaN(pibNumerico) ? 0 : pibNumerico;
+            };
+        
+        // Filtramos los datos de Kiribati entre 2011 y 2014
+        const dataKirFiltered = data.filter(
+            (item) =>
+                item.country === "Germany" &&
+                item.year>=2018,
+        );
+        // Obtenemos los valores de wri para España
+        const datosSpain = dataSpaFiltered.map((item) => ({
+            year: item.year,
+            value: getNumericValue(item) || 0,
+        }));
+
+
+        const datosFrance = dataFraFiltered.map((item) => ({
+            year: item.year,
+            value: getNumericValue(item) || 0,
+        }));
+        // Obtenemos los valores de wri para Kiribati
+        const datosKiribati = dataKirFiltered.map((item) => ({
+            year: item.year,
+            value: getNumericValue(item) || 0,
+        }));
+        // Configuración de la gráfica
+        const option = {
+            tooltip: {
+                trigger: "axis",
+                axisPointer: {
+                    type: "shadow",
+                },
+            },
+            legend: {
+                data: ["Spain", "Germany", "France"],
+            },
+            toolbox: {
+                show: true,
+                orient: "vertical",
+                left: "right",
+                top: "center",
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ["line", "bar", "stack"] },
+                    restore: { show: true },
+                    saveAsImage: { show: true },
+                },
+            },
+            xAxis: [
+                {
+                    type: "category",
+                    axisTick: { show: false },
+                    data: datosSpain.map((item) => item.year),
+                },
+            ],
+            yAxis: [
+                {
+                    type: "value",
+                },
+            ],
+            series: [
+                {
+                    name: "Spain",
+                    type: "bar",
+                    barGap: 0,
+                    data: datosSpain.map((item) => item.value),
+                },
+                {
+                    name: "Germany",
+                    type: "bar",
+                    data: datosKiribati.map((item) => item.value),
+                },
+                {
+                    name: "France",
+                    type: "bar",
+                    data: datosFrance.map((item) => item.value),
+                },
+            ],
+        };
+        // Si la opción es un objeto, asignamos la configuración a la gráfica
+        if (option && typeof option === "object") {
+            myChart.setOption(option);
+        }
+        // Hacemos que la gráfica se redimensione cuando se cambia el tamaño de la ventana
+        window.addEventListener("resize", myChart.resize);
+    }
+
     onMount(() => {
         getData();
+        
+        var dom = document.getElementById("chart-container");
+        myChart = echarts.init(dom, null, {
+            renderer: "canvas",
+            useDirtyRect: false,
+        });
     });
 
 </script>
@@ -232,6 +356,27 @@
         background-color: #d64fb7;
     }
 
+    #tituloCent {
+        background-color: white;
+        text-align: center;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #chart-container {
+        position: relative;
+        height: 400px;
+        width: 800px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        background-color: white;
+    }
+
+
 </style>
 
 {#if dataAvailable==false}
@@ -242,3 +387,9 @@
 <div id="pastel-container"></div>
 <br>
 <div id="dispersion-container"></div>
+<br>
+<h3 id="tituloCent">
+    Comparación del PIB entre España, Alemania y Francia
+</h3>
+<br>
+<div id="chart-container"></div>
