@@ -316,7 +316,7 @@
     <Container class="content-container" style="justify-content: center;"> 
         <!--______________________________________Cabecera_____________________________________-->
         <Container style="justify-content: center; text-align: center;">
-                <h1> Datos sobre los partidos del mundial 2018</h1>
+                <h1> Datos sobre PIB mundial</h1>
         </Container>
     
         <br/>
