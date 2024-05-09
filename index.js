@@ -11,6 +11,7 @@ import {loadBackendARM_v2} from "./back/v2/manofthematch/index-ARM.js";
 
 import {handler} from "./front/build/handler.js";
 import cors from "cors";
+import request from "request";
 
 let db_ARM = new dataStore();
 let db_ALA = new dataStore();
@@ -24,6 +25,17 @@ let db_ARM_v2 = new dataStore();
 let app = express();
 
 app.use(cors());
+
+// Proxy Adri
+var paths = "/proxyAdri";
+var apiServerHost = "https://restcountries.com/v3.1/all";
+
+app.use(paths, function(req,res){
+    var url = apiServerHost + req.url;
+    req.pipe(request(url)).pipe(res);
+});
+
+
 
 app.use(bodyParser.json());
 
