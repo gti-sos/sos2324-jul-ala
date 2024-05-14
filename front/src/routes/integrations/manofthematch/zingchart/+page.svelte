@@ -55,6 +55,7 @@
                 hoverState: {
                     visible: false
                 }
+                
             },
             plotarea: {
                 margin: '60px 20px 20px 140px'
