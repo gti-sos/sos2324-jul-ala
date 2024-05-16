@@ -34,6 +34,27 @@ app.use(paths, function(req,res){
     var url = apiServerHost + req.url;
     req.pipe(request(url)).pipe(res);
 });
+//proxy arm
+
+app.use("/proxyARM", function (req, res) {
+    const url = 'https://api.api-ninjas.com/v1/holidays?country=AU&year=2018';
+    const options = {
+        url: url,
+        headers: {
+            "X-Api-Key": "Qr5V7x10UceVt+16gV6VWQ==Sducj1ZGameniOdvf"
+        }
+    };
+    request(options, (error, response, body) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send(error);
+        } else {
+            console.log(response.statusCode);
+            console.log(body);
+            res.send(body);
+        }
+    });
+});
 
 
 
