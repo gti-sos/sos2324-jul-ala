@@ -1,4 +1,5 @@
 const API_BASE_AAF = "/api/v2/economicfreedom_stats";
+import request from 'request';
 
 let initialData = [
     { country: "Hong Kong SAR, China", year: 2017, overallScore: 9.07, sizeOfGovernment: 9.57, legalSystemsAndPropertyRight: 8.16, soundMoney: 9.63, freedomToTradeInternationally: 9.60, regulation: 9.40 },
@@ -31,6 +32,21 @@ function loadBackendAAF_v2(app,db) {
       res.redirect("https://documenter.getpostman.com/view/33041748/2sA35HX19v");
     });
 
+    // Proxy BasketVEG
+    app.use(API_BASE_AAF + "/proxyCricketAAF", function (req, res) {
+        var url = "https://cricket-live-line1.p.rapidapi.com/teamRanking/1"; // URL de la API de baloncesto
+        console.log("Proxying to: " + url);
+
+        // Realizar la solicitud a la API de baloncesto
+        request({
+            url: url,
+            qs: req.query, // Pasar los parámetros de la solicitud
+            headers: {
+                'X-RapidAPI-Key': '4e1a27c673msh81b6527001dad5dp145d49jsne302105ebb4f',
+                'X-RapidAPI-Host': 'cricket-live-line1.p.rapidapi.com'
+            }
+        }).pipe(res); // Enviar la respuesta de la API de baloncesto de vuelta al cliente
+    });
 
     // GET => Lista todos los datos
     // Permite establecer un periodo con from y to
@@ -94,7 +110,7 @@ function loadBackendAAF_v2(app,db) {
   
              // Verificar si hay resultados después de la filtración
           if (listings.length === 0) {
-              return res.status(404).send("Not Found");
+              return res.status(404).send("Database is empty.");
           }
     
             // Aplicar paginación si los parámetros limit y offset están presentes
