@@ -117,6 +117,7 @@
             }
         };
   
+        
         console.log("Chart Options:", options);
   
         const chart = new ApexCharts(document.querySelector("#chart"), options);
