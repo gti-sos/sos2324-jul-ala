@@ -12,7 +12,6 @@ import {loadBackendARM_v2} from "./back/v2/manofthematch/index-ARM.js";
 import {handler} from "./front/build/handler.js";
 import cors from "cors";
 import request from "request";
-import { a } from "./front/build/server/chunks/ssr-BNnOaRp4.js";
 
 let db_ARM = new dataStore();
 let db_ALA = new dataStore();
@@ -61,15 +60,15 @@ app.use("/proxyARM", function (req, res) {
 
 
 app.use("/proxyAAF", function(req, res) {
-    var url = 'https://cricket-live-line1.p.rapidapi.com/teamRanking/1'; // URL de la API de baloncesto
+    var url = 'https://inflation-by-api-ninjas.p.rapidapi.com/v1/inflation'; // URL de la API de baloncesto
     console.log("Proxying to: " + url);
     
     request({
         url: url,
         headers: {
             'X-RapidAPI-Key': '4e1a27c673msh81b6527001dad5dp145d49jsne302105ebb4f',
-            'X-RapidAPI-Host': 'cricket-live-line1.p.rapidapi.com'
-        } 
+            'X-RapidAPI-Host': 'inflation-by-api-ninjas.p.rapidapi.com'
+        }
     }).pipe(res);
 });
 

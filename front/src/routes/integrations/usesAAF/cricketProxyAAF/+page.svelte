@@ -11,7 +11,7 @@
 
     onMount(async () => {
         try {
-            let API = 'http://localhost:20000/api/v2'; 
+            let API = 'https://sos2324-17.appspot.com/api/v2'; 
 
             const response = await fetch(`${API}/economicfreedom_stats/proxyCricketAAF`);
             const data = await response.json();
