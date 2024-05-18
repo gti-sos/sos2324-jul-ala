@@ -87,5 +87,13 @@
                 <DropdownItem class="menu-item" href = "{API_v2}/economicfreedom_stats/docs">economicfreedom_stats [v2] (Ahmed)</DropdownItem>
             </DropdownMenu>
         </Dropdown>
+        <Dropdown nav autoClose={true}>
+            <DropdownToggle nav class="nav-link" caret>
+                Integrations
+            </DropdownToggle>
+            <DropdownMenu>
+                <DropdownItem class="menu-item" href = "/integrations/trimestralpib_stats/">integrations trimestralpib_stats</DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
     </Nav>
 </main>

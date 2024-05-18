@@ -8,7 +8,8 @@
   
   <h1>Redireccionar a URL</h1>
   <ButtonGroup>
-    <Button variant="primary" on:click={() => redireccionar('https://sos2324-12.appspot.com/integrations/trimestralpib_stats/cryptos')}>cryptos</Button>
-    <Button variant="primary" on:click={() => redireccionar('https://sos2324-12.appspot.com/integrations/trimestralpib_stats/perros')}>reviews</Button>
-    <Button variant="primary" on:click={() => redireccionar('https://sos2324-12.appspot.com/integrations/trimestralpib_stats/')}></Button>
+    <Button variant="primary" on:click={() => redireccionar('https://sos2324-17.appspot.com/integrations/trimestralpib_stats/cryptos')}>cryptos</Button>
+    <Button variant="primary" on:click={() => redireccionar('https://sos2324-17.appspot.com/integrations/trimestralpib_stats/perros')}>reviews</Button>
+    <Button variant="primary" on:click={() => redireccionar('https://sos2324-17.appspot.com/integrations/trimestralpib_stats/crp')}>conProxy</Button>
+    <Button variant="primary" on:click={() => redireccionar('https://sos2324-17.appspot.com/integrations/trimestralpib_stats/leaderboard')}>Inflation vs Pib</Button>
   </ButtonGroup>

@@ -253,5 +253,29 @@
                 </Card>
             </Col>
         </Row>
+        <Row>
+            <Col>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Integrations</CardTitle>
+                    </CardHeader>
+                    <CardBody>
+                        <div class="api-container">
+                            <Row>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/integrations/trimestralpib_stats/">integrations trimestralpib_stats</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </div>
+                    </CardBody>
+                </Card>
+            </Col>
+        </Row>
 </Container>
 </div>
