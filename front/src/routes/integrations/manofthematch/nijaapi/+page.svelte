@@ -1,5 +1,5 @@
 <svelte:head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </svelte:head>
 
 <script>
@@ -43,9 +43,9 @@
     }
 
     function generateChart() {
-        const Opponent = data1.Opponent;
-        const GoalScored = data1.GoalScored;
-        const dia = data2.day;
+        const Opponent = data1.Opponent || "N/A";
+        const GoalScored = data1.GoalScored || "0";
+        const dia = data2.day || "N/A";
 
         var data = google.visualization.arrayToDataTable([
             ['Categoria', 'Valor'],
@@ -55,18 +55,21 @@
         ]);
 
         var options = {
-            title: 'Oponent, Goles, y dia',
+            title: 'Oponente, Goles, y dia',
             hAxis: {
-                title: 'Value'
+                title: 'Valor'
             },
             vAxis: {
-                title: 'Category'
+                title: 'Categoria'
             }
         };
 
         var chart = new google.visualization.BarChart(document.getElementById('chart-container'));
         chart.draw(data, options);
     }
+
+    // Llama a la función plotCombinedChart con los datos1 y datos2
+    plotCombinedChart(data1, data2);
 </script>
 
 <h1>Oponente, Goles, y dia de vacaciones en Australia</h1>
