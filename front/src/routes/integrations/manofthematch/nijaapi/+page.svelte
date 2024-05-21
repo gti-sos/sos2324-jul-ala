@@ -17,6 +17,21 @@ onMount(async () => {
         console.error(error);
     }
 });
+async function loadData() {
+        try {
+            let response = await fetch("https://sos2324-17.appspot.com/api/v2/manofthematch/loadInitialData", {
+                method: "GET",
+            });
+
+            let status = response.status;
+
+            if (status === 201) {
+                getData();
+            } 
+        } catch (e) {
+            console.error(e);
+        }
+    }   
 
 async function getApiData() {
     const url = "https://sos2324-17.appspot.com/api/v2/manofthematch?country=Australia"; 
@@ -92,7 +107,10 @@ async function getDataProxy() {
         const chart = new ApexCharts(document.querySelector("#chart-container"), options);
         chart.render();
     }
+    
 </script>
-
+<div>
+    <button on:click={loadData}>Cargar los datos</button>
+</div>
 <h1>Goles Anotados y Días Festivos en Australia</h1>
 <div id="chart-container" style="width: 100%; height: 400px;"></div>
