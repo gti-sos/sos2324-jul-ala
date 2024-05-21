@@ -12,4 +12,4 @@
     <Button variant="primary" on:click={() => redireccionar('https://sos2324-17.appspot.com/integrations/manofthematch/nijaapi')}>proxy</Button>
     <Button variant="primary" on:click={() => redireccionar('https://sos2324-17.appspot.com/integrations/manofthematch/integracion')}>integracion</Button>
     <Button variant="primary" on:click={() => redireccionar('https://sos2324-17.appspot.com/integrations/manofthematch/uso2')}>uso2</Button>
-  </ButtonGroup>
+  </ButtonGroup> 
