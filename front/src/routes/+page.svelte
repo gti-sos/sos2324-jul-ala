@@ -271,6 +271,15 @@
                                         </CardBody>
                                     </Card>
                                 </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/integrations/manofthematch/">integrations manofthematch</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/antrummor">Antonio Rumi Moreno</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
                             </Row>
                         </div>
                     </CardBody>
