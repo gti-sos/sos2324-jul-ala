@@ -5,72 +5,94 @@
 <script>
     import { onMount } from 'svelte';
 
-    let data1;
-    let data2;
+let data1;
+let data2;
 
-    onMount(async () => {
+onMount(async () => {
+    try {
         data1 = await getApiData();
         data2 = await getDataProxy();
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(generateChart);
-    });
-
-    async function getApiData() {
-        const url = "https://sos2324-17.appspot.com/api/v2/manofthematch?country=Australia"; 
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            return data; 
-        } catch (err) {
-            console.log(err);
-        }
+        generateChart();
+    } catch (error) {
+        console.error(error);
     }
+});
 
-    async function getDataProxy() {
-        try {
-            const options = {
-                method: "GET",
-                headers: {
-                    "X-Api-Key": "Qr5V7x10UceVt+16gV6VWQ==Sducj1ZGameniOdv",
-                },
-            };
-            const response = await fetch("/proxyARM", options);
-            const data = await response.json();
-            return data;
-        } catch (err) {
-            console.log(err);
-        }
+async function getApiData() {
+    const url = "https://sos2324-17.appspot.com/api/v2/manofthematch?country=Australia"; 
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Error fetching API data: ${response.statusText}`);
     }
+    return response.json();
+}
+
+async function getDataProxy() {
+    const options = {
+        method: "GET",
+        headers: {
+            "X-Api-Key": "Qr5V7x10UceVt+16gV6VWQ==Sducj1ZGameniOdv",
+        },
+    };
+    const response = await fetch("/proxyARM", options);
+    if (!response.ok) {
+        throw new Error(`Error fetching proxy data: ${response.statusText}`);
+    }
+    return response.json();
+}
 
     function generateChart() {
-        const Opponent = data1.Opponent || "N/A";
-        const GoalScored = data1.GoalScored || "0";
-        const dia = data2.day || "N/A";
+        // Filtrar y formatear los datos de los goles y días festivos
+        const goalsData = data1.map(match => ({
+            x: match.date,
+            y: parseInt(match.GoalScored)
+        }));
 
-        var data = google.visualization.arrayToDataTable([
-            ['Categoria', 'Valor'],
-            ['Oponente', Opponent],
-            ['Goles', GoalScored],
-            ['Dia de las vacaciones', dia]
-        ]);
+        const holidaysData = data2.map(holiday => ({
+            x: holiday.date,
+            y: 1 // Indica la presencia de un día festivo
+        }));
 
-        var options = {
-            title: 'Oponente, Goles, y dia',
-            hAxis: {
-                title: 'Valor'
+        const options = {
+            chart: {
+                type: 'line',
+                height: 350
             },
-            vAxis: {
-                title: 'Categoria'
+            series: [
+                {
+                    name: 'Goles Anotados',
+                    data: goalsData
+                },
+                {
+                    name: 'Días Festivos',
+                    data: holidaysData
+                }
+            ],
+            xaxis: {
+                type: 'datetime',
+                title: {
+                    text: 'Fecha'
+                }
+            },
+            yaxis: [{
+                title: {
+                    text: 'Goles Anotados'
+                }
+            }, {
+                opposite: true,
+                title: {
+                    text: 'Días Festivos'
+                }
+            }],
+            title: {
+                text: 'Goles Anotados y Días Festivos en Australia'
             }
         };
 
-        var chart = new google.visualization.BarChart(document.getElementById('chart-container'));
-        chart.draw(data, options);
+        const chart = new ApexCharts(document.querySelector("#chart-container"), options);
+        chart.render();
     }
-
-    // Llama a la función plotCombinedChart con los datos1 y datos2
-    plotCombinedChart(data1, data2);
 </script>
 
-<h1>Oponente, Goles, y dia de vacaciones en Australia</h1>
+<h1>Goles Anotados y Días Festivos en Australia</h1>
 <div id="chart-container" style="width: 100%; height: 400px;"></div>
