@@ -41,7 +41,7 @@ app.use("/proxyARM", function (req, res) {
     const options = {
         url: url,
         headers: {
-            "X-Api-Key": "Qr5V7x10UceVt+16gV6VWQ==Sducj1ZGameniOdvf"
+            "X-Api-Key": "Qr5V7x10UceVt+16gV6VWQ==Sducj1ZGameniOdv"
         }
     };
     request(options, (error, response, body) => {
