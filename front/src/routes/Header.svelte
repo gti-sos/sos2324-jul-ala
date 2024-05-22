@@ -96,5 +96,13 @@
                 <DropdownItem class="menu-item" href = "/integrations/manofthematch/">integrations manofthematch</DropdownItem>
             </DropdownMenu>
         </Dropdown>
+        <Dropdown nav autoClose={true}>
+            <DropdownToggle nav class="nav-link" caret>
+                Videos
+            </DropdownToggle>
+            <DropdownMenu>
+                <DropdownItem class="menu-item" href = "https://www.youtube.com/watch?v=GMbB93tYeWk">Video trimestralpib_stats </DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
     </Nav>
 </main>

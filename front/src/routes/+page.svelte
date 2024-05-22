@@ -286,5 +286,29 @@
                 </Card>
             </Col>
         </Row>
+        <Row>
+            <Col>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Videos</CardTitle>
+                    </CardHeader>
+                    <CardBody>
+                        <div class="api-container">
+                            <Row>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
+                                            <Button color="primary" href="https://www.youtube.com/watch?v=GMbB93tYeWk">Video trimestralpib_stats</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
+                            </Row>
+                        </div>
+                    </CardBody>
+                </Card>
+            </Col>
+        </Row>
 </Container>
 </div>
