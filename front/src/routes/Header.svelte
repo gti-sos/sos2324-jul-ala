@@ -93,6 +93,7 @@
             </DropdownToggle>
             <DropdownMenu>
                 <DropdownItem class="menu-item" href = "/integrations/trimestralpib_stats/">integrations trimestralpib_stats</DropdownItem>
+                <DropdownItem class="menu-item" href = "/integrations/manofthematch/">integrations manofthematch</DropdownItem>
             </DropdownMenu>
         </Dropdown>
     </Nav>

@@ -1,5 +1,5 @@
 <svelte:head>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </svelte:head>
 
 <script>
@@ -7,6 +7,8 @@
 
     let dataAvailable = false;
     let cities = [];
+    let chartInstance = null;
+
     async function loadData() {
         try {
             let response = await fetch("https://sos2324-17.appspot.com/api/v2/manofthematch/loadInitialData", {
@@ -22,9 +24,9 @@
             console.error(e);
         }
     }  
-    // Función para obtener los datos del dataset de ciudades
+
     async function getCitiesData() {
-        const url = 'https://api.api-ninjas.com/v1/geocoding?city=Madrid';  // Actualiza esta URL según sea necesario
+        const url = 'https://api.api-ninjas.com/v1/geocoding?city=Madrid';
         const options = {
             method: "GET",
             headers: {
@@ -48,53 +50,67 @@
             return;
         }
 
-        const seriesData = cities.map(city => ({
-            x: city.latitude,
-            y: city.longitude,
-            name: `${city.name}, ${city.country}${city.state ? ', ' + city.state : ''}`
-        }));
+        const ctx = document.getElementById('chart-container').getContext('2d');
+        const data = {
+            datasets: [{
+                label: 'Ciudades llamadas Madrid',
+                data: cities.map(city => ({
+                    x: city.latitude,
+                    y: city.longitude,
+                    r: 5  // Radio del punto en el gráfico de burbujas
+                })),
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
 
         const options = {
-            chart: {
-                type: 'scatter',
-                height: 350
-            },
-            series: [{
-                name: 'Ciudades',
-                data: seriesData
-            }],
-            xaxis: {
-                title: {
-                    text: 'Latitud'
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Latitud'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Longitud'
+                    }
                 }
             },
-            yaxis: {
-                title: {
-                    text: 'Longitud'
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const city = cities[context.dataIndex];
+                            return `${city.name}, ${city.country}${city.state ? ', ' + city.state : ''}`;
+                        }
+                    }
                 }
-            },
-            tooltip: {
-                custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                    const point = w.globals.series[seriesIndex][dataPointIndex];
-                    return `<div style="padding: 10px;">${point.name}</div>`;
-                }
-            },
-            title: {
-                text: 'Ciudades llamadas Madrid y sus coordenadas'
             }
         };
 
-        const chart = new ApexCharts(document.querySelector("#chart-container"), options);
-        chart.render();
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        chartInstance = new Chart(ctx, {
+            type: 'bubble',
+            data: data,
+            options: options
+        });
     }
 
     onMount(() => {
         getCitiesData();
     });
 </script>
+
 <div>
     <button on:click={loadData}>Cargar los datos</button>
 </div>
 
 <h1>Ciudades llamadas Madrid y sus coordenadas</h1>
-<div id="chart-container" style="width: 100%; height: 400px;"></div>
+<canvas id="chart-container" style="width: 100%; height: 400px;"></canvas>
