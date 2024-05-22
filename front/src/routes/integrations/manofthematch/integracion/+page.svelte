@@ -129,7 +129,7 @@
         getCovidData();
     });
 </script>
-
+ 
 <div>
     <button on:click={loadData}>Cargar datos</button>
 </div>
