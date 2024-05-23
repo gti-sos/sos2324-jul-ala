@@ -94,6 +94,7 @@
             <DropdownMenu>
                 <DropdownItem class="menu-item" href = "/integrations/trimestralpib_stats/">integrations trimestralpib_stats</DropdownItem>
                 <DropdownItem class="menu-item" href = "/integrations/manofthematch/">integrations manofthematch</DropdownItem>
+                <DropdownItem class="menu-item" href = "/integrations/">Integrations economicfreedom_stats</DropdownItem>
             </DropdownMenu>
         </Dropdown>
         <Dropdown nav autoClose={true}>

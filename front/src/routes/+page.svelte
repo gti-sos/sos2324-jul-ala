@@ -280,6 +280,15 @@
                                         </CardBody>
                                     </Card>
                                 </Col>
+                                <Col sm="12" md="4">
+                                    <Card class="api-wrapper">
+                                        <CardBody>
+                                            <Button color="primary" href="https://sos2324-17.appspot.com/integrations">Integrations economicfreedom_stats</Button>
+                                            <CardText><hr></CardText>
+                                            <CardSubtitle>Developed by <a href="https://github.com/ahmfra">Ahmed Amine Fraj</a></CardSubtitle>
+                                        </CardBody>
+                                    </Card>
+                                </Col>
                             </Row>
                         </div>
                     </CardBody>
