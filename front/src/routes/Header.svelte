@@ -103,7 +103,9 @@
             </DropdownToggle>
             <DropdownMenu>
                 <DropdownItem class="menu-item" href = "https://www.youtube.com/watch?v=GMbB93tYeWk">Video trimestralpib_stats </DropdownItem>
+                <DropdownItem class="menu-item" href = "https://www.youtube.com/watch?v=rQKNkHhZzTU">Video manofthematch </DropdownItem>
             </DropdownMenu>
+            
         </Dropdown>
     </Nav>
 </main>
