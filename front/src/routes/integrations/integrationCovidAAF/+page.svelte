@@ -14,7 +14,7 @@
     onMount(async () => {
         try {
             // Datos de mi API de Economic Freedom
-            const economicResponse = await fetch('http://localhost:20000/api/v2/economicfreedom_stats');
+            const economicResponse = await fetch('https://sos2324-17.appspot.com/api/v2/economicfreedom_stats');
             economicData = await economicResponse.json();
 
             // Filtrar los datos para excluir a Alemania y Chile

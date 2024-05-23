@@ -14,7 +14,7 @@
     onMount(async () => {
         try {
             // Obtener datos de la API de economic Trends
-            const economicResponse = await fetch('http://localhost:20000/api/v2/economicfreedom_stats');
+            const economicResponse = await fetch('https://sos2324-17.appspot.com/api/v2/economicfreedom_stats');
             economicData = await economicResponse.json();
 
             // Obtener datos de la API de inflation
