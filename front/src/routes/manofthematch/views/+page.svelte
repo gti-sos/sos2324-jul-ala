@@ -20,7 +20,6 @@
                 dataAvailable = true; 
                 createGraph1(data);
                 createGraph2(data);
-                drawDonutChart(data);
                 createChart(data);  // Verificar que esta función está al final y se llama correctamente
             }
         } catch (error) {
@@ -141,63 +140,6 @@
         });
     }
 
-    let donutChart = null; 
-
-    function drawDonutChart(data) {
-        const countries = [...new Set(data.map(item => item.country))];
-        const golesData = countries.map(country => {
-            const countryData = data.filter(item => item.country === country);
-            const totalgoles = countryData.reduce((acc, cur) => acc + parseFloat(cur.GoalScored), 0);
-            const averageDepression = totalgoles / countryData.length; 
-            return averageDepression;
-        });
-
-        const ctx = document.getElementById('donut-chart').getContext('2d');
-
-        if (donutChart) {
-            donutChart.destroy();
-        }
-
-        donutChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: countries.map(String),
-                datasets: [{
-                    data: golesData,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.5)',
-                        'rgba(54, 162, 235, 0.5)',
-                        'rgba(255, 206, 86, 0.5)',
-                        'rgba(75, 192, 192, 0.5)',
-                        'rgba(153, 102, 255, 0.5)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                legend: {
-                    position: 'top', 
-                    align: 'center', 
-                    labels: {
-                        boxWidth: 20, 
-                        padding: 20 
-                    }
-                },
-                animation: {
-                    animateScale: true,
-                    animateRotate: true
-                }
-            }
-        });
-    }
 
     function createChart(data) {
         const Ranges = [
@@ -286,5 +228,4 @@
 
 <div id="pie-chart-container"></div>
 <div id="bar-chart-container"></div>
-<canvas id="donut-chart" width="400" height="400"></canvas>
 <div id="myChart"></div>

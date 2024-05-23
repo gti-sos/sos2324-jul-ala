@@ -134,5 +134,5 @@
     <button on:click={loadData}>Cargar datos</button>
 </div>
 
-<h1>COVID-19 Cases and Football Match Goals in France</h1>
+<h1>COVID-19 casos y goles en el mundial de francia</h1>
 <div id="chart-container" style="width: 100%; height: 500px;"></div>

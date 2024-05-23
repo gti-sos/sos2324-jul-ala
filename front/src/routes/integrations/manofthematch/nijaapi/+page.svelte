@@ -5,19 +5,20 @@
 <script>
     import { onMount } from 'svelte';
 
-let data1;
-let data2;
+    let data1;
+    let data2;
 
-onMount(async () => {
-    try {
-        data1 = await getApiData();
-        data2 = await getDataProxy();
-        generateChart();
-    } catch (error) {
-        console.error(error);
-    }
-});
-async function loadData() {
+    onMount(async () => {
+        try {
+            data1 = await getApiData();
+            data2 = await getDataProxy();
+            generateChart();
+        } catch (error) {
+            console.error(error);
+        }
+    });
+
+    async function loadData() {
         try {
             let response = await fetch("https://sos2324-17.appspot.com/api/v2/manofthematch/loadInitialData", {
                 method: "GET",
@@ -26,91 +27,114 @@ async function loadData() {
             let status = response.status;
 
             if (status === 201) {
-                getData();
+                getApiData();
+                getDataProxy();
             } 
         } catch (e) {
             console.error(e);
         }
-    }   
-
-async function getApiData() {
-    const url = "https://sos2324-17.appspot.com/api/v2/manofthematch?country=Australia"; 
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error(`Error fetching API data: ${response.statusText}`);
     }
-    return response.json();
-}
 
-async function getDataProxy() {
-    const options = {
-        method: "GET",
-        headers: {
-            "X-Api-Key": "Qr5V7x10UceVt+16gV6VWQ==Sducj1ZGameniOdv",
-        },
-    };
-    const response = await fetch("/proxyARM", options);
-    if (!response.ok) {
-        throw new Error(`Error fetching proxy data: ${response.statusText}`);
+    async function getApiData() {
+        const url = "https://sos2324-17.appspot.com/api/v2/manofthematch?country=Australia"; 
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error fetching API data: ${response.statusText}`);
+        }
+        return response.json();
     }
-    return response.json();
-}
+
+    async function getDataProxy() {
+        const options = {
+            method: "GET",
+            headers: {
+                "X-Api-Key": "Qr5V7x10UceVt+16gV6VWQ==Sducj1ZGameniOdv",
+            },
+        };
+        const response = await fetch("/proxyARM", options);
+        if (!response.ok) {
+            throw new Error(`Error fetching proxy data: ${response.statusText}`);
+        }
+        return response.json();
+    }
 
     function generateChart() {
-        // Filtrar y formatear los datos de los goles y días festivos
-        const goalsData = data1.map(match => ({
-            x: match.date,
-            y: parseInt(match.GoalScored)
+        // Filtrar y formatear los datos de los tiros y días festivos
+        const attemptsData = data1.map(match => ({
+            x: new Date(match.date).getTime(),
+            y: parseInt(match.attemps)
         }));
 
         const holidaysData = data2.map(holiday => ({
-            x: holiday.date,
+            x: new Date(holiday.date).getTime(),
             y: 1 // Indica la presencia de un día festivo
         }));
 
         const options = {
             chart: {
+                height: 350,
                 type: 'line',
-                height: 350
+                stacked: false
             },
+            dataLabels: {
+                enabled: false
+            },
+            colors: ['#008FFB', '#FF4560'],
             series: [
                 {
-                    name: 'Goles Anotados',
-                    data: goalsData
+                    name: 'Tiros Realizados',
+                    type: 'column',
+                    data: attemptsData
                 },
                 {
                     name: 'Días Festivos',
+                    type: 'line',
                     data: holidaysData
                 }
             ],
+            stroke: {
+                width: [0, 4]
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '50%'
+                }
+            },
             xaxis: {
                 type: 'datetime',
                 title: {
                     text: 'Fecha'
                 }
             },
-            yaxis: [{
-                title: {
-                    text: 'Goles Anotados'
+            yaxis: [
+                {
+                    title: {
+                        text: 'Tiros Realizados'
+                    }
+                },
+                {
+                    opposite: true,
+                    title: {
+                        text: 'Días Festivos'
+                    },
+                    labels: {
+                        formatter: (val) => val.toFixed(0)
+                    },
+                    max: 1
                 }
-            }, {
-                opposite: true,
-                title: {
-                    text: 'Días Festivos'
-                }
-            }],
+            ],
             title: {
-                text: 'Goles Anotados y Días Festivos en Australia'
+                text: 'Tiros Realizados y Días Festivos en Australia'
             }
         };
 
         const chart = new ApexCharts(document.querySelector("#chart-container"), options);
         chart.render();
     }
-    
 </script>
+
 <div>
     <button on:click={loadData}>Cargar los datos</button>
 </div>
-<h1>Goles Anotados y Días Festivos en Australia</h1>
+<h1>Tiros Realizados y Días Festivos en Australia</h1>
 <div id="chart-container" style="width: 100%; height: 400px;"></div>
