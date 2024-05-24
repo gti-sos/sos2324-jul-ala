@@ -45,6 +45,7 @@ const data = [
     { country: "Jamaica", year: 2017, overallScore: 7.53, sizeOfGovernment: 8.11, legalSystemsAndPropertyRight: 5.50, soundMoney: 9.21, freedomToTradeInternationally: 7.23, regulation: 7.62 }]
 
     
+    
     console.log(data);
 
     function calcularMediaPorLetra(data, letra) {
