@@ -16,6 +16,7 @@
         <img src="/favicon.png" alt="SOS" class="centered-image">
         <hr>
         <Row>
+        
             <Col sm="12" md="6">
                 <Card>
                     <CardHeader>
