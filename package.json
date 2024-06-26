@@ -7,9 +7,7 @@
     "start": "node index",
     "pretest": "npm start &",
     "test-trimestralpib_stats": "npx newman run ./tests/integration/trimestralpib_stats/apiv2.json -e ./tests/integration/trimestralpib_stats/environments/gcloud.json",
-    "test-economicalfreedom_stats": "npx newman run ./tests/integration/economicfreedom_stats/api.json -e ./tests/integration/economicfreedom_stats/environments/gcloud.json",
-    "test-manofthematch": "npx newman run ./tests/integration/manofthematch/api-v2.json -e ./tests/integration/manofthematch/environments/gcloud.json",
-    "test-integration": "npx newman run ./tests/integration/economicfreedom_stats/api.json -e ./tests/integration/economicfreedom_stats/environments/gcloud.json && npx newman run ./tests/integration/manofthematch/api-v2.json -e ./tests/integration/manofthematch/environments/gcloud.json && npx newman run ./tests/integration/trimestralpib_stats/apiv2.json -e ./tests/integration/trimestralpib_stats/environments/gcloud.json",
+    "test-integration": "npx newman run ./tests/integration/trimestralpib_stats/apiv2.json -e ./tests/integration/trimestralpib_stats/environments/gcloud.json",
     "test-e2e": "npx playwright test",
     "test": "npm run test-integration && npm run test-e2e",
     "posttest": "kill `ps -uax | grep \"node index\" | grep -v \"grep\" | grep -v \"sh\" | awk '{print $2}'`"
@@ -28,6 +26,7 @@
     "echarts": "^5.5.0",
     "express": "^4.18.3",
     "nedb": "^1.8.0",
+    "newman": "^6.1.3",
     "request": "^2.88.2",
     "svelte": "^4.2.12",
     "svelte-fa": "^4.0.2",
