@@ -18,7 +18,6 @@
         margin: 0 10px; /* Separación entre botones */
     }
 </style>
-
 <h1 style="text-align: center;">Redireccionar a Uso/Integracion</h1>
 <div class="button-group-container">
     <ButtonGroup>
