@@ -37,15 +37,10 @@
 </style>
 
 <Container>
-    <h1>Integraciones Grupo 17</h1>
+    <h1>Integraciones</h1>
 
-    <h6>Usos/Integraciones Ahmed</h6>
+    <h6>Usos/Integraciones Adrian</h6>
     <ul>
-        <li><a href="integrations/usesAAF/chineseRecipesAAF">Uso Textual API Externa 1 (Chinese Recipes): sin proxy</a></li>
-        <li><a href="integrations/usesAAF/golfDataAAF">Uso Widget API Externa 2(Golf Players): sin proxy</a></li>
-        <li><a href="integrations/usesAAF/cricketProxyAAF">Uso Widget API Externa 3 (Cricket Rankings): con proxy</a></li>
-
-        <li><a href="integrations/integrationCovidAAF">Integración 1: Datos EconomicFreedom y API de covid (Highcharts)</a></li>
-        <li><a href="integrations/integrationInflationAAF/">Integración 2: Datos EconomicFreedom y API de inflation (Highcharts)</a></li>
+        <li><a href="integrations/trimestralpib_stats">Accede a usos/integraciones</a></li>
     </ul>
 </Container>

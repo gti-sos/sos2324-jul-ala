@@ -22,10 +22,10 @@ afterEach(async () => {
   // Limpieza después de cada prueba si es necesario
 });
 
-test('has title SOS2324-17 Project', async () => {
+test('has title SOS2324-jul-ala Project', async () => {
   test.setTimeout(60000);
   await page.goto('http://localhost:20000');
-  await expect(page).toHaveTitle(/SOS2324-17 Project/);
+  await expect(page).toHaveTitle(/SOS2324-jul-ala Project/);
 });
 
 test('load and list economic freedom stats', async () => {
