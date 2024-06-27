@@ -13,7 +13,6 @@
 <div>
 <Container class="content-container" style="justify-content: center;"> 
         <h1>SOS2324-17</h1>
-        <img src="/favicon.png" alt="SOS" class="centered-image">
         <hr>
         <Row>
         
@@ -70,8 +69,9 @@
         <Row>
             <Col><br></Col>
         </Row>
+        <!-- Recuadros de APIs -->
         <Row>
-            <Col>
+            <Col sm="12" md="6" lg="4">
                 <Card>
                     <CardHeader>
                         <CardTitle>APIs</CardTitle>
@@ -79,7 +79,7 @@
                     <CardBody>
                         <div class="api-container">
                             <Row>
-                                <Col sm="12" md="4">
+                                <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/">trimestralpib_stats [v1]</Button>
@@ -94,9 +94,7 @@
                     </CardBody>
                 </Card>
             </Col>
-        </Row>
-        <Row>
-            <Col>
+            <Col sm="12" md="6" lg="4">
                 <Card>
                     <CardHeader>
                         <CardTitle>APIs documentation</CardTitle>
@@ -104,7 +102,7 @@
                     <CardBody>
                         <div class="api-container">
                             <Row>
-                                <Col sm="12" md="4">
+                                <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/docs">trimestralpib_stats [v1]</Button>
@@ -119,9 +117,7 @@
                     </CardBody>
                 </Card>
             </Col>
-        </Row>
-        <Row>
-            <Col>
+            <Col sm="12" md="6" lg="4">
                 <Card>
                     <CardHeader>
                         <CardTitle>Frontends</CardTitle>
@@ -129,7 +125,7 @@
                     <CardBody>
                         <div class="api-container">
                             <Row>
-                                <Col sm="12" md="4">
+                                <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/trimestralpib_stats/">trimestralpib_stats</Button>
@@ -145,7 +141,7 @@
             </Col>
         </Row>
         <Row>
-            <Col>
+            <Col sm="12" md="6" lg="4">
                 <Card>
                     <CardHeader>
                         <CardTitle>Views</CardTitle>
@@ -153,15 +149,7 @@
                     <CardBody>
                         <div class="api-container">
                             <Row>
-                                <Col sm="12" md="4">
-                                    <Card class="api-wrapper">
-                                        <CardBody>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/analytics">Gráfica grupal</Button>
-                                            <CardText><hr></CardText>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                                <Col sm="12" md="4">
+                                <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/trimestralpib_stats/views">trimestralpib_stats</Button>
@@ -175,9 +163,7 @@
                     </CardBody>
                 </Card>
             </Col>
-        </Row>
-        <Row>
-            <Col>
+            <Col sm="12" md="6" lg="4">
                 <Card>
                     <CardHeader>
                         <CardTitle>Integrations</CardTitle>
@@ -185,7 +171,7 @@
                     <CardBody>
                         <div class="api-container">
                             <Row>
-                                <Col sm="12" md="4">
+                                <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://sos2324-17.appspot.com/integrations/trimestralpib_stats/">integrations trimestralpib_stats</Button>
@@ -199,9 +185,7 @@
                     </CardBody>
                 </Card>
             </Col>
-        </Row>
-        <Row>
-            <Col>
+            <Col sm="12" md="6" lg="4">
                 <Card>
                     <CardHeader>
                         <CardTitle>Videos</CardTitle>
@@ -209,7 +193,7 @@
                     <CardBody>
                         <div class="api-container">
                             <Row>
-                                <Col sm="12" md="4">
+                                <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
                                             <Button color="primary" href="https://www.youtube.com/watch?v=GMbB93tYeWk">Video trimestralpib_stats</Button>
