@@ -87,7 +87,6 @@
             <DropdownMenu>
                 <DropdownItem class="menu-item" href ="https://www.youtube.com/watch?v=oB7QyrNieAA">Video trimestralpib_stats </DropdownItem>
             </DropdownMenu>
-            
         </Dropdown>
     </Nav>
 </main>
