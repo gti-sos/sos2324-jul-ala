@@ -4,7 +4,7 @@
 </style>
 
 <svelte:head>
-    <title>SOS2324-17 Project</title>
+    <title>SOS2324-jul-ala Project</title>
 </svelte:head>
 <script>
     import { Container, Row, Col, Card, CardHeader, CardBody, CardTitle, CardSubtitle, CardText, Button} from '@sveltestrap/sveltestrap';
@@ -12,7 +12,7 @@
 
 <div>
 <Container class="content-container" style="justify-content: center;"> 
-        <h1>SOS2324-17</h1>
+        <h1>SOS2324-jul-ala</h1>
         <hr>
         <Row>
         
@@ -82,8 +82,8 @@
                                 <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/">trimestralpib_stats [v1]</Button>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v2/trimestralpib_stats/">trimestralpib_stats [v2]</Button>
+                                            <Button color="primary" href="https://sos2324-jul-ala.ew.r.appspot.com/api/v1/trimestralpib_stats">trimestralpib_stats [v1]</Button>
+                                            <Button color="primary" href="https://sos2324-jul-ala.ew.r.appspot.com/api/v2/trimestralpib_stats">trimestralpib_stats [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
                                         </CardBody>
@@ -105,8 +105,8 @@
                                 <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v1/trimestralpib_stats/docs">trimestralpib_stats [v1]</Button>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/api/v2/trimestralpib_stats/docs">trimestralpib_stats [v2]</Button>
+                                            <Button color="primary" href="https://sos2324-jul-ala.ew.r.appspot.com/api/v1/trimestralpib_stats/docs">trimestralpib_stats [v1]</Button>
+                                            <Button color="primary" href="https://sos2324-jul-ala.ew.r.appspot.com/api/v2/trimestralpib_stats/docs">trimestralpib_stats [v2]</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
                                         </CardBody>
@@ -128,7 +128,7 @@
                                 <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/trimestralpib_stats/">trimestralpib_stats</Button>
+                                            <Button color="primary" href="https://sos2324-jul-ala.ew.r.appspot.com/trimestralpib_stats">trimestralpib_stats</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
                                         </CardBody>
@@ -152,7 +152,7 @@
                                 <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/trimestralpib_stats/views">trimestralpib_stats</Button>
+                                            <Button color="primary" href="https://sos2324-jul-ala.ew.r.appspot.com/trimestralpib_stats/views">trimestralpib_stats</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
                                         </CardBody>
@@ -174,7 +174,7 @@
                                 <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
-                                            <Button color="primary" href="https://sos2324-17.appspot.com/integrations/trimestralpib_stats/">integrations trimestralpib_stats</Button>
+                                            <Button color="primary" href="https://sos2324-jul-ala.ew.r.appspot.com/integrations/trimestralpib_stats">integrations trimestralpib_stats</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
                                         </CardBody>

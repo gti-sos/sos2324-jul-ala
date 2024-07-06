@@ -39,7 +39,7 @@ function loadBackendALA_v2(app,db) {
     
   // REDIRECT al portal de documentación
   app.get(API_BASE_ALA + "/docs", (req, res) => {
-    res.redirect("https://documenter.getpostman.com/view/26037869/2sA2xh2CNT");
+    res.redirect("https://documenter.getpostman.com/view/26037869/2sA3e1AVWn");
   });
 
     // GET => Lista todos los datos
