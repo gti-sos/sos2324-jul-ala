@@ -196,7 +196,7 @@
                                 <Col sm="12" md="12">
                                     <Card class="api-wrapper">
                                         <CardBody>
-                                            <Button color="primary" href="https://www.youtube.com/watch?v=GMbB93tYeWk">Video trimestralpib_stats</Button>
+                                            <Button color="primary" href="https://www.youtube.com/watch?v=oB7QyrNieAA">Video trimestralpib_stats</Button>
                                             <CardText><hr></CardText>
                                             <CardSubtitle>Developed by <a href="https://github.com/adrile15">Adrian León Arjona</a></CardSubtitle>
                                         </CardBody>
